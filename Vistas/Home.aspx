@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="Vistas.Home" EnableEventValidation="false" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="Vistas.Home" %>
 
 <!DOCTYPE html>
 
@@ -12,19 +12,6 @@
     <link rel="icon" type="image/png" href="Recursos/Imagenes/favicon.png" />
 
     <title>Home | DevFlix</title>
-    <script type="text/javascript">
-        document.addEventListener("DOMContentLoaded", function () {
-            checkSearchBarShown(document.getElementById("txtBusqueda"));
-        });
-
-        function checkSearchBarShown(obj) {
-            if (obj.value.length > 0) {
-                obj.classList.add('show');
-            } else {
-                obj.classList.remove('show');
-            }
-        }
-    </script>
 </head>
 
 <body style="background-image: url(Recursos/Imagenes/fondoHome2.jpg); background-size: cover; opacity: 10;">
@@ -40,18 +27,10 @@
                 <a class="botonesMenu" href="SeleccionarUsuario.aspx">USUARIOS </a>
                 <a class="botonesMenu" href="Configuraciones.aspx">AJUSTES </a>
                 <a class="botonesMenu" href="Log.aspx">CERRAR SESION </a>
-                <br />
-
             </nav>
         </header>
 
         <main>
-            <div class="SearchBox">
-
-                <asp:TextBox ID="txtBusqueda" class="SearchBox-input" runat="server" onkeyup="checkSearchBarShown(this)"> </asp:TextBox>
-                <asp:ImageButton ID="imgbtnBuscar" class="SearchBox-button" runat="server" src="Recursos/Imagenes/lupaa.png" OnClick="imgBtnFiltrar_Click" Height="32px" Width="32px" />
-
-            </div>
 
             <div class="nombreUsuario">
                 <asp:Label ID="lblBienvenidoUsuario" runat="server"></asp:Label>
@@ -59,7 +38,15 @@
 
             <div class="list-view">
 
-                <asp:ListView ID="lvCatalogo" runat="server" GroupItemCount="3" OnPagePropertiesChanging="lvCatalogo_PagePropertiesChanging">
+                <asp:ListView ID="lvCatalogo" runat="server" DataSourceID="DevFlix" GroupItemCount="3" OnSelectedIndexChanged="lvCatalogo_SelectedIndexChanged">
+                    <%--  <AlternatingItemTemplate>
+                        <td runat="server" class="auto-style2">&nbsp;<asp:Label ID="TituloContenido_CatLabel" runat="server" Text='<%# Eval("TituloContenido_Cat") %>' BorderStyle="None" Font-Size="15px" Height="20px" Width="205px" Font-Bold="False" ForeColor="White" />
+                            <br />
+                            &nbsp;<asp:ImageButton ID="imgBtnPortada" runat="server" ImageUrl='<%# Eval("URLPortada_Cat") %>' />
+                            <br />
+                            :<br />
+                        </td>
+                    </AlternatingItemTemplate>--%>
                     <EditItemTemplate>
                         <td runat="server" style="">TituloContenido_Cat:
                             <asp:TextBox ID="TituloContenido_CatTextBox" runat="server" Text='<%# Bind("TituloContenido_Cat") %>' />
@@ -78,6 +65,9 @@
                     </EditItemTemplate>
                     <EmptyDataTemplate>
                         <table runat="server" style="">
+                            <tr>
+                                <td>No data was returned.</td>
+                            </tr>
                         </table>
                     </EmptyDataTemplate>
                     <EmptyItemTemplate>
@@ -105,12 +95,12 @@
                         </td>
                     </InsertItemTemplate>
                     <ItemTemplate>
-                        <td runat="server" style="">&nbsp;<asp:Label ID="TituloContenido_CatLabel" runat="server" Text='<%# Eval("TituloContenido_Cat") %>' CssClass="tituloContenido" />
+                        <td runat="server" style="">&nbsp;<asp:Label ID="TituloContenido_CatLabel" runat="server" Text='<%# Eval("TituloContenido_Cat") %>' BorderStyle="None" Font-Size="15px" ForeColor="White" Height="20px" Width="205px" />
                             <br />
                             &nbsp;
                                 <asp:ImageButton ID="imgBtnPortada" runat="server" ImageUrl='<%# Eval("URLPortada_Cat") %>' OnCommand="imgBtnPortada_Command" CommandArgument='<%# Eval("IDContenido_Cat") %>' />
                             <br />
-                            <br />
+                            :<br />
                         </td>
                     </ItemTemplate>
                     <LayoutTemplate>
@@ -123,13 +113,11 @@
                                     </table>
                                 </td>
                             </tr>
-                            <tr>
-                                <td style="">
-                                    <asp:DataPager ID="DataPager1" PagedControlID="lvCatalogo" runat="server" PageSize="9">
+                            <tr runat="server">
+                                <td runat="server" style="">
+                                    <asp:DataPager ID="DataPager1" runat="server" PageSize="12">
                                         <Fields>
-                                            <asp:NextPreviousPagerField ButtonCssClass="botoncito-page" ButtonType="Link" ShowFirstPageButton="false" ShowPreviousPageButton="true" ShowNextPageButton="false" />
-                                            <asp:NumericPagerField NumericButtonCssClass="botoncito-page" ButtonType="Link" />
-                                            <asp:NextPreviousPagerField ButtonCssClass="botoncito-page" ButtonType="Link" ShowNextPageButton="true" ShowLastPageButton="false" ShowPreviousPageButton="false" />
+                                            <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="True" ShowLastPageButton="True" />
                                         </Fields>
                                     </asp:DataPager>
                                 </td>
@@ -149,6 +137,11 @@
                         </td>
                     </SelectedItemTemplate>
                 </asp:ListView>
+                <asp:SqlDataSource ID="DevFlix" runat="server" ConnectionString="<%$ ConnectionStrings:DevFlixDBConnectionString2 %>" SelectCommand="SELECT [IDContenido_Cat], [TituloContenido_Cat], [URLPortada_Cat], [Clasif_Edad_Cat] FROM [Catalogos] WHERE ([Clasif_Edad_Cat] &lt;= @Clasif_Edad_Cat)">
+                    <SelectParameters>
+                        <asp:SessionParameter Name="Clasif_Edad_Cat" SessionField="EdadUsuario" Type="Int32" />
+                    </SelectParameters>
+                </asp:SqlDataSource>
             </div>
 
             <h2>PRÓXIMOS ESTRENOS EN DEVFLIX</h2>

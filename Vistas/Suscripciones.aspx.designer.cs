@@ -96,15 +96,6 @@ namespace Vistas
         protected global::System.Web.UI.WebControls.Button btnPaquete;
 
         /// <summary>
-        /// Control SqlDataSourceSus.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceSus;
-
-        /// <summary>
         /// Control lblMensajePlan.
         /// </summary>
         /// <remarks>
@@ -112,5 +103,14 @@ namespace Vistas
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblMensajePlan;
+
+        /// <summary>
+        /// Control SqlDataSourceSus.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceSus;
     }
 }
