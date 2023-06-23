@@ -77,8 +77,9 @@
                         </td>
                     </EditItemTemplate>
                     <EmptyDataTemplate>
-                        <table runat="server" style="">
-                        </table>
+                        <td runat="server">
+                             <asp:Label ID="lblEmptyResults" runat="server" Text='No se han encontrado resultados.' Font-Bold="True" Height="65px" Width="200px" Font-Size="X-Large" />
+                       </td>
                     </EmptyDataTemplate>
                     <EmptyItemTemplate>
                         <td runat="server" />

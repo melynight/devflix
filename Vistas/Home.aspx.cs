@@ -42,7 +42,11 @@ namespace Vistas
         protected void imgBtnFiltrar_Click(object sender, ImageClickEventArgs e)
         {
             var dataPager = lvCatalogo.FindControl("DataPager1") as DataPager;
-            dataPager.SetPageProperties(0, 9, false);
+            if (dataPager != null)
+            {
+                dataPager.SetPageProperties(0, 9, false);
+                
+            }
             MostrarCatalogo();
         }
 
