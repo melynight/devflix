@@ -61,6 +61,7 @@ namespace Vistas
 
             MostrarContenidoXNombre(busqueda);
             txtBusqueda.Text = "";
+            Response.Redirect("/DescripcionPelicula.aspx?id=" + e.CommandArgument);
         }
     }
 }

@@ -51,17 +51,6 @@ namespace Negocio
             return dc.GetTablaCatalogoXEdad(edad);
         }
 
-        public DataTable getTablaContenidoXEdadXBusqueda(int edad, string busqueda)
-        {
-            DaoCatalogo dc = new DaoCatalogo();
-            Catalogo catalogo = new Catalogo();
-
-            return dc.GetTablaCatalogoXEdadXBusqueda(edad, busqueda);
-
-        }
-
-
-
         public bool EliminarCatalogo(string id)
         {
             DaoCatalogo dao = new DaoCatalogo();

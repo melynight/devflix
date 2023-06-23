@@ -47,13 +47,6 @@ namespace Dao
             return null;
         }
 
-        public DataTable GetTablaCatalogoXEdadXBusqueda(int edad, string busqueda)
-        {
-            DataTable tabla = ds.ObtenerTabla("Catalogos", "Select * from Catalogos where Clasif_Edad_Cat <= " + edad + " and TituloContenido_Cat LIKE '%" + busqueda + "%'");
-            return tabla;
-        }
-
-
         public Boolean ExisteCatalogo(Catalogo catalogo)
         {
             String consulta = "Select * from Catalogos where IDContenido_Cat= '" + catalogo.IDContenido_Cat1 + "'";
