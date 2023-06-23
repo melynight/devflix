@@ -52,6 +52,7 @@ namespace Vistas
             var dataPager = lvCatalogo.FindControl("DataPager1") as DataPager;
             dataPager.SetPageProperties(e.StartRowIndex, e.MaximumRows, false);
             MostrarCatalogo();
+            Response.Redirect("/DescripcionPelicula.aspx?id=" + e.CommandArgument);
         }
     }
 }

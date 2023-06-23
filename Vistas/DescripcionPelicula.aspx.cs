@@ -15,15 +15,15 @@ namespace Vistas
         {    // cargar el contenido que se va a mostrar
             // si existe parámetro id se busca ese id
             cuenta = (Cuenta)Session["Cuenta"];
-            string ID = (string)Session["ID"];
+            var id = Request["id"];
 
             if (!IsPostBack)
 
-            lblBienvenidoUsuario.Text = "Bienvenid@ " + cuenta.GetNombre_Cu();
+                lblBienvenidoUsuario.Text = "Bienvenid@ " + cuenta.GetNombre_Cu();
 
-            Catalogo catalogo = negCatalogo.Get(ID);
+            Catalogo catalogo = negCatalogo.Get(id);
 
-            if (Session["ID"].ToString() != null) //catalogo
+            if (Request["id"] != null) //catalogo
             {
                 var tituloClean = catalogo.TituloContenido_Cat1.Replace(Environment.NewLine, "").Replace("\n", "").Replace("\r", "");
 
@@ -39,10 +39,10 @@ namespace Vistas
 
         public void BtnFavoritos_Click(object sender, EventArgs e)
         {
-            string ID =(string)Session["ID"];
+            string id = Request["id"];
             NegocioFavorito negFavorito = new NegocioFavorito();
             NegocioCatalogo negCatalogo = new NegocioCatalogo();
-            Catalogo catalogo = negCatalogo.Get(ID);
+            Catalogo catalogo = negCatalogo.Get(id);
 
             negFavorito.agregarFavorito(catalogo.IDContenido_Cat1, cuenta.GetIDCuenta());
 
