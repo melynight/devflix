@@ -45,13 +45,16 @@ main {
 }
 
 #BtnFavoritos {
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
-    background: url(/Recursos/Imagenes/favorito.png)no-repeat cyan;
-    background-position: center;
+    background: url(/Recursos/Imagenes/star-empty.png)no-repeat cyan center;
     cursor: pointer;
 }
+
+    #BtnFavoritos.filled {
+        background: url(/Recursos/Imagenes/star-filled.png)no-repeat cyan center;
+    }
 
 #BtnSorprendeme {
     width: 80px;
@@ -62,27 +65,6 @@ main {
     cursor: pointer;
     position: absolute;
     right: 10px;
-}
-
-#BtnFavoritos.vueltita {
-    -webkit-animation-name: spin;
-    -webkit-animation-duration: var(--spin-speed);
-    -webkit-animation-iteration-count: 1;
-    -webkit-animation-timing-function: ease;
-    -moz-animation-name: spin;
-    -moz-animation-duration: var(--spin-speed);
-    -moz-animation-iteration-count: 1;
-    -moz-animation-timing-function: ease;
-    /*
-    -ms-animation-name: spin;
-    -ms-animation-duration: var(--spin-speed);
-    -ms-animation-iteration-count: 1;
-    -ms-animation-timing-function: ease;
-        */
-    animation-name: spin;
-    animation-duration: var(--spin-speed);
-    animation-iteration-count: 1;
-    animation-timing-function: ease;
 }
 
 #BtnSorprendeme.vueltita {

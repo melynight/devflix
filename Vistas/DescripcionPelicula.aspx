@@ -21,23 +21,8 @@
             });
         });
 
-        ///vuelta de boton favoritos
-        document.addEventListener("DOMContentLoaded", function (event) {
-            document.getElementById("BtnFavoritos").addEventListener("click", function (event) {
-                event.preventDefault();
-                iterateFavs(this);
-                return false;
-            });
-        });
-
         function getRandom(max) {
             return Math.floor(Math.random() * max);
-        }
-        function iterateFavs(obj) {
-            obj.classList.add("vueltita");
-            setTimeout(function () {
-                obj.classList.remove("vueltita");
-            }, spinSpeed);
         }
 
         function iterate(obj) {
@@ -74,7 +59,7 @@
         </header>
 
         <main>
-            <asp:Button ID="BtnFavoritos" title="Agregar este contenido a mi lista de favoritos" runat="server" Click="BtnFavoritos_Click" />
+            <asp:Button ID="BtnFavoritos" title="Marcar/Desmarcar como favorito" runat="server" OnClick="BtnFavoritos_Click" />
             <asp:Label ID="lblSeAgrego" runat="server" CssClass="Agregar"></asp:Label>
 
             <div class="video">

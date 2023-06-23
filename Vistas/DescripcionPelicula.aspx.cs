@@ -33,20 +33,28 @@ namespace Vistas
                 lblTitulo.Text = tituloClean;
                 lblDuracion.Text = negCatalogo.getDescripcionDuracion(catalogo.Duracion_Cat1);
                 lblSinopsis.Text = catalogo.Sinopsis_Cat1;
+
                 trailer.Attributes.Add("src", catalogo.URLVideo_Cat1.Replace("watch?v=", "embed/"));
+
+                // rellena la estrellita si esta marcado como favorito
+                if (new NegocioFavorito().ExisteFavorito(catalogo.IDContenido_Cat1, cuenta.GetIDCuenta()))
+                    BtnFavoritos.CssClass = "filled";
             }
         }
 
-        public void BtnFavoritos_Click(object sender, EventArgs e)
+        protected void BtnFavoritos_Click(object sender, EventArgs e)
         {
             string id = Request["id"];
             NegocioFavorito negFavorito = new NegocioFavorito();
             NegocioCatalogo negCatalogo = new NegocioCatalogo();
             Catalogo catalogo = negCatalogo.Get(id);
 
-            negFavorito.agregarFavorito(catalogo.IDContenido_Cat1, cuenta.GetIDCuenta());
+            var agregadoAFav = negFavorito.MarcarFavorito(catalogo.IDContenido_Cat1, cuenta.GetIDCuenta());
 
-            lblSeAgrego.Text = "Se agrego a favoritos";
+            if (agregadoAFav)
+                BtnFavoritos.CssClass = "filled";
+            else
+                BtnFavoritos.CssClass = "";
         }
 
         //TO DO FUNCIONALIDAD SORPRENDEME

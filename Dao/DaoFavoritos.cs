@@ -24,7 +24,7 @@ namespace Dao
             return favorito;
         }
 
-        public Boolean existeFavorito(Favoritos favorito)
+        public Boolean ExisteFavorito(Favoritos favorito)
         {
             string consulta = "select *from Favoritos where IDContenido_F = '" + favorito.IDContenido_F1 + "' and ID_cuenta = " + favorito.IDCuenta_F1;
             return ds.existe(consulta);
@@ -36,38 +36,24 @@ namespace Dao
             return tabla;
         }
 
-        public int agregarFavorito(string IdContenido, int idCuenta)
+        public bool MarcarFavorito(Favoritos favorito, bool eliminar)
         {
             SqlCommand comando = new SqlCommand();
-            armarParametrosFavoritoAgregar(ref comando, IdContenido, idCuenta);
-            return ds.EjecutarProcedimientoAlmacenado(comando, "spAgregarFavorito");
+            ArmarParametrosFavorito(ref comando, favorito);
+            return ds.EjecutarProcedimientoAlmacenado(comando, (eliminar ? "spEliminarFavorito" : "spAgregarFavorito")) > 0;
+            // if ternario
+            // condicion ? true : false;
+            // ej:
+            // 1 > 0 ? "algo" : "";
         }
 
-        public int EliminarFavorito(Favoritos favorito)
-        {
-            // favorito.IDContenido_F1=(ds.ObtenerMaximo("Select count(*) from Favoritos where idCuenta_F") + 1);//-------------averiguar como hacer para eliminar un favorito.-
-
-            SqlCommand comando = new SqlCommand();
-            ArmarParametrosFavoritoEliminar(ref comando, favorito);
-            return ds.EjecutarProcedimientoAlmacenado(comando, "spEliminarFavorito");
-        }
-
-        private void ArmarParametrosFavoritoEliminar(ref SqlCommand comando, Favoritos favorito)
-        {
-            SqlParameter sqlParametros = new SqlParameter();
-            sqlParametros = comando.Parameters.Add("@IDContenido", SqlDbType.VarChar);
-            sqlParametros.Value = favorito.IDContenido_F1;
-            sqlParametros = comando.Parameters.Add("@ID_cuenta", SqlDbType.Int);
-            sqlParametros.Value = favorito.IDCuenta_F1;
-        }
-
-        public void armarParametrosFavoritoAgregar(ref SqlCommand comando, string IdContenido, int idCuenta)
+        private void ArmarParametrosFavorito(ref SqlCommand comando, Favoritos favorito)
         {
             SqlParameter sqlParametros = new SqlParameter();
             sqlParametros = comando.Parameters.Add("@IDContenido_F", SqlDbType.VarChar);
-            sqlParametros.Value = IdContenido;
+            sqlParametros.Value = favorito.IDContenido_F1;
             sqlParametros = comando.Parameters.Add("@ID_cuenta", SqlDbType.Int);
-            sqlParametros.Value = idCuenta;
+            sqlParametros.Value = favorito.IDCuenta_F1;
         }
     }
 }

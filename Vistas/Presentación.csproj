@@ -83,7 +83,6 @@
     <Content Include="Recursos\Imagenes\5.jpg" />
     <Content Include="Recursos\Imagenes\boton-agregarUsuario.png" />
     <Content Include="Recursos\Imagenes\comic.png" />
-    <Content Include="Recursos\Imagenes\favorito.png" />
     <Content Include="Recursos\Imagenes\fondoHome.jpg" />
     <Content Include="Recursos\Imagenes\fondoHome2.jpg" />
     <Content Include="Recursos\Imagenes\fondoSeleccionarUsuarios.jpg" />
@@ -100,6 +99,8 @@
     <Content Include="Recursos\Imagenes\favicon.png" />
     <Content Include="Recursos\Imagenes\Flogo.png" />
     <Content Include="Recursos\Imagenes\Glogo.png" />
+    <Content Include="Recursos\Imagenes\star-empty.png" />
+    <Content Include="Recursos\Imagenes\star-filled.png" />
     <Content Include="Recursos\Imagenes\Tlogo.png" />
     <Content Include="Ingreso.aspx" />
     <Content Include="Log.aspx" />
