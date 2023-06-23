@@ -15,26 +15,52 @@ namespace Vistas
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
+
             if (!IsPostBack)
             {
+                
                 cuenta = (Cuenta)Session["Cuenta"];
                 Session["EdadUsuario"] = cuenta.GetEdad_Cu();
-                // DataTable tablaCatalogo = ncatalogo.getTablaContenidoXEdad(cuenta.GetEdad_Cu());
+                MostrarCatalogo();
                 lblBienvenidoUsuario.Text = "Bienvenid@ " + cuenta.GetNombre_Cu();
             }
+            MostrarCatalogo();
+        }
+   
+        public void MostrarCatalogo()
+        {
+            DataTable tablaCatalogo = ncatalogo.getTablaContenidoXEdad((int)Session["EdadUsuario"]);
+            lvCatalogo.DataSource = tablaCatalogo;
+            lvCatalogo.DataBind();
         }
 
-        protected void imgbtnAdelante_Click(object sender, ImageClickEventArgs e)
+        public void MostrarContenidoXNombre(string busqueda)
         {
-        }
-
-        protected void lvCatalogo_SelectedIndexChanged(object sender, EventArgs e)
-        {
+            DataTable catalogoBusqueda = ncatalogo.getTablaContenidoXEdadXBusqueda((int)Session["EdadUsuario"], busqueda);
+            lvCatalogo.DataSource = catalogoBusqueda;
+            lvCatalogo.DataBind();
+            
         }
 
         protected void imgBtnPortada_Command(object sender, CommandEventArgs e)
         {
-            Response.Redirect("/DescripcionPelicula.aspx?id=" + e.CommandArgument);
+            Session["ID"] = e.CommandArgument;
+            Response.Redirect("/DescripcionPelicula.aspx?id=");
+        }
+
+        protected void imgBtnFiltrar_Click(object sender, ImageClickEventArgs e)
+        {
+            string busqueda = txtBusqueda.Text.Trim();
+
+            if (string.IsNullOrEmpty(txtBusqueda.Text))
+            {
+                MostrarCatalogo();
+                return;
+            }
+
+            MostrarContenidoXNombre(busqueda);
+            txtBusqueda.Text = "";
         }
     }
 }

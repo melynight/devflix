@@ -72,6 +72,91 @@ h2 {
     color: white;
 }
 
+h1 {
+    font-weight: var(--font-bold)
+}
+
+
+button {
+    cursor: pointer
+}
+
+/*.SearchBox-input::placeholder { /* No es un seudoelemento estandar 
+    color: white;
+    opacity: .6;
+}
+/* Chrome, Opera ySafari 
+.SearchBox-input::-webkit-input-placeholder {
+    color: white;
+}
+/* Firefox 19+ 
+.SearchBox-input::-moz-placeholder {
+    color: white;
+}
+/* IE 10+ y Edge 
+.SearchBox-input:-ms-input-placeholder {
+    color: white;
+}
+/* Firefox 18- 
+#formGroupExampleInput:-moz-placeholder {
+    color: white;
+}
+*/
+
+
+.SearchBox {
+    --height: 4em;
+    display: flex;
+    border-radius: var(--height);
+    height: var(--height);
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 20px;
+    margin-top: 15px;
+}
+
+    .SearchBox:hover .SearchBox-input {
+        padding-left: 2em;
+        padding-right: 1em;
+        width: 240px;
+    }
+
+.SearchBox-input {
+    width: 0;
+    font-size: 1.2em;
+    background-color: #00eaf5;
+    color: black;
+    transition: .45s;
+}
+
+.SearchBox-button {
+    display: flex;
+    transition: .3s;
+    align-items: center;
+    padding-left: 10px;
+}
+.SearchBox img{
+    max-width: 32px;
+    max-height: 32px;
+}
+
+    .SearchBox-button:active {
+        transform: scale(.85);
+    }
+
+/*.SearchBox-icon {
+    margin: auto;
+    color: #fff;
+}
+    */
+
+/*@media screen and (min-width: 400px) {
+    .SearchBox:hover .SearchBox-input {
+        width: 500px;
+    }
+}*/
+
+
 .estrenos {
     width: 100%;
     margin-top: 50px;

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="DescripcionPelicula.aspx.cs" Inherits="Vistas.DescripcionPelicula" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="DescripcionPelicula.aspx.cs" Inherits="Vistas.DescripcionPelicula" EnableEventValidation="true" %>
 
 <!DOCTYPE html>
 
