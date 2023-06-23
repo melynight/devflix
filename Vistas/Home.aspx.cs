@@ -36,8 +36,7 @@ namespace Vistas
 
         protected void imgBtnPortada_Command(object sender, CommandEventArgs e)
         {
-            Session["ID"] = e.CommandArgument;
-            Response.Redirect("/DescripcionPelicula.aspx?id=");
+            Response.Redirect("/DescripcionPelicula.aspx?id=" + e.CommandArgument);
         }
 
         protected void imgBtnFiltrar_Click(object sender, ImageClickEventArgs e)
@@ -52,7 +51,6 @@ namespace Vistas
             var dataPager = lvCatalogo.FindControl("DataPager1") as DataPager;
             dataPager.SetPageProperties(e.StartRowIndex, e.MaximumRows, false);
             MostrarCatalogo();
-            Response.Redirect("/DescripcionPelicula.aspx?id=" + e.CommandArgument);
         }
     }
 }
