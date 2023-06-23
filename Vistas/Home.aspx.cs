@@ -19,28 +19,19 @@ namespace Vistas
 
             if (!IsPostBack)
             {
-                
+
                 cuenta = (Cuenta)Session["Cuenta"];
                 Session["EdadUsuario"] = cuenta.GetEdad_Cu();
-                MostrarCatalogo();
                 lblBienvenidoUsuario.Text = "Bienvenid@ " + cuenta.GetNombre_Cu();
             }
             MostrarCatalogo();
         }
-   
+
         public void MostrarCatalogo()
         {
-            DataTable tablaCatalogo = ncatalogo.getTablaContenidoXEdad((int)Session["EdadUsuario"]);
+            DataTable tablaCatalogo = ncatalogo.getTablaContenido((int)Session["EdadUsuario"], txtBusqueda.Text);
             lvCatalogo.DataSource = tablaCatalogo;
             lvCatalogo.DataBind();
-        }
-
-        public void MostrarContenidoXNombre(string busqueda)
-        {
-            DataTable catalogoBusqueda = ncatalogo.getTablaContenidoXEdadXBusqueda((int)Session["EdadUsuario"], busqueda);
-            lvCatalogo.DataSource = catalogoBusqueda;
-            lvCatalogo.DataBind();
-            
         }
 
         protected void imgBtnPortada_Command(object sender, CommandEventArgs e)
@@ -51,17 +42,16 @@ namespace Vistas
 
         protected void imgBtnFiltrar_Click(object sender, ImageClickEventArgs e)
         {
-            string busqueda = txtBusqueda.Text.Trim();
+            var dataPager = lvCatalogo.FindControl("DataPager1") as DataPager;
+            dataPager.SetPageProperties(0, 9, false);
+            MostrarCatalogo();
+        }
 
-            if (string.IsNullOrEmpty(txtBusqueda.Text))
-            {
-                MostrarCatalogo();
-                return;
-            }
-
-            MostrarContenidoXNombre(busqueda);
-            txtBusqueda.Text = "";
-            Response.Redirect("/DescripcionPelicula.aspx?id=" + e.CommandArgument);
+        protected void lvCatalogo_PagePropertiesChanging(object sender, PagePropertiesChangingEventArgs e)
+        {
+            var dataPager = lvCatalogo.FindControl("DataPager1") as DataPager;
+            dataPager.SetPageProperties(e.StartRowIndex, e.MaximumRows, false);
+            MostrarCatalogo();
         }
     }
 }

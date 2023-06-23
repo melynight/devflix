@@ -18,7 +18,6 @@ time, mark, audio, video {
     font: inherit;
     vertical-align: baseline;
 }
-
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
@@ -63,27 +62,29 @@ table {
     font-family: 'Times New Roman';
 }
 
-.list-view {
-    display: flex;
-    justify-content: space-around;
+
+h2 {
     text-align: center;
-    padding: 80px;
+    margin-top: 200px;
+    margin-bottom: 50px;
+    font-size: 20px;
+    font-family: fantasy;
+    color: white;
 }
 
-p {
+p{
     text-align: center;
 }
 
-#titulo {
+#titulo{
     font-family: 'TIMEs New Roman', Times, serif;
     color: #63B9CD;
     font-weight: bold;
     font-style: normal;
     text-decoration: underline;
     text-align: center;
-    font-size: x-large;
 }
 
-#suscribirse {
+#suscribirse{
     text-align: center;
 }

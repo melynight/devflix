@@ -47,6 +47,27 @@ namespace Dao
             return null;
         }
 
+        public DataTable GetTablaCatalogo(int edad = 0, string titulo = "")
+        {
+            int filtros = 0;
+            string filtroEdad = "", filtroTitulo = "";
+            if (edad > 0)
+            {
+                filtroEdad = (filtros > 0 ? " and " : "") + "Clasif_Edad_Cat <= " + edad;
+                filtros++;
+            }
+
+            if (!string.IsNullOrWhiteSpace(titulo))
+            {
+                filtroTitulo = (filtros > 0 ? " and " : "") + "TituloContenido_Cat LIKE '%" + titulo + "%'";
+                filtros++;
+            }
+
+            DataTable tabla = ds.ObtenerTabla("Catalogos", "Select * from Catalogos" + (filtros == 0 ? "" : " where " + filtroEdad + filtroTitulo));
+            return tabla;
+        }
+
+
         public Boolean ExisteCatalogo(Catalogo catalogo)
         {
             String consulta = "Select * from Catalogos where IDContenido_Cat= '" + catalogo.IDContenido_Cat1 + "'";
@@ -56,12 +77,6 @@ namespace Dao
         public DataTable GetTablaCatalogo()
         {
             DataTable tabla = ds.ObtenerTabla("Catalogos", "Select * from Catalogos");
-            return tabla;
-        }
-
-        public DataTable GetTablaCatalogoXEdad(int edad)
-        {
-            DataTable tabla = ds.ObtenerTabla("Catalogos", "Select * from Catalogos where Clasif_Edad_Cat <=" + edad);
             return tabla;
         }
 

@@ -27,7 +27,6 @@ namespace Vistas
             ddlSuscripciones.Visible = false;
             btnPaquete.Visible = false;
 
-
             if (!IsPostBack)
             {
                 lblBienvenidoUsuario.Text = "Bienvenid@ " + cuenta.GetNombre_Cu();
@@ -81,7 +80,6 @@ namespace Vistas
 
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
-            lblMensajePlan.Text = "";
             lblMensajeError.Text = "El pin ingresado no es correcto o no tiene permisos";
             lblMensajeError.Visible = false;
             if (negCue.ValidarPINS(cuenta, txtPIN.Text))
