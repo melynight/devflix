@@ -1,0 +1,166 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="Vistas.Home" EnableEventValidation="false" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" type="text/css" href="Recursos\\Estilos\\Home_Styles.css" />
+    <link rel="stylesheet" type="text/css" href="Recursos\\Estilos\\Home_Carousel_Styles.css" />
+    <link rel="icon" type="image/png" href="Recursos/Imagenes/favicon.png" />
+
+    <title>Home | DevFlix</title>
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function () {
+            checkSearchBarShown(document.getElementById("txtBusqueda"));
+        });
+
+        function checkSearchBarShown(obj) {
+            if (obj.value.length > 0) {
+                obj.classList.add('show');
+            } else {
+                obj.classList.remove('show');
+            }
+        }
+    </script>
+</head>
+
+<body style="background-image: url(Recursos/Imagenes/fondoHome2.jpg); background-size: cover; opacity: 10;">
+
+    <form id="form1" runat="server">
+        <header>
+            <nav class="menu_principal">
+                <a class="botonesMenu" href="Home.aspx">HOME</a>
+                <a class="botonesMenu" href="Suscripciones.aspx">SUSCRIPCIONES</a>
+                <a class="botonesMenu" href="Favoritos.aspx">FAVORITOS</a>
+                <a class="botonesMenu" href="DescripcionPelicula.aspx">SORPRENDEME </a>
+                <a class="botonesMenu" href="Reportes.aspx">REPORTES </a>
+                <a class="botonesMenu" href="SeleccionarUsuario.aspx">USUARIOS </a>
+                <a class="botonesMenu" href="Configuraciones.aspx">AJUSTES </a>
+                <a class="botonesMenu" href="Log.aspx">CERRAR SESION </a>
+                <br />
+
+            </nav>
+        </header>
+
+        <main>
+            <div class="SearchBox">
+
+                <asp:TextBox ID="txtBusqueda" class="SearchBox-input" runat="server" onkeyup="checkSearchBarShown(this)"> </asp:TextBox>
+                <asp:ImageButton ID="imgbtnBuscar" class="SearchBox-button" runat="server" src="Recursos/Imagenes/lupaa.png" OnClick="imgBtnFiltrar_Click" Height="32px" Width="32px" />
+
+            </div>
+
+            <div class="nombreUsuario">
+                <asp:Label ID="lblBienvenidoUsuario" runat="server"></asp:Label>
+            </div>
+
+            <div class="list-view">
+
+                <asp:ListView ID="lvCatalogo" runat="server" GroupItemCount="3" OnPagePropertiesChanging="lvCatalogo_PagePropertiesChanging">
+                    <EditItemTemplate>
+                        <td runat="server" style="">TituloContenido_Cat:
+                            <asp:TextBox ID="TituloContenido_CatTextBox" runat="server" Text='<%# Bind("TituloContenido_Cat") %>' />
+                            <br />
+                            URLPortada_Cat:
+                            <asp:TextBox ID="URLPortada_CatTextBox" runat="server" Text='<%# Bind("URLPortada_Cat") %>' />
+                            <br />
+                            Clasif_Edad_Cat:
+                            <asp:TextBox ID="Clasif_Edad_CatTextBox" runat="server" Text='<%# Bind("Clasif_Edad_Cat") %>' />
+                            <br />
+                            <asp:Button ID="UpdateButton" runat="server" CommandName="Update" Text="Update" />
+                            <br />
+                            <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Cancel" />
+                            <br />
+                        </td>
+                    </EditItemTemplate>
+                    <EmptyDataTemplate>
+                        <table runat="server" style="">
+                        </table>
+                    </EmptyDataTemplate>
+                    <EmptyItemTemplate>
+                        <td runat="server" />
+                    </EmptyItemTemplate>
+                    <GroupTemplate>
+                        <tr id="itemPlaceholderContainer" runat="server">
+                            <td id="itemPlaceholder" runat="server"></td>
+                        </tr>
+                    </GroupTemplate>
+                    <InsertItemTemplate>
+                        <td runat="server" style="">TituloContenido_Cat:
+                            <asp:TextBox ID="TituloContenido_CatTextBox" runat="server" Text='<%# Bind("TituloContenido_Cat") %>' />
+                            <br />
+                            URLPortada_Cat:
+                            <asp:TextBox ID="URLPortada_CatTextBox" runat="server" Text='<%# Bind("URLPortada_Cat") %>' />
+                            <br />
+                            Clasif_Edad_Cat:
+                            <asp:TextBox ID="Clasif_Edad_CatTextBox" runat="server" Text='<%# Bind("Clasif_Edad_Cat") %>' />
+                            <br />
+                            <asp:Button ID="InsertButton" runat="server" CommandName="Insert" Text="Insert" />
+                            <br />
+                            <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Clear" />
+                            <br />
+                        </td>
+                    </InsertItemTemplate>
+                    <ItemTemplate>
+                        <td runat="server" style="">&nbsp;<asp:Label ID="TituloContenido_CatLabel" runat="server" Text='<%# Eval("TituloContenido_Cat") %>' CssClass="tituloContenido" />
+                            <br />
+                            &nbsp;
+                                <asp:ImageButton ID="imgBtnPortada" runat="server" ImageUrl='<%# Eval("URLPortada_Cat") %>' OnCommand="imgBtnPortada_Command" CommandArgument='<%# Eval("IDContenido_Cat") %>' />
+                            <br />
+                            <br />
+                        </td>
+                    </ItemTemplate>
+                    <LayoutTemplate>
+                        <table runat="server">
+                            <tr runat="server">
+                                <td runat="server">
+                                    <table id="groupPlaceholderContainer" runat="server" border="0" style="">
+                                        <tr id="groupPlaceholder" runat="server">
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="">
+                                    <asp:DataPager ID="DataPager1" PagedControlID="lvCatalogo" runat="server" PageSize="9">
+                                        <Fields>
+                                            <asp:NextPreviousPagerField ButtonCssClass="botoncito-page" ButtonType="Link" ShowFirstPageButton="false" ShowPreviousPageButton="true" ShowNextPageButton="false" />
+                                            <asp:NumericPagerField NumericButtonCssClass="botoncito-page" ButtonType="Link" />
+                                            <asp:NextPreviousPagerField ButtonCssClass="botoncito-page" ButtonType="Link" ShowNextPageButton="true" ShowLastPageButton="false" ShowPreviousPageButton="false" />
+                                        </Fields>
+                                    </asp:DataPager>
+                                </td>
+                            </tr>
+                        </table>
+                    </LayoutTemplate>
+                    <SelectedItemTemplate>
+                        <td runat="server" style="">TituloContenido_Cat:
+                            <asp:Label ID="TituloContenido_CatLabel" runat="server" Text='<%# Eval("TituloContenido_Cat") %>' />
+                            <br />
+                            URLPortada_Cat:
+                            <asp:Label ID="URLPortada_CatLabel" runat="server" Text='<%# Eval("URLPortada_Cat") %>' />
+                            <br />
+                            Clasif_Edad_Cat:
+                            <asp:Label ID="Clasif_Edad_CatLabel" runat="server" Text='<%# Eval("Clasif_Edad_Cat") %>' />
+                            <br />
+                        </td>
+                    </SelectedItemTemplate>
+                </asp:ListView>
+            </div>
+
+            <h2>PRÓXIMOS ESTRENOS EN DEVFLIX</h2>
+            <div class="carousel">
+
+                <img src="Recursos/Imagenes/1.jpg" alt="" class="pic" />
+                <img src="Recursos/Imagenes/2.jpg" alt="" class="pic" />
+                <img src="Recursos/Imagenes/3.jpg" alt="" class="pic" />
+                <img src="Recursos/Imagenes/4.png" alt="" class="pic" />
+                <img src="Recursos/Imagenes/5.jpg" alt="" class="pic" />
+            </div>
+        </main>
+    </form>
+</body>
+</html>

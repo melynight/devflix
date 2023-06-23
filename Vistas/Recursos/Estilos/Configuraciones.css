@@ -1,0 +1,149 @@
+﻿
+
+.menu_principal {
+    background-color: #63b9cd;
+    display: flex;
+    padding: 10px;
+    justify-content: space-between;
+}
+
+.botonesMenu {
+    text-shadow: 2px 2px 4px #000000;
+    padding: 3px 10px;
+    color: white;
+    font-size: 16px;
+    text-decoration: solid;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    font-family: 'Times New Roman';
+}
+
+
+
+.MenuConfig {
+    display: flex;
+    margin-top: 25px;
+    justify-content: space-around;
+}
+
+    .MenuConfig ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        text-align: center;
+    }
+
+    .MenuConfig li {
+        padding: 10px;
+        background-color: #f2f2f2;
+        border-bottom: 1px solid #ddd;
+    }
+
+        .MenuConfig li:hover {
+            background-color: #ddd;
+        }
+
+        .MenuConfig li a {
+            text-decoration: none;
+            color: #333;
+        }
+
+            .MenuConfig li a:hover {
+                color: #000;
+            }
+
+.RecuadroAdministrarUser {
+    width: 300px;
+    margin-top: 5%;
+    margin-left: 40%;
+    justify-content: center;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align:center;
+}
+
+.IconoPerfil {
+    width: 150px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#lblUserName {
+    font-size: 20px;
+    color: white;
+    background-color: #108087;
+}
+}
+
+.FlexBoxAdministrarUsers {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.MarginAdministrarUsers {
+    margin: 5px;
+}
+
+.seccionEliminarUser {
+    width: 300px;
+    margin-top: 5%;
+    margin-left: 40%;
+    justify-content: center;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.FlexBoxEliminarUsers {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    margin: 5px;
+}
+
+.Botones {
+    width: 120px;
+    height: 40px;
+    margin: 5px;
+    border: solid 1px;
+    border-radius: 2px;
+    font-size: x-small;
+}
+
+.FlexBoxCambiarPassword {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    margin: 5px;
+}
+
+    .FlexBoxCambiarPassword span {
+        font-size: x-small;
+    }
+
+.IngresoPin {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.menu {
+    text-align-last: center;
+    margin-top: 60px;
+}
+
+
+
+.listview {
+    display: flex;
+    margin-top: 48px;
+    justify-content: center;
+    text-align: center;
+}

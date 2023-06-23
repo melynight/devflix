@@ -1,0 +1,57 @@
+﻿#imgLogo {
+    width: 155px;
+    height: 155px;
+}
+
+.seleccion-usuarios {
+    margin: 0;
+    margin-top: 150px;
+    display: flex;
+    background-color: #83fff7;
+    justify-content: center;
+}
+
+@keyframes stretch {
+    0% {
+        width: 0;
+    }
+
+    100% {
+        width: 100%;
+    }
+}
+
+.seleccion-usuarios:hover {
+    background-color: #00a9b5;
+}
+
+
+#DlCatalogos {
+
+    display: flex;
+
+
+}
+
+.Administrador {
+    text-align: center;
+    padding-top: 77px;
+}
+
+#lblNombreAdmin {
+    color: White;
+    padding-left: 10px;
+}
+
+#imgbtnAgregarUsuario {
+    width: 32px;
+    height: 32px;
+    padding-top: 130px;
+    padding-left: 35px;
+}
+.seleccionarUsuario {
+    text-align: center;
+    font-size: 20px;
+    color: aliceblue;
+}
+
