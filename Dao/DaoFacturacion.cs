@@ -40,7 +40,7 @@ namespace Dao
             return tabla;
         }
 
-        public DataTable GetTablaFiltroFecha(string desde, string hasta, int id)
+        public DataTable GetTablaFiltroFecha(DateTime desde, DateTime hasta, int id)
         {
             DataTable tabla = ds.ObtenerTabla("Facturacion", "select * from Suscripciones inner join Facturacion on CodSus_Sus = CodSus_F " +
                 "where Fecha_F >= '" + desde + "' AND Fecha_F <= '" + hasta + "'" + " and " + "IDCuenta_F = " + id+"");

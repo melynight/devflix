@@ -9,7 +9,6 @@ namespace Vistas
     public partial class DescripcionPelicula : System.Web.UI.Page
     {
         private Cuenta cuenta = new Cuenta();
-        private Favoritos favoritos = new Favoritos();
         private NegocioCatalogo negCatalogo = new NegocioCatalogo();
 
         protected void Page_Load(object sender, EventArgs e)

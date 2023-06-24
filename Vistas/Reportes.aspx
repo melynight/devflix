@@ -57,13 +57,16 @@
             </table>
             <p>
                 Desde:
-                <asp:TextBox ID="txtFechaDesde" runat="server" TextMode="Date"></asp:TextBox>
+                <asp:TextBox ID="txtFechaDesde" runat="server" TextMode="DateTimeLocal"></asp:TextBox>
 &nbsp;Hasta:
-                <asp:TextBox ID="txtFechaHasta" runat="server" TextMode="Date"></asp:TextBox>
+                <asp:TextBox ID="txtFechaHasta" runat="server" TextMode="DateTimeLocal"></asp:TextBox>
                 <asp:Button ID="btnHistorial" runat="server" BackColor="Blue" BorderColor="#3399FF" Font-Bold="True" Font-Italic="False" ForeColor="White" OnClick="btnHistorial_Click" Text="Ver" Width="99px" />
             </p>
             <p>
                 <asp:Label ID="lblError" runat="server" ForeColor="Red" Text="*Debe seleccionar ambas fechas!"></asp:Label>
+            </p>
+            <p>
+                <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
             </p>
             <p>
                 <asp:Button ID="btnHistorialTodo" runat="server" BackColor="Blue" BorderColor="#3399FF" Font-Bold="True" Font-Italic="False" ForeColor="White" OnClick="btnHistorialTodo_Click" Text="Ver Todo" Width="99px" />

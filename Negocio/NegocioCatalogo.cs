@@ -80,14 +80,31 @@ namespace Negocio
                 return false;
         }
 
+        public int contarRegistros()
+        {
+            int cant = 0;
+
+            DaoCatalogo dc = new DaoCatalogo();
+
+            DataTable dt = dc.GetTablaCatalogo();
+
+            foreach(DataRow dr in dt.Rows)
+            {
+                cant++;
+            }
+
+            return cant;
+        }
+
         public string IDCatalogoRandom()
         {
             Random rnd = new Random();
             string ID;
-            int randomID = rnd.Next(1, 18);  // crea numeros entre el primer parametro y el segundo
+            DaoCatalogo DCATA = new DaoCatalogo();
+            int randomID = rnd.Next(1, contarRegistros());  // crea numeros entre el primer parametro y el segundo
             randomID.ToString();
 
-            if (randomID > 10)
+            if (randomID >= 10)
             {
                 ID = "P0" + randomID;
             }

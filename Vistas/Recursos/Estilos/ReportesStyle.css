@@ -101,7 +101,7 @@ h2 {
 
 /* Estilo para el GridView */
 .grvFacturacion {
-width: 100%;
+width: 80%;
 border-collapse: collapse;
 border-spacing: 0;
 background-color: #fff;

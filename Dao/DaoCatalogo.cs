@@ -143,5 +143,11 @@ namespace Dao
             ArmarParametrosCatalogoAgregar(ref comando, catalogo);
             return ds.EjecutarProcedimientoAlmacenado(comando, "spAgregarCatalogo");
         }
+
+        public int GetIDUltimoCatalogo()
+        {
+            AccesoDatos ad = new AccesoDatos();
+            return ad.ObtenerMaximo("Select * from Catalogos");
+        }
     }
 }

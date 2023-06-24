@@ -39,11 +39,13 @@ namespace Vistas
             {
                 lblError.Visible = false;
                 grvFacturacion.Visible = true;
+                Label1.Text = txtFechaDesde.Text;
                 foreach (GridViewRow row in grvFacturacion.Rows)
                 {
                     row.Visible = true;
                 }
-                DataTable filtrado = negFacturacion.GetTablaFecha(txtFechaDesde.Text, txtFechaHasta.Text, cuenta.GetIDCuenta());
+                
+                DataTable filtrado = negFacturacion.GetTablaFecha(Convert.ToDateTime(txtFechaDesde.Text), Convert.ToDateTime(txtFechaHasta.Text), cuenta.GetIDCuenta());
                 grvFacturacion.DataSource = filtrado;
                 grvFacturacion.DataBind();
 
