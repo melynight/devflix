@@ -20,6 +20,7 @@ namespace Dao
             facturacion.IDCuenta_F1 = (Convert.ToInt32(tabla.Rows[0][1].ToString()));
             facturacion.CodSus_F1 = (Convert.ToInt32(tabla.Rows[0][2].ToString()));
             facturacion.Fecha_F1 = (Convert.ToDateTime(tabla.Rows[0][3].ToString()));
+
             facturacion.Importe_F1 = (Convert.ToDecimal(tabla.Rows[0][4].ToString()));
             facturacion.Estado_F1 = (Convert.ToBoolean(tabla.Rows[0][5].ToString()));
             return facturacion;
@@ -41,7 +42,7 @@ namespace Dao
 
         public DataTable GetTablaFiltroFecha(string desde, string hasta, int id)
         {
-            DataTable tabla = ds.ObtenerTabla("Facturacion", "select * from Suscripciones inner join Facturacion on CodSus_Sus = CodSus_F" +
+            DataTable tabla = ds.ObtenerTabla("Facturacion", "select * from Suscripciones inner join Facturacion on CodSus_Sus = CodSus_F " +
                 "where Fecha_F >= '" + desde + "' AND Fecha_F <= '" + hasta + "'" + " and " + "IDCuenta_F = " + id+"");
             return tabla;
         }

@@ -96,5 +96,51 @@ h2 {
 #lblBienvenidoUsuario {
     font-size: 20px;
     color: white;
-    background-color: #108087;
+    background-color: #63b9cd;
+}
+
+/* Estilo para el GridView */
+.grvFacturacion {
+width: 100%;
+border-collapse: collapse;
+border-spacing: 0;
+background-color: #fff;
+border-radius: 8px;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+overflow: hidden;
+}
+
+/* Estilo para las celdas del encabezado */
+    .grvFacturacion th {
+        background-color: black;
+        color: white;
+        font-weight: bold;
+        padding: 8px;
+        text-align: center;
+    }
+
+/* Estilo para las celdas de datos */
+    .grvFacturacion td {
+        padding: 8px;
+        text-align: center;
+        background-color: #63b9cd;
+        color: #000;
+        font-weight: bold;
+    }
+
+/* Estilo para las filas alternas */
+    .grvFacturacion tr:nth-child(even) {
+        background-color: black;
+        color: white;
+    }
+
+/* Estilo para la fila seleccionada */
+    .grvFacturacion tr.selected {
+        background-color: cyan;
+    }
+
+/* Estilo para el texto dentro de las celdas */
+.grvFacturacion td,
+.grvFacturacion th {
+    font-size: 14px;
 }
