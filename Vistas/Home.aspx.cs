@@ -9,9 +9,11 @@ namespace Vistas
 {
     public partial class Home : System.Web.UI.Page
     {
-        private NegocioCatalogo ncatalogo = new NegocioCatalogo();
-        private NegocioCuenta ncuenta = new NegocioCuenta();
-        private Cuenta cuenta = new Cuenta();
+         NegocioCatalogo ncatalogo = new NegocioCatalogo();
+         NegocioCuenta ncuenta = new NegocioCuenta();
+         Cuenta cuenta = new Cuenta();
+         Generos genero = new Generos();
+         NegocioGenero nGenero = new NegocioGenero();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -23,15 +25,34 @@ namespace Vistas
                 cuenta = (Cuenta)Session["Cuenta"];
                 Session["EdadUsuario"] = cuenta.GetEdad_Cu();
                 lblBienvenidoUsuario.Text = "Bienvenid@ " + cuenta.GetNombre_Cu();
+                cargarGeneros();
             }
+
+            
             MostrarCatalogo();
         }
 
         public void MostrarCatalogo()
         {
-            DataTable tablaCatalogo = ncatalogo.getTablaContenido((int)Session["EdadUsuario"], txtBusqueda.Text);
+            DataTable tablaCatalogo = ncatalogo.getTablaContenido((int)Session["EdadUsuario"], txtBusqueda.Text, ddlGeneros.SelectedValue);
             lvCatalogo.DataSource = tablaCatalogo;
             lvCatalogo.DataBind();
+        }
+
+        public void cargarGeneros()
+        {
+
+            DataTable generos = nGenero.getTabla();
+
+            foreach (DataRow dr in generos.Rows)
+            {
+                string IDGenero = dr["IDGenero_GE"].ToString();
+                string nombreGenero = dr["NombreGenero_GE"].ToString();
+                ListItem item = new ListItem(nombreGenero, IDGenero);
+                ddlGeneros.Items.Add(item);
+            }
+
+            ddlGeneros.DataBind();
         }
 
         protected void imgBtnPortada_Command(object sender, CommandEventArgs e)
@@ -54,6 +75,11 @@ namespace Vistas
         {
             var dataPager = lvCatalogo.FindControl("DataPager1") as DataPager;
             dataPager.SetPageProperties(e.StartRowIndex, e.MaximumRows, false);
+            MostrarCatalogo();
+        }
+
+        protected void btnFiltrarGenero_Click(object sender, EventArgs e)
+        {
             MostrarCatalogo();
         }
     }

@@ -27,7 +27,7 @@
     </script>
 </head>
 
-<body style="background-image: url(Recursos/Imagenes/fondoHome2.jpg); background-size: cover; opacity: 10;">
+<body style="background-image: url(Recursos/Imagenes/fondoSeleccionarUsuarios.jpg); background-size: cover; opacity: 10;">
 
     <form id="form1" runat="server">
         <header>
@@ -40,6 +40,7 @@
                 <a class="botonesMenu" href="SeleccionarUsuario.aspx">USUARIOS </a>
                 <a class="botonesMenu" href="Configuraciones.aspx">AJUSTES </a>
                 <a class="botonesMenu" href="Log.aspx">CERRAR SESION </a>
+                <asp:Label ID="lblBienvenidoUsuario" runat="server" Font-Size="15px"></asp:Label>
                 <br />
 
             </nav>
@@ -53,8 +54,14 @@
 
             </div>
 
+            <div class="ddl-Generos">
+                <asp:DropDownList ID="ddlGeneros" runat="server" ForeColor="#0066FF">
+                    <asp:ListItem Selected="True">--Seleccionar Género--</asp:ListItem>
+                </asp:DropDownList>
+                <asp:Button ID="btnFiltrarGenero" runat="server" Text="Filtrar por Género" Width="130px" BorderColor="#0066CC" BorderWidth="2px" ForeColor="#0066CC" OnClick="btnFiltrarGenero_Click" />
+            </div>
+
             <div class="nombreUsuario">
-                <asp:Label ID="lblBienvenidoUsuario" runat="server"></asp:Label>
             </div>
 
             <div class="list-view">

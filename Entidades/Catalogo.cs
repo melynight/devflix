@@ -10,7 +10,7 @@ namespace Entidades
     {
         private string IDContenido_Cat;
         private Generos IDGenero_Cat;
-        private string CodTipo_Cat; //cambiar a composicion tiposuscripcion cuando se haga
+        private TipoSuscripcion CodTipo_Cat; 
         private string Sinopsis_Cat;
         private int Duracion_Cat;
         private string URLPortada_Cat;
@@ -23,12 +23,12 @@ namespace Entidades
         public Catalogo()
         { }
 
-        public Catalogo(string iDContenido_Cat, Generos iDGenero_Cat, string codTipo_Cat, string sinopsis_Cat, int duracion_Cat, string uRLPortada_Cat,
-            string tituloContenido_Cat, int season_Cat, string uRLVideo_Cat, int clasif_Edad_Cat, bool estado)
+        public Catalogo(string iDContenido_Cat, Generos iDGenero_Cat, TipoSuscripcion codTipo_Cat, string sinopsis_Cat, 
+            int duracion_Cat, string uRLPortada_Cat, string tituloContenido_Cat, int season_Cat, string uRLVideo_Cat, int clasif_Edad_Cat, bool estado)
         {
             IDContenido_Cat = iDContenido_Cat;
             IDGenero_Cat = iDGenero_Cat;
-            CodTipo_Cat = codTipo_Cat;
+            CodTipo_Cat2 = codTipo_Cat;
             Sinopsis_Cat = sinopsis_Cat;
             Duracion_Cat = duracion_Cat;
             URLPortada_Cat = uRLPortada_Cat;
@@ -41,7 +41,7 @@ namespace Entidades
 
         public string IDContenido_Cat1 { get => IDContenido_Cat; set => IDContenido_Cat = value; }
         public Generos IDGenero_Cat2 { get => IDGenero_Cat; set => IDGenero_Cat = value; }
-        public string CodTipo_Cat1 { get => CodTipo_Cat; set => CodTipo_Cat = value; }
+        public TipoSuscripcion CodTipo_Cat2 { get => CodTipo_Cat; set => CodTipo_Cat = value; }
         public string Sinopsis_Cat1 { get => Sinopsis_Cat; set => Sinopsis_Cat = value; }
         public int Duracion_Cat1 { get => Duracion_Cat; set => Duracion_Cat = value; }
         public string URLPortada_Cat1 { get => URLPortada_Cat; set => URLPortada_Cat = value; }
@@ -50,5 +50,6 @@ namespace Entidades
         public string URLVideo_Cat1 { get => URLVideo_Cat; set => URLVideo_Cat = value; }
         public int Clasif_Edad_Cat1 { get => Clasif_Edad_Cat; set => Clasif_Edad_Cat = value; }
         public bool Estado { get => estado; set => estado = value; }
+        
     }
 }

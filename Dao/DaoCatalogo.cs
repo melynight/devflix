@@ -19,18 +19,28 @@ namespace Dao
 
             if (tabla.Rows.Count > 0)
             {
-                var genero = new Generos
+                Generos genero = new Generos
                 {
                     IDGenero_GE1 = tabla.Rows[0]["IDGenero_Ge"].ToString(),
                     NombreGenero_GE1 = tabla.Rows[0]["NombreGenero_Ge"].ToString(),
                     Estado_GE = Convert.ToBoolean(tabla.Rows[0]["estado_GE"].ToString())
                 };
 
-                var catalogo = new Catalogo
+                TipoSuscripcion tipoSus = new TipoSuscripcion
+                {
+                    CodTipo_Ts1 = tabla.Rows[0]["CodTipo_Ts1"].ToString(),
+                    Nombre_Ts1 = tabla.Rows[0]["Nombre_Ts1"].ToString(),
+                    Precio_Ts1 = Convert.ToDecimal(tabla.Rows[0]["Precio_Ts1"]),
+                    Beneficios_Ts1 = tabla.Rows[0]["Beneficios_Ts1"].ToString(),
+                    CantUsuarios_Ts1 = Convert.ToInt32(tabla.Rows[0]["CantUsuarios_Ts1"]),
+                    Estado_Ts1 = Convert.ToBoolean(tabla.Rows[0]["Estado_Ts1"].ToString())
+                };
+
+                Catalogo catalogo = new Catalogo
                 {
                     IDContenido_Cat1 = tabla.Rows[0]["IDContenido_Cat"].ToString(),
                     IDGenero_Cat2 = genero,
-                    CodTipo_Cat1 = tabla.Rows[0]["CodTipo_Cat"].ToString(),
+                    CodTipo_Cat2 = tipoSus,
                     Sinopsis_Cat1 = tabla.Rows[0]["Sinopsis_Cat"].ToString(),
                     Duracion_Cat1 = Convert.ToInt32(tabla.Rows[0]["Duracion_Cat"].ToString()),
                     URLPortada_Cat1 = tabla.Rows[0]["URLPortada_Cat"].ToString(),
@@ -47,10 +57,10 @@ namespace Dao
             return null;
         }
 
-        public DataTable GetTablaCatalogo(int edad = 0, string titulo = "")
+        public DataTable GetTablaCatalogo(int edad = 0, string titulo = "", string genero= "")
         {
             int filtros = 0;
-            string filtroEdad = "", filtroTitulo = "";
+            string filtroEdad = "", filtroTitulo = "", filtroGenero= "";
             if (edad > 0)
             {
                 filtroEdad = (filtros > 0 ? " and " : "") + "Clasif_Edad_Cat <= " + edad;
@@ -62,8 +72,13 @@ namespace Dao
                 filtroTitulo = (filtros > 0 ? " and " : "") + "TituloContenido_Cat LIKE '%" + titulo + "%'";
                 filtros++;
             }
+            if (genero != "--Seleccionar Género--" )
+            {
+                filtroGenero = (filtros > 0 ? "and " : "") + "IDGenero_Cat LIKE '" + genero + "'";
+                filtros++;
+            }
 
-            DataTable tabla = ds.ObtenerTabla("Catalogos", "Select * from Catalogos" + (filtros == 0 ? "" : " where " + filtroEdad + filtroTitulo));
+            DataTable tabla = ds.ObtenerTabla("Catalogos", "Select * from Catalogos" + (filtros == 0 ? "" : " where " + filtroEdad + filtroTitulo + filtroGenero));
             return tabla;
         }
 
@@ -102,7 +117,7 @@ namespace Dao
             SqlParametros = Comando.Parameters.Add("@IDGenero_Cat", SqlDbType.Int);
             SqlParametros.Value = catalogo.IDGenero_Cat2;
             SqlParametros = Comando.Parameters.Add("@CodTipo_Cat", SqlDbType.VarChar);
-            SqlParametros.Value = catalogo.CodTipo_Cat1;
+            SqlParametros.Value = catalogo.CodTipo_Cat2;
             SqlParametros = Comando.Parameters.Add("@Sinopsis_Cat", SqlDbType.VarChar);
             SqlParametros.Value = catalogo.Sinopsis_Cat1;
             SqlParametros = Comando.Parameters.Add("@Duracion_Cat", SqlDbType.DateTime);

@@ -24,6 +24,15 @@ namespace Vistas
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
+        /// lblBienvenidoUsuario control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblBienvenidoUsuario;
+
+        /// <summary>
         /// txtBusqueda control.
         /// </summary>
         /// <remarks>
@@ -42,13 +51,22 @@ namespace Vistas
         protected global::System.Web.UI.WebControls.ImageButton imgbtnBuscar;
 
         /// <summary>
-        /// lblBienvenidoUsuario control.
+        /// ddlGeneros control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblBienvenidoUsuario;
+        protected global::System.Web.UI.WebControls.DropDownList ddlGeneros;
+
+        /// <summary>
+        /// btnFiltrarGenero control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnFiltrarGenero;
 
         /// <summary>
         /// lvCatalogo control.

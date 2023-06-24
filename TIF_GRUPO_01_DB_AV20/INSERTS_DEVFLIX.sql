@@ -93,7 +93,7 @@ SELECT 'P009', 'G003', 'PUNIVERSAL','La vida de dos niños rebeldes que pretenden
 2, 'Recursos/Imagenes/Portadas/infantiles1_Mary_PoppinsJPG.JPG', 
 'Mary Poppins', 0, 'https://www.youtube.com/watch?v=-3jsfXDZLIY', 3, 1 
 UNION
-SELECT 'P010', 'G001', 'PUNIVERSAL','Un hombre de negocios se enamora de una joven estudiante y disfraza sus sentimientos con mentiras, hasta el punto de fingir ser una persona humilde.',
+SELECT 'P010', 'G002', 'PUNIVERSAL','Un hombre de negocios se enamora de una joven estudiante y disfraza sus sentimientos con mentiras, hasta el punto de fingir ser una persona humilde.',
 3, 'Recursos/Imagenes/Portadas/romantica_4_Ricos_De_Amor_2.JPG', 
 'Ricos de amor', 0, 'https://www.youtube.com/watch?v=w7W3Lizzr9E', 16, 1 
 UNION
@@ -101,17 +101,13 @@ SELECT 'P011', 'G002', 'PUNIVERSAL','¿Qué pasaría si un mensaje de texto al azar
 3, 'Recursos/Imagenes/Portadas/romantica1_Amor_a_Primer_Mensaje.JPG', 
 'Amor a primer mensaje', 0, 'https://www.youtube.com/watch?v=92sPGlhGbNs', 16, 1 
 UNION
-SELECT 'P012', 'G001', 'PUNIVERSAL','Basada en el bestseller del New York Times. La vida de A.J. Fikry, propietario de una librería, no está resultando como él esperaba. No ha superado la trágica muerte de su mujer y ha tocado fondo con el robo de su posesión más preciada.',
+SELECT 'P012', 'G002', 'PUNIVERSAL','Basada en el bestseller del New York Times. La vida de A.J. Fikry, propietario de una librería, no está resultando como él esperaba. No ha superado la trágica muerte de su mujer y ha tocado fondo con el robo de su posesión más preciada.',
 3, 'Recursos/Imagenes/Portadas/romantica2_La_Historia_De_Vida_De_AJ_Fikry.JPG', 
 'La Historia De Vida De AJ Fikry', 0, 'https://www.youtube.com/watch?v=-GgYCjuo4Kc', 16, 1 
 UNION
 SELECT 'P013', 'G002', 'PUNIVERSAL','Surge una nueva historia de amor cuando la joven celestina Kitty se reencuentra con su novio a distancia en el mismo internado en el que estudió su difunta madre. Ve todo lo que quieras.',
 3, 'Recursos/Imagenes/Portadas/series4_romance_Besos_Kitty.JPG', 
 'Besos Kitty', 0, 'https://www.youtube.com/watch?v=g40ODSkvemI', 16, 1 
-UNION
-SELECT 'S001', 'G003', 'PUNIVERSAL','Vinland Saga es una serie anime que gira en torno a Thorfinn, el hijo del mejor de los guerreros en un mundo ambientado a finales del primer milenio donde los vikingos era la tribu más poderosa y atroz y la que había luchado sin cesar hasta el final.',
-3, 'Recursos/Imagenes/Portadas/Serie2Accion_VINLANDSAGA.JPG', 
-'Vinland Saga', 0, 'https://www.youtube.com/watch?v=n2VuKI0yT8w', 16, 1 
 UNION
 SELECT 'P015', 'G004' , 'PUNIVERSAL','El padre Lamont es el encargado de investigar la muerte del padre Merrin y la causa de la posesión diabólica de la joven Regan. Lamont viajará a África para investigar otro caso de posesión demoníaca. Cuando regresa a Nueva York, Regan está nuevamente poseída pero, en esta ocasión, por la máquina hipnótica del doctor Gene Tuskin.',
 3, 'Recursos/Imagenes/Portadas/terror5_El_Exorcista_II.JPG', 
@@ -128,5 +124,8 @@ UNION
 SELECT 'P018', 'G004' , 'PUNIVERSAL',' El destino del mundo está en manos de Damien, un niño con rostro angelical que, en realidad, es la encarnación del Anticristo.',
 3, 'Recursos/Imagenes/Portadas/terror2_la_profecia.JPG', 
 'LA PROFECIA', 0, 'https://www.youtube.com/watch?v=AiwP5udhskk', 18, 1 
-go
-
+UNION
+SELECT 'P018', 'G003', 'PUNIVERSAL','Vinland Saga es una serie anime que gira en torno a Thorfinn, el hijo del mejor de los guerreros en un mundo ambientado a finales del primer milenio donde los vikingos era la tribu más poderosa y atroz y la que había luchado sin cesar hasta el final.',
+3, 'Recursos/Imagenes/Portadas/Serie2Accion_VINLANDSAGA.JPG', 
+'Vinland Saga', 0, 'https://www.youtube.com/watch?v=n2VuKI0yT8w', 16, 1 
+GO

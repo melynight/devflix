@@ -49,6 +49,8 @@ table {
     display: flex;
     padding: 10px;
     justify-content: space-between;
+    align-items: baseline;
+}
 }
 
 .botonesMenu {
@@ -80,29 +82,6 @@ h1 {
 button {
     cursor: pointer
 }
-
-/*.SearchBox-input::placeholder { /* No es un seudoelemento estandar 
-    color: white;
-    opacity: .6;
-}
-/* Chrome, Opera ySafari 
-.SearchBox-input::-webkit-input-placeholder {
-    color: white;
-}
-/* Firefox 19+ 
-.SearchBox-input::-moz-placeholder {
-    color: white;
-}
-/* IE 10+ y Edge 
-.SearchBox-input:-ms-input-placeholder {
-    color: white;
-}
-/* Firefox 18- 
-#formGroupExampleInput:-moz-placeholder {
-    color: white;
-}
-*/
-
 
 .SearchBox {
     --height: 4em;
@@ -149,17 +128,18 @@ button {
     transform: scale(.85);
 }
 
-/*.SearchBox-icon {
-    margin: auto;
-    color: #fff;
-}
-    */
 
-/*@media screen and (min-width: 400px) {
-    .SearchBox:hover .SearchBox-input {
-        width: 500px;
-    }
-}*/
+.ddl-Generos {
+
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 10px;
+}
+
+#ddlGeneros{
+
+    margin-right: 10px;
+}
 
 
 .estrenos {
@@ -212,5 +192,4 @@ button {
 #lblBienvenidoUsuario {
     font-size: 20px;
     color: white;
-    background-color: #108087;
 }

@@ -25,8 +25,7 @@ CREATE PROCEDURE spEliminarCuenta
 @IDCuenta INT
 )
 AS
- update Cuentas
- set Estado_Cu=0
+ delete Cuentas
  WHERE IDCuenta = @IDCuenta exec spEliminarUsuarios @IDCuenta
 RETURN
 go
