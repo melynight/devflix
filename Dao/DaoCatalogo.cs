@@ -15,28 +15,29 @@ namespace Dao
 
         public Catalogo GetCatalogo(string idCatalogo)
         {
-            DataTable tabla = ds.ObtenerTabla("Catalogos", "Select * from Catalogos join [Generos] on IDGenero_Ge = IDGenero_Cat where IDContenido_Cat = '" + idCatalogo + "'");
+            DataTable tabla = ds.ObtenerTabla("Catalogos", "Select * from Catalogos join [Generos] on IDGenero_Ge = IDGenero_Cat join [TipoSuscripciones] " +
+                "on CodTipo_Ts = CodTipo_Cat where IDContenido_Cat = '" + idCatalogo + "'");
 
             if (tabla.Rows.Count > 0)
             {
-                Generos genero = new Generos
+                Generos genero = new Generos()
                 {
                     IDGenero_GE1 = tabla.Rows[0]["IDGenero_Ge"].ToString(),
                     NombreGenero_GE1 = tabla.Rows[0]["NombreGenero_Ge"].ToString(),
                     Estado_GE = Convert.ToBoolean(tabla.Rows[0]["estado_GE"].ToString())
                 };
 
-                TipoSuscripcion tipoSus = new TipoSuscripcion
+                TipoSuscripcion tipoSus = new TipoSuscripcion()
                 {
-                    CodTipo_Ts1 = tabla.Rows[0]["CodTipo_Ts1"].ToString(),
-                    Nombre_Ts1 = tabla.Rows[0]["Nombre_Ts1"].ToString(),
-                    Precio_Ts1 = Convert.ToDecimal(tabla.Rows[0]["Precio_Ts1"]),
-                    Beneficios_Ts1 = tabla.Rows[0]["Beneficios_Ts1"].ToString(),
-                    CantUsuarios_Ts1 = Convert.ToInt32(tabla.Rows[0]["CantUsuarios_Ts1"]),
-                    Estado_Ts1 = Convert.ToBoolean(tabla.Rows[0]["Estado_Ts1"].ToString())
+                    CodTipo_Ts1 = tabla.Rows[0]["CodTipo_Ts"].ToString(),
+                    Nombre_Ts1 = tabla.Rows[0]["Nombre_Ts"].ToString(),
+                    Precio_Ts1 = Convert.ToDecimal(tabla.Rows[0]["Precio_Ts"]),
+                    Beneficios_Ts1 = tabla.Rows[0]["Beneficios_Ts"].ToString(),
+                    CantUsuarios_Ts1 = Convert.ToInt32(tabla.Rows[0]["CantUsuarios_Ts"]),
+                    Estado_Ts1 = Convert.ToBoolean(tabla.Rows[0]["Estado_Ts"].ToString())
                 };
 
-                Catalogo catalogo = new Catalogo
+                Catalogo catalogo = new Catalogo()
                 {
                     IDContenido_Cat1 = tabla.Rows[0]["IDContenido_Cat"].ToString(),
                     IDGenero_Cat2 = genero,

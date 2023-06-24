@@ -99,35 +99,4 @@ namespace Negocio
         }
     }
 
-    //TO DO FUNCIONALIDAD SORPRENDEME
-    /* if (!string.private IsNullOrEmpty(id))
-
-     {
-         // se busca en la base de datos la pelicula por id
-         //lblRandomNumber.Text = id;
-     }
-     // si no lo encuentra o no se especifico el parametro
-     else
-     {
-         // se carga una pelicula random
-         private RandomNumberGenerator rng = new RandomNumberGenerator();
-
- private int randomValue = rng.GenerateRandomNumber(1, 18);
- //lblRandomNumber.Text = randomValue.ToString();
-
-       public class RandomNumberGenerator
-{
-    private static Random random = new Random();
-
-    public int GenerateRandomNumber(int minValue, int maxValue)
-    {
-        if (minValue > maxValue)
-        {
-            throw new ArgumentException("El valor mínimo debe ser menor o igual al valor máximo.");
-        }
-
-        return random.Next(minValue, maxValue + 1);
-    }
-}
-}*/
 }

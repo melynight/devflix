@@ -28,7 +28,7 @@ namespace Entidades
         {
             IDContenido_Cat = iDContenido_Cat;
             IDGenero_Cat = iDGenero_Cat;
-            CodTipo_Cat2 = codTipo_Cat;
+            CodTipo_Cat = codTipo_Cat;
             Sinopsis_Cat = sinopsis_Cat;
             Duracion_Cat = duracion_Cat;
             URLPortada_Cat = uRLPortada_Cat;
