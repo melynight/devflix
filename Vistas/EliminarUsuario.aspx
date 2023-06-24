@@ -30,20 +30,22 @@
         <section class="seccionEliminarUser">
             <article class="FlexBoxEliminarUsers">
                 <div class="MarginAdministrarUsers">
-                    <span>INGRESE CONTRASEÑA CUENTA PARA ELIMINAR </span>
+                    <span>INGRESE CONTRASEÑA DE LA CUENTA PARA ELIMINAR </span>
                 </div>
             </article>
 
             <article class="FlexBoxEliminarUsers">
                 <div class="MarginAdministrarUsers">
                     <asp:TextBox ID="txtContraCuenta" runat="server" TextMode="Password"></asp:TextBox>
+                    <br />
+                    <asp:RequiredFieldValidator ID="rfvContrasenia" runat="server" ControlToValidate="txtContraCuenta" ForeColor="#CC0000" ValidationGroup="contrasenia" Display="Dynamic">Debe completar el campo!</asp:RequiredFieldValidator>
                 </div>
             </article>
 
             <article class="FlexBoxEliminarUsers">
                 <div class="FlexBoxEliminarUsers">
                     <asp:Button ID="btnVolver" runat="server" Text="CANCELAR" CssClass="Botones" OnClick="btnVolver_Click" />
-                    <asp:Button ID="btnAceptar" runat="server" Text="ACEPTAR" CssClass="Botones" OnClick="btnAceptar_Click" />
+                    <asp:Button ID="btnAceptar" runat="server" Text="ACEPTAR" CssClass="Botones" OnClick="btnAceptar_Click" ValidationGroup="contrasenia" />
                 </div>
             </article>
         </section>
