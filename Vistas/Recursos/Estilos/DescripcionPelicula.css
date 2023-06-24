@@ -45,11 +45,14 @@ main {
 }
 
 #BtnFavoritos {
-    width: 50px;
-    height: 50px;
+    width: 55px;
+    height: 55px;
     border-radius: 50%;
     background: url(/Recursos/Imagenes/star-empty.png)no-repeat cyan center;
     cursor: pointer;
+    position: relative;
+    left: 21px;
+    margin: 10px;
 }
 
     #BtnFavoritos.filled {
@@ -57,35 +60,36 @@ main {
     }
 
 #BtnSorprendeme {
-    width: 80px;
-    height: 80px;
+    width: 55px;
+    height: 55px;
     border-radius: 50%;
-    background: url(/Recursos/Imagenes/guau.png) no-repeat cyan;
+    background: url(/Recursos/Imagenes/guau1.png) no-repeat cyan;
     background-position: center;
     cursor: pointer;
-    position: absolute;
-    right: 10px;
+    position: relative;
+    left: 274px;
+    margin: 10px;
 }
 
-#BtnSorprendeme.vueltita {
-    -webkit-animation-name: spin;
-    -webkit-animation-duration: var(--spin-speed);
-    -webkit-animation-iteration-count: 1;
-    -webkit-animation-timing-function: ease;
-    -moz-animation-name: spin;
-    -moz-animation-duration: var(--spin-speed);
-    -moz-animation-iteration-count: 1;
-    -moz-animation-timing-function: ease;
-    /*-ms-animation-name: spin;
+    #BtnSorprendeme.vueltita {
+        -webkit-animation-name: spin;
+        -webkit-animation-duration: var(--spin-speed);
+        -webkit-animation-iteration-count: 1;
+        -webkit-animation-timing-function: ease;
+        -moz-animation-name: spin;
+        -moz-animation-duration: var(--spin-speed);
+        -moz-animation-iteration-count: 1;
+        -moz-animation-timing-function: ease;
+        /*-ms-animation-name: spin;
         -ms-animation-duration: var(--spin-speed);
         -ms-animation-iteration-count: 1;
         -ms-animation-timing-function: ease;
             */
-    animation-name: spin;
-    animation-duration: var(--spin-speed);
-    animation-iteration-count: 1;
-    animation-timing-function: ease;
-}
+        animation-name: spin;
+        animation-duration: var(--spin-speed);
+        animation-iteration-count: 1;
+        animation-timing-function: ease;
+    }
 
 .titulo {
     font-size: 40px;
