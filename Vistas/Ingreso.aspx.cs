@@ -16,7 +16,7 @@ namespace Vistas
         NegocioCuenta negCuenta = new NegocioCuenta();
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         protected void btnIniciarSesion_Click(object sender, EventArgs e)
@@ -55,6 +55,8 @@ namespace Vistas
                 Session["Cuenta"] = cuenta;
                 Application["tipoSuscripcion"] = tip;
                 lblError.Visible = false;
+                txtClave.Text = "";
+                txtEmail.Text = "";
                 Response.Redirect("SeleccionarUsuario.aspx");
               
             }

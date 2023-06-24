@@ -67,7 +67,7 @@ table {
     display: flex;
     justify-content: space-around;
     text-align: center;
-    padding: 80px;
+    padding: 5px;
 }
 
 p {
@@ -81,7 +81,7 @@ p {
     font-style: normal;
     text-decoration: underline;
     text-align: center;
-    font-size: x-large;
+    font-size: xx-large;
 }
 
 #suscribirse {

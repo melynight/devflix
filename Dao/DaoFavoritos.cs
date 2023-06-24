@@ -47,13 +47,28 @@ namespace Dao
             // 1 > 0 ? "algo" : "";
         }
 
-        private void ArmarParametrosFavorito(ref SqlCommand comando, Favoritos favorito)
+        private void ArmarParametrosFavoritoEliminar(ref SqlCommand comando, Favoritos favorito)
+        {
+            SqlParameter sqlParametros = new SqlParameter();
+            sqlParametros = comando.Parameters.Add("@IDContenido_F", SqlDbType.Char);
+            sqlParametros.Value = favorito.IDContenido_F1;
+            sqlParametros = comando.Parameters.Add("@ID_cuenta", SqlDbType.Int);
+            sqlParametros.Value = favorito.IDCuenta_F1;
+        }
+
+            private void ArmarParametrosFavorito(ref SqlCommand comando, Favoritos favorito)
         {
             SqlParameter sqlParametros = new SqlParameter();
             sqlParametros = comando.Parameters.Add("@IDContenido_F", SqlDbType.VarChar);
             sqlParametros.Value = favorito.IDContenido_F1;
             sqlParametros = comando.Parameters.Add("@ID_cuenta", SqlDbType.Int);
             sqlParametros.Value = favorito.IDCuenta_F1;
+        }
+        public int EliminarFavorito(Favoritos favorito)
+        {
+            SqlCommand comando = new SqlCommand();
+            ArmarParametrosFavoritoEliminar(ref comando, favorito);
+            return ds.EjecutarProcedimientoAlmacenado(comando, "spEliminarFavorito");
         }
     }
 }

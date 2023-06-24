@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Web.UI.WebControls;
 using Entidades;
 using Negocio;
 namespace Vistas
@@ -16,6 +17,16 @@ namespace Vistas
                 lblBienvenidoUsuario.Text = "Bienvenid@ " + cuenta.GetNombre_Cu();
                 Session["IDCuenta"] = cuenta.GetIDCuenta();
             }
+        }
+
+        protected void btnEliminar_Command(object sender, CommandEventArgs e)
+        {
+            string idCont = e.CommandArgument.ToString();
+            if (e.CommandName == "eventoSeleccionar")
+            {
+                nfav.EliminarFavorito(idCont, cuenta.GetIDCuenta());
+            }
+            lvFavoritos.DataBind();
         }
     }
 }

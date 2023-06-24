@@ -33,15 +33,6 @@ namespace Vistas
         protected global::System.Web.UI.WebControls.Label lblBienvenidoUsuario;
 
         /// <summary>
-        /// Control Button1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
-
-        /// <summary>
         /// Control lvFavoritos.
         /// </summary>
         /// <remarks>
@@ -51,12 +42,12 @@ namespace Vistas
         protected global::System.Web.UI.WebControls.ListView lvFavoritos;
 
         /// <summary>
-        /// Control DataSourceFavoritos.
+        /// Control FavoritosDataSource.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource DataSourceFavoritos;
+        protected global::System.Web.UI.WebControls.SqlDataSource FavoritosDataSource;
     }
 }

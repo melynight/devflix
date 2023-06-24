@@ -34,12 +34,14 @@
         </nav>
         <div>
             <p>&nbsp;</p>
-            <p id="titulo">Membersias</p>
+            <p id="titulo">&nbsp;&nbsp;&nbsp; Membersias</p>
             <p>&nbsp;</p>
             <p style="color: #FFFFFF">Ingresar PIN de administrador: 
                 <asp:TextBox ID="txtPIN" runat="server" MaxLength="4" TextMode="Password" ValidationGroup="PIN"></asp:TextBox>
-                <asp:Label ID="lblMensajeError" runat="server" ForeColor="Red" Visible="False"></asp:Label>
+                <asp:Label ID="lblMensajeError" runat="server" ForeColor="White" Visible="False"></asp:Label>
                 <asp:RequiredFieldValidator ID="rfvPIN" runat="server" ControlToValidate="txtPIN" Display="Dynamic" ValidationGroup="PIN">*Debe ingresar un PIN para continuar.</asp:RequiredFieldValidator>
+                <asp:CustomValidator ID="cvDigitos" runat="server" ControlToValidate="txtPIN" Display="Dynamic" OnServerValidate="cvDigitos_ServerValidate" ValidationGroup="PIN">*El PIN ingresado debe ser de 4 digitos.</asp:CustomValidator>
+                <asp:RegularExpressionValidator ID="revNumeros" runat="server" ControlToValidate="txtPIN" ValidationExpression="^\d+$" ValidationGroup="PIN">*Debe ingresar solo numeros</asp:RegularExpressionValidator>
             </p>
             <p>&nbsp;</p>
             <p style="color: #FFFFFF">
@@ -50,7 +52,7 @@
         <div class="list-view">
             <asp:ListView ID="lvSuscripciones" runat="server" DataSourceID="SqlDataSourceSus" GroupItemCount="3">
                 <AlternatingItemTemplate>
-                    <td runat="server" style="border-style: double; border-width: thin; border-color: #63b9cd; border-spacing: 20px; color: #000000; text-align: center; padding: 15px; margin: 15px; background-color: #EAEAEA; width: 450px; height: 200px;">                       
+                    <td runat="server" style="border-style: double; border-width: thin; border-color: #63b9cd; border-spacing: 20px; color: #000000; text-align: center; background-color: #EAEAEA; width: 450px; height: 200px;">                       
                         <br />
                         <asp:Label ID="Nombre_TsLabel" runat="server" Text='<%# Eval("Nombre_Ts") %>' Font-Bold="True" Height="65px" Width="200px" Font-Size="X-Large" />
                         <br />
@@ -112,7 +114,7 @@
                         <br /></td>
                 </InsertItemTemplate>
                 <ItemTemplate>
-                    <td runat="server" style="border-style: double; border-width: thin; border-color: #63b9cd; border-spacing: 20px; color: #000000; text-align: center; padding: 15px; margin: 15px; background-color: #EAEAEA; width: 450px; height: 200px;">
+                    <td runat="server" style="border-style: double; border-width: thin; border-color: #63b9cd; border-spacing: 20px; color: #000000; text-align: center; background-color: #EAEAEA; width: 450px; height: 200px;">
                         <br />
                         <asp:Label ID="Nombre_TsLabel" runat="server" Text='<%# Eval("Nombre_Ts") %>' Font-Bold="True" Height="65px" Width="200px" Font-Size="X-Large" />
                         <br />
@@ -172,6 +174,11 @@
         <div>
             <p> &nbsp;</p>
             <p> <asp:Label ID="lblMensajePlan" runat="server" ForeColor="White"></asp:Label></p>
+            <p> 
+                <asp:Button ID="btnSi" runat="server" BorderColor="#63B9CD" OnClick="btnSi_Click" Text="Si, deseo cambiar el plan." Visible="False" Width="276px" />
+&nbsp;&nbsp;&nbsp;
+                <asp:Button ID="btnNo" runat="server" BorderColor="#63B9CD" OnClick="btnNo_Click" Text="No, prefiero quedarme con el anterior." Visible="False" Width="276px" />
+            </p>
             <p> &nbsp;</p>
         </div>
 

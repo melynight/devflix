@@ -20,6 +20,7 @@ namespace Vistas
         NegocioTipoSuscripcion tipoSus = new NegocioTipoSuscripcion();
         protected void Page_Load(object sender, EventArgs e)
         {
+          
             ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
             if (!IsPostBack)
             {
@@ -112,7 +113,16 @@ namespace Vistas
             Session["Cuenta"] = negCue.GetByID(ID);
 
             Application["tipoSuscripcion"] = tip;
-            
+
+            txtEmail.Text = "";
+            txtNombre.Text = "";
+            txtClave.Text = "";
+            txtConfirmarClave.Text = "";
+            txtConfirmarEmail.Text = "";
+            txtEdad.Text = "";
+            txtNroTarjeta.Text = "";
+            txtPIN.Text = "";
+
             Response.Redirect("SeleccionarUsuario.aspx");
         }
     }

@@ -25,6 +25,18 @@ namespace Negocio
             favorito.IDContenido_F1 = id;
             return dao.GetFavorito(favorito);
         }
+        public bool EliminarFavorito(string idContenido, int idCuenta)
+        {
+            DaoFavoritos dao = new DaoFavoritos();
+            Favoritos favorito = new Favoritos();
+            favorito.IDContenido_F1 = idContenido;
+            favorito.IDCuenta_F1 = idCuenta;
+            int op = dao.EliminarFavorito(favorito);
+            if (op == 1)
+                return true;
+            else
+                return false;
+        }
 
         public bool ExisteFavorito(string idContenido, int idCuenta)
         {

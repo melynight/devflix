@@ -1,7 +1,7 @@
 use DevFlixDB
 go
 
-select * from Cuentas
+select * from Facturacion
 
 SELECT Nombre_Ts, CodSus_Sus FROM Suscripciones
 inner join TipoSuscripciones
