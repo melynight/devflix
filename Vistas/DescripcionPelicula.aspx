@@ -60,13 +60,16 @@
         </header>
 
         <main>
-            <asp:Button ID="BtnFavoritos" title="Marcar/Desmarcar como favorito" runat="server" OnClick="BtnFavoritos_Click" />
-            <asp:Label ID="lblSeAgrego" runat="server" CssClass="Agregar"></asp:Label>
+            <div>
+                 <asp:Button ID="BtnFavoritos" title="Marcar/Desmarcar como favorito" runat="server" OnClick="BtnFavoritos_Click" />
+            <asp:Button ID="BtnSorprendeme" runat="server" title="Sorprendeme con contenido aleatorio" OnClick="BtnSorprendeme_Click" />
+            </div>
+           
 
             <div class="video">
 
                 <div class="descripcionVideo">
-                    <asp:Button ID="BtnSorprendeme" runat="server" title="Sorprendeme con contenido aleatorio" OnClick="BtnSorprendeme_Click" />
+                    
                     <asp:Label ID="lblTitulo" runat="server" CssClass="titulo"></asp:Label>
                     <asp:Label ID="lblDuracion" runat="server" CssClass="duracion"></asp:Label>
                     <asp:Label ID="lblSinopsis" runat="server" CssClass="sinopsis"></asp:Label>
