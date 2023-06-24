@@ -53,10 +53,10 @@
             </article>         
             <article class="FlexBoxEliminarUsers">
                 <div class="FlexBoxEliminarUsers">
-                    <asp:Label ID="lblConfirmDelete" runat="server" Font-Size="Small" ForeColor="#CC0000" Text="Esta realmente seguro de borrar la cuenta?" Visible="False"></asp:Label>
+                    <asp:Label ID="lblConfirmDelete" runat="server" ForeColor="#CC0000" Text="Esta realmente seguro de borrar la cuenta?" Visible="False" CssClass="lblClassDelete"></asp:Label>
                     <br />
                     <asp:Button ID="btnCancelDelete" runat="server" Text="CANCELAR" CssClass="Botones" OnClick="btnCancelDelete_Click" Visible="False" />
-                    <asp:Button ID="btnConfirmDelete" runat="server" Text="BORRAR PERMANENTE" CssClass="Botones" OnClick="btnConfirmDelete_Click" Visible="False" Width="155px" />
+                    <asp:Button ID="btnConfirmDelete" runat="server" Text="BORRAR PERMANENTE" CssClass="Botones" OnClick="btnConfirmDelete_Click" ValidationGroup="contrasenia" Visible="False" Width="155px" />
                 </div>
             </article>
         </section>
