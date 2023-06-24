@@ -31,8 +31,9 @@
                 obj.classList.remove("vueltita");
 
                 var params = new URLSearchParams(location.search);
-                params.set('id', getRandom(100) + 1);
+                params.delete('id');
                 window.location.search = params.toString();
+
             }, spinSpeed);
         }
     </script>
@@ -65,7 +66,7 @@
             <div class="video">
 
                 <div class="descripcionVideo">
-                    <asp:Button ID="BtnSorprendeme" runat="server" title="Sorprendeme con contenido aleatorio" />
+                    <asp:Button ID="BtnSorprendeme" runat="server" title="Sorprendeme con contenido aleatorio" OnClick="BtnSorprendeme_Click" />
                     <asp:Label ID="lblTitulo" runat="server" CssClass="titulo"></asp:Label>
                     <asp:Label ID="lblDuracion" runat="server" CssClass="duracion"></asp:Label>
                     <asp:Label ID="lblSinopsis" runat="server" CssClass="sinopsis"></asp:Label>
