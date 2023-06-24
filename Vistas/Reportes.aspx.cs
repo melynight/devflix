@@ -17,10 +17,11 @@ namespace Vistas
         protected void Page_Load(object sender, EventArgs e)
         {
             cuenta = (Cuenta)Session["Cuenta"];
+            lblError.Visible = false;
 
             grvFacturacion.Columns[2].Visible = false;
             grvFacturacion.Columns[3].Visible = false;
-            
+
             if (!IsPostBack)
             {
                 DataTable ds = negFacturacion.GetTabla(cuenta.GetIDCuenta());
@@ -29,19 +30,30 @@ namespace Vistas
                 lblBienvenidoUsuario.Text = "Bienvenid@ " + cuenta.GetNombre_Cu();
                 grvFacturacion.Visible = false;
             }
-                
+
         }
 
         protected void btnHistorial_Click(object sender, EventArgs e)
         {
-            grvFacturacion.Visible = true;
-            foreach (GridViewRow row in grvFacturacion.Rows)
+            if (!string.IsNullOrEmpty(txtFechaDesde.Text.Trim()) && !string.IsNullOrEmpty(txtFechaHasta.Text.Trim()))
             {
-                row.Visible = true;
+                lblError.Visible = false;
+                grvFacturacion.Visible = true;
+                foreach (GridViewRow row in grvFacturacion.Rows)
+                {
+                    row.Visible = true;
+                }
+                DataTable filtrado = negFacturacion.GetTablaFecha(txtFechaDesde.Text, txtFechaHasta.Text, cuenta.GetIDCuenta());
+                grvFacturacion.DataSource = filtrado;
+                grvFacturacion.DataBind();
+
             }
-            DataTable filtrado = negFacturacion.GetTablaFecha(txtFechaDesde.Text,txtFechaHasta.Text, cuenta.GetIDCuenta());
-            grvFacturacion.DataSource = filtrado;
-            grvFacturacion.DataBind();
+            else
+            {
+                lblError.Visible = true;
+
+            }
+               
 
         }
 
@@ -61,7 +73,7 @@ namespace Vistas
                     row.Visible = false;
                 }
 
-                grvFacturacion.SelectedRow.Visible = true; 
+                grvFacturacion.SelectedRow.Visible = true;
             }
         }
 
@@ -69,7 +81,10 @@ namespace Vistas
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                e.Row.Visible = true; 
+                e.Row.Visible = true;
+                Label lbl_it_Fecha = (Label)e.Row.FindControl("lbl_it_Fecha");
+                string txtMod = lbl_it_Fecha.Text;
+                lbl_it_Fecha.Text = lbl_it_Fecha.Text.Replace("0:00:00","");
             }
 
         }
@@ -79,6 +94,7 @@ namespace Vistas
             grvFacturacion.Visible = true;
             DataTable ds = negFacturacion.GetTabla(cuenta.GetIDCuenta());
             grvFacturacion.DataSource = ds;
+
             grvFacturacion.DataBind();
         }
     }
