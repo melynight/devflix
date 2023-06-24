@@ -34,13 +34,13 @@
         </nav>
         <div>
             <p>&nbsp;</p>
-            <p id="titulo">&nbsp;&nbsp;&nbsp; Membersias</p>
+            <p id="titulo">Membersias</p>
             <p>&nbsp;</p>
             <p style="color: #FFFFFF">Ingresar PIN de administrador: 
                 <asp:TextBox ID="txtPIN" runat="server" MaxLength="4" TextMode="Password" ValidationGroup="PIN"></asp:TextBox>
                 <asp:Label ID="lblMensajeError" runat="server" ForeColor="White" Visible="False"></asp:Label>
-                <asp:RequiredFieldValidator ID="rfvPIN" runat="server" ControlToValidate="txtPIN" Display="Dynamic" ValidationGroup="PIN">*Debe ingresar un PIN para continuar.</asp:RequiredFieldValidator>
-                <asp:CustomValidator ID="cvDigitos" runat="server" ControlToValidate="txtPIN" Display="Dynamic" OnServerValidate="cvDigitos_ServerValidate" ValidationGroup="PIN">*El PIN ingresado debe ser de 4 digitos.</asp:CustomValidator>
+                <asp:RequiredFieldValidator ID="rfvPIN" runat="server" ControlToValidate="txtPIN" Display="Dynamic" ValidationGroup="PIN">*Debe ingresar un PIN para continuar</asp:RequiredFieldValidator>
+                <asp:CustomValidator ID="cvDigitos" runat="server" ControlToValidate="txtPIN" Display="Dynamic" OnServerValidate="cvDigitos_ServerValidate" ValidationGroup="PIN"> y el PIN ingresado debe ser de 4 digitos.</asp:CustomValidator>
                 <asp:RegularExpressionValidator ID="revNumeros" runat="server" ControlToValidate="txtPIN" ValidationExpression="^\d+$" ValidationGroup="PIN">*Debe ingresar solo numeros</asp:RegularExpressionValidator>
             </p>
             <p>&nbsp;</p>
