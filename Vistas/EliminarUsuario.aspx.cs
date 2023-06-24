@@ -14,6 +14,7 @@ namespace Vistas
             Cuenta cuenta = (Cuenta)Session["cuenta"];
             if (!IsPostBack)
                 lblBienvenidoUsuario.Text = "Bienvenid@ " + cuenta.GetNombre_Cu();
+            
 
         }
 
@@ -24,15 +25,36 @@ namespace Vistas
 
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
-            Cuenta cuenta = (Cuenta)Session["cuenta"];
-
-            bool EliminarExitoso = false;
-            if (txtContraCuenta.Text == cuenta.GetClave_Cu())
+            if (Page.IsValid)
             {
-                EliminarExitoso = negEliminar.EliminarCuenta(cuenta.GetIDCuenta());
-                Response.Redirect("Ingreso.aspx");
-                
-            }        
+                lblConfirmDelete.Visible = true;
+                btnConfirmDelete.Visible = true;
+                btnCancelDelete.Visible = true;
+            }
+        }
+        protected void btnConfirmDelete_Click(object sender, EventArgs e)
+        {
+            Cuenta cuenta = (Cuenta)Session["cuenta"];
+            negEliminar.EliminarCuenta(cuenta.GetIDCuenta());
+            Response.Redirect("Log.aspx");
+            
+        }
+
+        protected void cvErrorContrasenia_ServerValidate(object source, System.Web.UI.WebControls.ServerValidateEventArgs args)
+        {
+            Cuenta cuenta = (Cuenta)Session["cuenta"];
+            NegocioCuenta negValidar = new NegocioCuenta();
+            string contra;
+            contra = txtContraCuenta.Text;
+            cuenta.SetClave_Cu(contra);
+            args.IsValid = negValidar.validarContrasenia(cuenta);
+        }
+
+        protected void btnCancelDelete_Click(object sender, EventArgs e)
+        {
+            lblConfirmDelete.Visible = false;
+            btnConfirmDelete.Visible = false;
+            btnCancelDelete.Visible = false;
         }
     }
 }

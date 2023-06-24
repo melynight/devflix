@@ -179,6 +179,17 @@ namespace Negocio
             return false;
         }
 
+        public Boolean validarContrasenia(Cuenta cu)
+        {
+            DaoCuenta dao = new DaoCuenta();
+            if (dao.CoincidenClaves(cu))
+            {
+                return true;
+            }
+            return false;
+
+        }
+
         public int contarUsuariosAdmin(int idAdmin, Cuenta cuentaAdmin)
         {
             int cantUsuariosAdmin = 0;

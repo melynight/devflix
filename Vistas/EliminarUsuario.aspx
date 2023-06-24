@@ -30,20 +30,33 @@
         <section class="seccionEliminarUser">
             <article class="FlexBoxEliminarUsers">
                 <div class="MarginAdministrarUsers">
-                    <span>INGRESE CONTRASEÑA CUENTA PARA ELIMINAR </span>
+                    <span>&nbsp;<asp:Label ID="lblTitulo" runat="server" Text="INGRESE CONTRASEÑA DE LA CUENTA PARA ELIMINAR"></asp:Label>
+                    </span>
                 </div>
             </article>
 
             <article class="FlexBoxEliminarUsers">
                 <div class="MarginAdministrarUsers">
                     <asp:TextBox ID="txtContraCuenta" runat="server" TextMode="Password"></asp:TextBox>
+                    <br />
+                    <asp:CustomValidator ID="cvErrorContrasenia" runat="server" ControlToValidate="txtContraCuenta" OnServerValidate="cvErrorContrasenia_ServerValidate" ValidationGroup="contrasenia" Display="Dynamic" ForeColor="#CC0000">Contraseña erronea. Verifique los datos</asp:CustomValidator>
+                    <br />
+                    <asp:RequiredFieldValidator ID="rfvContrasenia" runat="server" ControlToValidate="txtContraCuenta" ForeColor="#CC0000" ValidationGroup="contrasenia" Display="Dynamic">Debe completar el campo!</asp:RequiredFieldValidator>
                 </div>
             </article>
 
             <article class="FlexBoxEliminarUsers">
                 <div class="FlexBoxEliminarUsers">
-                    <asp:Button ID="btnVolver" runat="server" Text="CANCELAR" CssClass="Botones" OnClick="btnVolver_Click" />
-                    <asp:Button ID="btnAceptar" runat="server" Text="ACEPTAR" CssClass="Botones" OnClick="btnAceptar_Click" />
+                    <asp:Button ID="btnCancelar" runat="server" Text="CANCELAR" CssClass="Botones" OnClick="btnVolver_Click" />
+                    <asp:Button ID="btnAceptar" runat="server" Text="ACEPTAR" CssClass="Botones" OnClick="btnAceptar_Click" ValidationGroup="contrasenia" />
+                </div>
+            </article>         
+            <article class="FlexBoxEliminarUsers">
+                <div class="FlexBoxEliminarUsers">
+                    <asp:Label ID="lblConfirmDelete" runat="server" Font-Size="Small" ForeColor="#CC0000" Text="Esta realmente seguro de borrar la cuenta?" Visible="False"></asp:Label>
+                    <br />
+                    <asp:Button ID="btnCancelDelete" runat="server" Text="CANCELAR" CssClass="Botones" OnClick="btnCancelDelete_Click" Visible="False" />
+                    <asp:Button ID="btnConfirmDelete" runat="server" Text="BORRAR PERMANENTE" CssClass="Botones" OnClick="btnConfirmDelete_Click" Visible="False" Width="155px" />
                 </div>
             </article>
         </section>
