@@ -13,7 +13,6 @@ namespace Vistas
     public partial class Reportes : System.Web.UI.Page
     {
         Cuenta cuenta = new Cuenta();
-        Facturacion facturacion = new Facturacion();
         NegocioFacturacion negFacturacion = new NegocioFacturacion();
         protected void Page_Load(object sender, EventArgs e)
         {

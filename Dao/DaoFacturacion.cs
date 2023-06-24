@@ -33,7 +33,7 @@ namespace Dao
 
         public DataTable GetTablaFacturacion(int ID)
         {
-            DataTable tabla = ds.ObtenerTabla("Facturacion", "Select * from Facturacion " +
+            DataTable tabla = ds.ObtenerTabla("Facturacion", "select * from Suscripciones inner join Facturacion on CodSus_Sus = CodSus_F " +
                 "WHERE IDCuenta_F= " +
                 ID+ "");
             return tabla;
@@ -41,13 +41,8 @@ namespace Dao
 
         public DataTable GetTablaFiltroFecha(string desde, string hasta, int id)
         {
-            DataTable tabla = ds.ObtenerTabla("Facturacion", "Select * from Facturacion " +
-                "where Fecha_F > '" + desde+
-                "' AND Fecha_F < '" +
-                hasta + "'" +
-                " and " +
-                "IDCuenta_F = " +
-                id+"");
+            DataTable tabla = ds.ObtenerTabla("Facturacion", "select * from Suscripciones inner join Facturacion on CodSus_Sus = CodSus_F" +
+                "where Fecha_F >= '" + desde + "' AND Fecha_F <= '" + hasta + "'" + " and " + "IDCuenta_F = " + id+"");
             return tabla;
         }
 

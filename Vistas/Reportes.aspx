@@ -66,10 +66,7 @@
                 <asp:Button ID="btnHistorialTodo" runat="server" BackColor="Blue" BorderColor="#3399FF" Font-Bold="True" Font-Italic="False" ForeColor="White" OnClick="btnHistorialTodo_Click" Text="Ver Todo" Width="99px" />
             </p>
             <p>
-                <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
-            </p>
-            <p>
-                <asp:GridView OnRowDataBound="grvFacturacion_RowDataBound" AutoPostBack="true" ID="grvFacturacion" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" AutoGenerateSelectButton="True" BackColor="White" BorderColor="#3366CC" BorderStyle="None" BorderWidth="1px" CellPadding="4" OnSelectedIndexChanged="grvFacturacion_SelectedIndexChanged" OnSelectedIndexChanging="grvFacturacion_SelectedIndexChanging">
+                <asp:GridView OnRowDataBound="grvFacturacion_RowDataBound" AutoPostBack="true" ID="grvFacturacion" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" AutoGenerateSelectButton="True" OnSelectedIndexChanged="grvFacturacion_SelectedIndexChanged" OnSelectedIndexChanging="grvFacturacion_SelectedIndexChanging">
                     <Columns>
                         <asp:TemplateField HeaderText="Fecha">
                             <ItemTemplate>
@@ -83,7 +80,7 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Suscripción">
                             <ItemTemplate>
-                                <asp:Label ID="lbl_It_IDSuscripcion" runat="server" Text='<%# Bind("CodSus_F") %>'></asp:Label>
+                                <asp:Label ID="lbl_It_IDSuscripcion" runat="server" Text='<%# Bind("CodTipo_Sus") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Importe">
@@ -92,15 +89,6 @@
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>
-                    <FooterStyle BackColor="#99CCCC" ForeColor="#003399" />
-                    <HeaderStyle BackColor="#003399" Font-Bold="True" ForeColor="#CCCCFF" />
-                    <PagerStyle BackColor="#99CCCC" ForeColor="#003399" HorizontalAlign="Left" />
-                    <RowStyle BackColor="White" ForeColor="#003399" />
-                    <SelectedRowStyle BackColor="#009999" Font-Bold="True" ForeColor="#CCFF99" />
-                    <SortedAscendingCellStyle BackColor="#EDF6F6" />
-                    <SortedAscendingHeaderStyle BackColor="#0D4AC4" />
-                    <SortedDescendingCellStyle BackColor="#D6DFDF" />
-                    <SortedDescendingHeaderStyle BackColor="#002876" />
                 </asp:GridView>
             </p>
         </div>
