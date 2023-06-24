@@ -82,9 +82,7 @@ namespace Vistas
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
                 e.Row.Visible = true;
-                Label lbl_it_Fecha = (Label)e.Row.FindControl("lbl_it_Fecha");
-                string txtMod = lbl_it_Fecha.Text;
-                lbl_it_Fecha.Text = lbl_it_Fecha.Text.Replace("0:00:00","");
+                
             }
 
         }

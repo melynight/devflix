@@ -125,7 +125,7 @@ SELECT 'P018', 'G004' , 'PUNIVERSAL',' El destino del mundo está en manos de Dam
 3, 'Recursos/Imagenes/Portadas/terror2_la_profecia.JPG', 
 'LA PROFECIA', 0, 'https://www.youtube.com/watch?v=AiwP5udhskk', 18, 1 
 UNION
-SELECT 'P018', 'G003', 'PUNIVERSAL','Vinland Saga es una serie anime que gira en torno a Thorfinn, el hijo del mejor de los guerreros en un mundo ambientado a finales del primer milenio donde los vikingos era la tribu más poderosa y atroz y la que había luchado sin cesar hasta el final.',
+SELECT 'P019', 'G003', 'PUNIVERSAL','Vinland Saga es una serie anime que gira en torno a Thorfinn, el hijo del mejor de los guerreros en un mundo ambientado a finales del primer milenio donde los vikingos era la tribu más poderosa y atroz y la que había luchado sin cesar hasta el final.',
 3, 'Recursos/Imagenes/Portadas/Serie2Accion_VINLANDSAGA.JPG', 
 'Vinland Saga', 0, 'https://www.youtube.com/watch?v=n2VuKI0yT8w', 16, 1 
 GO

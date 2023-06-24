@@ -14,7 +14,7 @@ CREATE PROCEDURE spEliminarUsuarios
 @IDref INT 
 )
 AS
-delete Cuentas
+DELETE Cuentas
 WHERE IDRef_Cu=@IDref
 RETURN
 GO
