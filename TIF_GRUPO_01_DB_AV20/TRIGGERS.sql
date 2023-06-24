@@ -31,7 +31,7 @@ AS
 	from inserted 
 		inner join Suscripciones on
 		inserted.CodSus_Cu = Suscripciones.CodSus_Sus
-		where inserted.IDRef_Cu<>0 -- aca solo se van a agregar registros de admin por q si agrega usuario,
+		where inserted.CodSus_Cu<>0 -- aca solo se van a agregar registros de admin por q si agrega usuario,
 		--el registro de usuario no va a tener codSus y va a cargar null en Facturacion
 		-- Con la condicion IDRef_Cu = null funciona cuando se da de alta el admin y no se agrega otro registro cuando agrega usuario
 	end
