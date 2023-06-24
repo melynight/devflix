@@ -85,10 +85,11 @@
 
 .MarginAdministrarUsers {
     margin: 5px;
+    text-align: center;
 }
 
 .seccionEliminarUser {
-    width: 300px;
+    width: 315px;
     margin-top: 5%;
     margin-left: 40%;
     justify-content: center;
@@ -108,10 +109,14 @@
 .Botones {
     width: 120px;
     height: 40px;
-    margin: 5px;
+    margin: 3px;
     border: solid 1px;
     border-radius: 2px;
     font-size: x-small;
+}
+
+.lblClassDelete{
+    margin-left 2px;
 }
 
 .FlexBoxCambiarPassword {
