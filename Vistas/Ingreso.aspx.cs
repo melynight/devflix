@@ -9,6 +9,7 @@ using Entidades;
 using Negocio;
 
 namespace Vistas
+    //oa
 {
     public partial class Ingreso1 : System.Web.UI.Page
     {
@@ -43,6 +44,7 @@ namespace Vistas
                 cuenta.SetCodSus_Cu(sus);
                 cuenta.Set_Pais_Cu(pais);
 
+<<<<<<< HEAD
                 Session["Cuenta"] = cuenta;
                 Application["tipoSuscripcion"] = tip;
                 Session["NombreSus"] = tip.Nombre_Ts1;
@@ -50,6 +52,14 @@ namespace Vistas
                 Session["EdadUsuario"] = cuenta.GetEdad_Cu();
                 Session["IDAdmin"] = cuenta.GetIDCuenta();
                 Session["EdadUsuario"] = cuenta.GetEdad_Cu();
+=======
+
+                Session["Cuenta"] = cuenta;
+                Application["tipoSuscripcion"] = tip;
+                Session["NombreSus"] = tip.Nombre_Ts1;
+                Session["EdadUsuario"] = cuenta.GetEdad_Cu();
+                Session["IDAdmin"] = cuenta.GetIDCuenta();
+>>>>>>> origin/main
 
                 lblError.Visible = false;
                 txtClave.Text = "";
