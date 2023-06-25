@@ -16,6 +16,7 @@ namespace Dao
         public Suscripcion GetSuscripcion(Suscripcion sus)
         {
             DataTable tabla = ds.ObtenerTabla("Suscripciones", "SELECT * FROM Suscripciones as s INNER JOIN TipoSuscripciones as ts ON ts.CodTipo_Ts=s.CodTipo_Sus WHERE s.CodSus_Sus=" + sus.CodSus_Sus1);
+           
             TipoSuscripcion tipoSus = new TipoSuscripcion()
             {
                 CodTipo_Ts1 = tabla.Rows[0]["CodTipo_Ts"].ToString(),
