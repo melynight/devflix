@@ -83,6 +83,7 @@
     <Content Include="Recursos\Imagenes\5.jpg" />
     <Content Include="Recursos\Imagenes\boton-agregarUsuario.png" />
     <Content Include="Recursos\Imagenes\comic.png" />
+    <Content Include="Recursos\Imagenes\flechaArriba.png" />
     <Content Include="Recursos\Imagenes\fondoHome.jpg" />
     <Content Include="Recursos\Imagenes\fondoHome2.jpg" />
     <Content Include="Recursos\Imagenes\fondoSeleccionarUsuarios.jpg" />
