@@ -85,5 +85,10 @@ namespace Vistas
         {
             MostrarCatalogo();
         }
+
+        protected void lvCatalogo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
