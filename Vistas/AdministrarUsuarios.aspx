@@ -52,10 +52,12 @@
                     <asp:Button ID="btnEliminarUsuario" runat="server" Text="ELIMINAR USUARIO" Width="160px" class="MarginAdministrarUsers" OnClick="btnEliminarUsuario_Click" />
                     <br />
                     <br />
+                    <br />
+                   
                 </div>
             </div>
         </article>
-
+         <asp:Label ID="lblErrorNombre" runat="server" Text="El nombre ya existe!!" ForeColor="#CC0000" Font-Size="XX-Large"></asp:Label>
         <article class="RecuadroUsers">
             <div class="FlexBoxAdministrarUsers">
                 <div class="listview">
@@ -142,7 +144,6 @@
                         </SelectParameters>
                     </asp:SqlDataSource>
                     <asp:Button ID="btnVolver" runat="server" OnClick="btnCancelar_Click" Text="VOLVER" Width="160px" class="MarginAdministrarUsers" Height="50px" />
-                    <asp:Label ID="lblErrorNombre" runat="server" Text="El nombre ya existe!!" ForeColor="#CC0000"></asp:Label>
                 </div>
 
                 <div class="menu">
