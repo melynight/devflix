@@ -87,11 +87,16 @@ namespace Vistas
         protected global::System.Web.UI.WebControls.Label lblErrorNombre;
 
         /// <summary>
+<<<<<<< HEAD
         /// Control lblCambiosExitosos.
+=======
+        /// Control ListView1.
+>>>>>>> 6f805d4e1619bd32592bc234d4be313d6e54c64b
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+<<<<<<< HEAD
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblCambiosExitosos;
 
@@ -101,6 +106,8 @@ namespace Vistas
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+=======
+>>>>>>> 6f805d4e1619bd32592bc234d4be313d6e54c64b
         /// </remarks>
         protected global::System.Web.UI.WebControls.ListView ListView1;
 
@@ -114,11 +121,36 @@ namespace Vistas
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
 
         /// <summary>
+<<<<<<< HEAD
+        /// Control btnVolver.
+=======
+        /// Control SqlDataSource2.
+>>>>>>> 6f805d4e1619bd32592bc234d4be313d6e54c64b
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+<<<<<<< HEAD
+=======
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource2;
+
+        /// <summary>
+        /// Control SqlDataSource3.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource3;
+
+        /// <summary>
         /// Control btnVolver.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+>>>>>>> 6f805d4e1619bd32592bc234d4be313d6e54c64b
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnVolver;
 
