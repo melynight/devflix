@@ -24,13 +24,13 @@ namespace Vistas
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// lblBienvenidoUsuario control.
+        /// lblUserName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblBienvenidoUsuario;
+        protected global::System.Web.UI.WebControls.Label lblUserName;
 
         /// <summary>
         /// imgAdmin control.
