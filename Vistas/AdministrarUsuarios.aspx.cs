@@ -18,10 +18,34 @@ namespace Vistas
 
         protected void Page_Load(object sender, EventArgs e)
         {
+           
 
             cuenta = (Cuenta)Session["Cuenta"];
             Session["CantidadUsuariosAdmin"] = validarCantUsuariosMax(cuenta);
-            
+
+            suscripcion = nSuscripcion.Get(cuenta.GetSus_Cu().CodSus_Sus1);
+            tipoSuscripcion = nTipoSuscripcion.Get(suscripcion.CodTipo_Sus1.CodTipo_Ts1);
+
+            int cantUsuariosMax = tipoSuscripcion.CantUsuarios_Ts1;
+
+            if (cantUsuariosMax == 1)
+            {
+                ListView1.DataSourceID = "SqlDataSource1";
+                ListView1.DataBind();
+
+            }
+            else if (cantUsuariosMax == 2)
+            {
+                ListView1.DataSourceID = "SqlDataSource2";
+                ListView1.DataBind();
+            }
+            else
+            {
+                ListView1.DataSourceID = "SqlDataSource3";
+                ListView1.DataBind();
+            }
+
+
 
             if (!IsPostBack)
             {
@@ -56,6 +80,24 @@ namespace Vistas
             tipoSuscripcion = nTipoSuscripcion.Get(suscripcion.CodTipo_Sus1.CodTipo_Ts1);
 
             int cantUsuariosMax = tipoSuscripcion.CantUsuarios_Ts1;
+
+            if (cantUsuariosMax == 1)
+            {
+                ListView1.DataSourceID = "SqlDataSource1";
+                ListView1.DataBind();
+
+            }
+            else if (cantUsuariosMax == 2)
+            {
+                ListView1.DataSourceID = "SqlDataSource2";
+                ListView1.DataBind();
+            }
+            else
+            {
+                ListView1.DataSourceID = "SqlDataSource3";
+                ListView1.DataBind();
+            }
+
 
             int cantUsuariosAdmin = negCue.contarUsuariosAdmin((int)Session["IDAdmin"], (Cuenta)Session["Cuenta"]) + 1;
 

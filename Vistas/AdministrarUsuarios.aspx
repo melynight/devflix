@@ -139,7 +139,17 @@
                         </SelectedItemTemplate>
                     </asp:ListView>
                     <br />
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DevFlixDBConnectionString4 %>" SelectCommand="SELECT [Nombre_Cu], [Edad_Cu], [IDRef_Cu], [IDCuenta], [URLImagenDefault] FROM [Cuentas] WHERE ([IDRef_Cu] = @IDRef_Cu)">
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DevFlixDBConnectionString4 %>" SelectCommand="SELECT top 0 [Nombre_Cu], [Edad_Cu], [IDRef_Cu], [IDCuenta], [URLImagenDefault] FROM [Cuentas] WHERE ([IDRef_Cu] = @IDRef_Cu)">
+                        <SelectParameters>
+                            <asp:SessionParameter Name="IDRef_Cu" SessionField="IDAdmin" Type="Int32" />
+                        </SelectParameters>
+                    </asp:SqlDataSource>
+                    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:DevFlixDBConnectionString4 %>" SelectCommand="SELECT top 1 [Nombre_Cu], [Edad_Cu], [IDRef_Cu], [IDCuenta], [URLImagenDefault] FROM [Cuentas] WHERE ([IDRef_Cu] = @IDRef_Cu)">
+                        <SelectParameters>
+                            <asp:SessionParameter Name="IDRef_Cu" SessionField="IDAdmin" Type="Int32" />
+                        </SelectParameters>
+                    </asp:SqlDataSource>
+                    <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:DevFlixDBConnectionString4 %>" SelectCommand="SELECT top 3 [Nombre_Cu], [Edad_Cu], [IDRef_Cu], [IDCuenta], [URLImagenDefault] FROM [Cuentas] WHERE ([IDRef_Cu] = @IDRef_Cu)">
                         <SelectParameters>
                             <asp:SessionParameter Name="IDRef_Cu" SessionField="IDAdmin" Type="Int32" />
                         </SelectParameters>

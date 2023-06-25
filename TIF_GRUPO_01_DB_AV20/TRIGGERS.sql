@@ -57,3 +57,4 @@ SET NOCOUNT ON
     WHERE IDCuenta IN (SELECT IDCuenta FROM deleted);
 END
 GO
+
