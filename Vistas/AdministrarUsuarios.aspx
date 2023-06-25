@@ -16,6 +16,10 @@
         .auto-style1 {
             width: 160px;
         }
+        .auto-style2 {
+            width: 307px;
+            height: 147px;
+        }
     </style>
 </head>
 <body style="background-image: url(Recursos/Imagenes/fondoSeleccionarUsuarios.jpg); background-size: cover;">
@@ -41,19 +45,26 @@
                     <asp:Image ID="imgAdmin" runat="server" Width="160px" />
                 </div>
                 <div>
-                    <asp:Label ID="lblNombreAdmin" runat="server"></asp:Label>
+                    <asp:Label ID="lblNombreAdmin" runat="server"></asp:Label><br />
+                    <asp:Label ID="lblEdadAdmin" runat="server"></asp:Label>
                 </div>
                 <div>
                     <asp:Button ID="btnAgregarUsuario" runat="server" Text="CREAR USUARIO" Width="160px" class="MarginAdministrarUsers" OnClick="btnAgregarUsuario_Click" />
                     <br />
                     <asp:Button ID="btnModificarUsuario" runat="server" Text="MODIFICAR USUARIO" Width="160px" class="MarginAdministrarUsers" OnClick="btnModificarUsuario_Click" />
                 </div>
-                <div>
+                <div class="auto-style2">
                     <asp:Button ID="btnEliminarUsuario" runat="server" Text="ELIMINAR USUARIO" Width="160px" class="MarginAdministrarUsers" OnClick="btnEliminarUsuario_Click" />
                     <br />
-                    <asp:Label ID="lblErrorNombre" runat="server" Text="El nombre debe ser distinto al actual." ForeColor="#CC0000" Font-Size="Medium"></asp:Label>
+                    <asp:Label ID="lblErrorNombre" runat="server" ForeColor="#CC0000" Font-Size="Medium"></asp:Label>
                     <br />
-                    <asp:Label ID="lblCambiosExitosos" runat="server" Text="Cambios realizados con exito!" ForeColor="#669900" Font-Size="Medium"></asp:Label>
+                    <asp:Label ID="lblCambiosExitosos" runat="server" ForeColor="#669900" Font-Size="Medium"></asp:Label>
+                    <br />
+                    <asp:Label ID="lblEdadIgual" runat="server" ForeColor="#CC0000" Font-Size="Medium"></asp:Label>
+                    <br />
+                    <asp:Label ID="lblImgIgual" runat="server" ForeColor="#CC0000" Font-Size="Medium"></asp:Label>
+                    <br />
+                    <asp:Label ID="lblCambiosFallo" runat="server" ForeColor="#CC0000" Font-Size="Medium"></asp:Label>
                     <br />
                   
                 </div>
@@ -108,9 +119,9 @@
                                 <br />
                                 <asp:Label ID="Edad_CuLabel" runat="server" Text='<%# Eval("Edad_Cu") %>' />
                                 <br />
-                                <asp:Button ID="btnModificarUsuario" runat="server" class="MarginAdministrarUsers" CommandArgument='<%# Eval("IDCuenta") %>' CommandName="ModificarUsuario" OnCommand="btnModificarUsuario_Command" Text="MODIFICAR USUARIO" Width="160px" />
+                                <asp:Button ID="btnModificarUsuario" runat="server" class="MarginAdministrarUsers" CommandArgument='<%# Eval("IDCuenta") %>' CommandName="ModificarUsuario" OnCommand="btnModificarUsuario_Command" Text="MODIFICAR USUARIO" Width="160px" PostBackUrl="~/AdministrarUsuarios.aspx" />
                                 <br />
-                                <asp:Button ID="btnEliminarUsuario" runat="server" class="MarginAdministrarUsers" CommandArgument='<%# Eval("IDCuenta") %>' CommandName="EliminarUsuario" Text="ELIMINAR USUARIO" Width="160px" OnCommand="btnEliminarUsuario_Command" />
+                                <asp:Button ID="btnEliminarUsuario" runat="server" class="MarginAdministrarUsers" CommandArgument='<%# Eval("IDCuenta") %>' CommandName="EliminarUsuario" Text="ELIMINAR USUARIO" Width="160px" OnCommand="btnEliminarUsuario_Command" PostBackUrl="~/AdministrarUsuarios.aspx" />
                                 <br />
                             </td>
                         </ItemTemplate>
@@ -176,7 +187,7 @@
                         <asp:ListItem Value="3">Kids</asp:ListItem>
                     </asp:DropDownList>
 &nbsp;&nbsp;&nbsp;&nbsp;
-                    <asp:Button ID="btnAceptar" runat="server" OnClick="btnAceptar_Click" Text="Aceptar" Visible="False" ValidationGroup="ErrorNombre" />
+                    <asp:Button ID="btnAceptar" runat="server" OnClick="btnAceptar_Click" Text="Aceptar" Visible="False" ValidationGroup="ErrorNombre" PostBackUrl="~/AdministrarUsuarios.aspx" />
                     <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" Visible="False" OnClick="btnCancelar_Click1" />
                 </div>
             </div>

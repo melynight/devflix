@@ -51,6 +51,15 @@ namespace Vistas
         protected global::System.Web.UI.WebControls.Label lblNombreAdmin;
 
         /// <summary>
+        /// Control lblEdadAdmin.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblEdadAdmin;
+
+        /// <summary>
         /// Control btnAgregarUsuario.
         /// </summary>
         /// <remarks>
@@ -87,24 +96,40 @@ namespace Vistas
         protected global::System.Web.UI.WebControls.Label lblErrorNombre;
 
         /// <summary>
-
-
         /// Control lblCambiosExitosos.
-
-        /// Control ListView1.
-
-
-        /// Control lblCambiosExitosos.
-        /// Control ListView1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-
-
-
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblCambiosExitosos;
+
+        /// <summary>
+        /// Control lblEdadIgual.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblEdadIgual;
+
+        /// <summary>
+        /// Control lblImgIgual.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblImgIgual;
+
+        /// <summary>
+        /// Control lblCambiosFallo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCambiosFallo;
 
         /// <summary>
         /// Control ListView1.
@@ -112,7 +137,6 @@ namespace Vistas
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-
         /// </remarks>
         protected global::System.Web.UI.WebControls.ListView ListView1;
 
@@ -126,23 +150,11 @@ namespace Vistas
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
 
         /// <summary>
-
-
-        /// Control btnVolver.
-
         /// Control SqlDataSource2.
-
-
-        /// Control btnVolver.
-        /// Control SqlDataSource2.
-
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-
-
-
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource2;
 
@@ -161,9 +173,6 @@ namespace Vistas
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-
-
-
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnVolver;
 

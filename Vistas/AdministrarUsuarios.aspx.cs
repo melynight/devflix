@@ -18,43 +18,22 @@ namespace Vistas
 
         protected void Page_Load(object sender, EventArgs e)
         {
-           
+
 
             cuenta = (Cuenta)Session["Cuenta"];
             Session["CantidadUsuariosAdmin"] = validarCantUsuariosMax(cuenta);
 
-            suscripcion = nSuscripcion.Get(cuenta.GetSus_Cu().CodSus_Sus1);
-            tipoSuscripcion = nTipoSuscripcion.Get(suscripcion.CodTipo_Sus1.CodTipo_Ts1);
-
-            int cantUsuariosMax = tipoSuscripcion.CantUsuarios_Ts1;
-
-            if (cantUsuariosMax == 1)
-            {
-                ListView1.DataSourceID = "SqlDataSource1";
-                ListView1.DataBind();
-
-            }
-            else if (cantUsuariosMax == 2)
-            {
-                ListView1.DataSourceID = "SqlDataSource2";
-                ListView1.DataBind();
-            }
-            else
-            {
-                ListView1.DataSourceID = "SqlDataSource3";
-                ListView1.DataBind();
-            }
-
-
+            MensajesAclarativos();
 
             if (!IsPostBack)
             {
-               // if ((bool)Session["AgregarUsuario"] == false && (int)Session["CantidadUsuariosAdmin"] < cantMax) btnAgregarUsuario.Enabled = false;
+
+                // if ((bool)Session["AgregarUsuario"] == false && (int)Session["CantidadUsuariosAdmin"] < cantMax) btnAgregarUsuario.Enabled = false;
                 CargarImgAdmin(cuenta);
                 OcultarMenuModificar();
                 lblUserName.Text = cuenta.GetNombre_Cu();
-                
-                
+
+
             }
             if ((bool)Session["AgregarUsuario"] == false) btnAgregarUsuario.Enabled = false;
             CargarImgAdmin(cuenta);
@@ -65,7 +44,7 @@ namespace Vistas
             Response.Redirect("Configuraciones.aspx");
         }
         protected void btnModificarUsuario_Command(object sender, System.Web.UI.WebControls.CommandEventArgs e)
-        {   
+        {
             if (e.CommandName == "ModificarUsuario")
             {
                 int IdUser = Convert.ToInt32(e.CommandArgument);
@@ -114,13 +93,12 @@ namespace Vistas
         {
             if (e.CommandName == "EliminarUsuario")
             {
-                bool Elimino = false;
+
                 int IdUser = Convert.ToInt32(e.CommandArgument);
-                Elimino=negCue.EliminarCuentaStd(IdUser);
-                if (Elimino)
-                {
-                    Response.Redirect("Configuraciones.aspx");
-                }            
+                negCue.EliminarCuentaStd(IdUser);
+                string script = "alert('¡Usuario eliminado!');";
+                Session["AvisoCuentaEliminada"] = script;
+                Response.Redirect("AdministrarUsuarios.aspx");
             }
 
         }
@@ -163,60 +141,72 @@ namespace Vistas
                 cuenta = negCue.GetByIDStandard((int)Session["IDStd"]);
             }
 
-            if (!string.IsNullOrEmpty(txtNuevoNombre.Text)){
-                if (cuenta.GetIDRef_Cu() > 0 )
+            if (!string.IsNullOrEmpty(txtNuevoNombre.Text))
+            {
+                if (cuenta.GetIDRef_Cu() > 0)
                 {
-                   ModificoNombre = negCue.CambiarNombre((int)Session["IDStd"], txtNuevoNombre.Text.Trim());
+                    ModificoNombre = negCue.CambiarNombre((int)Session["IDStd"], txtNuevoNombre.Text.Trim());
                 }
                 else
                 {
-                    if (txtNuevoNombre.Text.ToString().Trim() != cuenta.GetNombre_Cu()) { ModificoNombre = negCue.CambiarNombre((int)Session["IDAdmin"], txtNuevoNombre.Text.Trim()); }
-                    else{
+                    if (txtNuevoNombre.Text.ToString().Trim() != cuenta.GetNombre_Cu())
+                    {
+                        ModificoNombre = negCue.CambiarNombre((int)Session["IDAdmin"], txtNuevoNombre.Text.Trim());
+                        //aca esta la cosa
+                    }
+                    else
+                    {
                         ModificoNombre = false;
                         lblErrorNombre.Visible = true;
+                        string script = "alert('¡No hubo cambios!');";
+                        ClientScript.RegisterStartupScript(this.GetType(), "AlertScript", script, true);
                         /*ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert ('ERROR DEBE COLOCAR DATOS EN LAS CAJAS DE TEXTO ')", true);*/
                     }
-                   
-                }                  
+
+                }
             }
             if (!string.IsNullOrEmpty(txtNuevaEdad.Text))
             {
-                if(cuenta.GetIDRef_Cu()!=0 && cuenta.GetIDRef_Cu().ToString() != null)
+                if (cuenta.GetIDRef_Cu() != 0 && cuenta.GetIDRef_Cu().ToString() != null)
                 {
                     ModificoEdad = negCue.CambiarEdad((int)Session["IDStd"], Convert.ToInt32(txtNuevaEdad.Text));
                 }
                 else { ModificoEdad = negCue.CambiarEdad((int)Session["IDAdmin"], Convert.ToInt32(txtNuevaEdad.Text)); }
             }
-            bool ModificoUrl=false;
-            
+            bool ModificoUrl = false;
+
             switch (ddlElegirImagen.SelectedIndex)
             {
-                case 1: if (cuenta.GetIDRef_Cu()!=0 && cuenta.GetIDRef_Cu().ToString()!=null) 
-                    { 
-                        ModificoUrl = negCue.CambiarURL((int)Session["IDStd"], "Recursos/Imagenes/usuarioGafas.png"); 
+                case 1:
+                    if (cuenta.GetIDRef_Cu() != 0 && cuenta.GetIDRef_Cu().ToString() != null)
+                    {
+                        ModificoUrl = negCue.CambiarURL((int)Session["IDStd"], "Recursos/Imagenes/usuarioGafas.png");
                     }
-                    else {
-                        ModificoUrl = negCue.CambiarURL((int)Session["IDAdmin"], "Recursos/Imagenes/usuarioGafas.png"); 
+                    else
+                    {
+                        ModificoUrl = negCue.CambiarURL((int)Session["IDAdmin"], "Recursos/Imagenes/usuarioGafas.png");
                     }
                     break;
-                case 2:if(cuenta.GetIDRef_Cu() != 0 && cuenta.GetIDRef_Cu().ToString() != null) {
+                case 2:
+                    if (cuenta.GetIDRef_Cu() != 0 && cuenta.GetIDRef_Cu().ToString() != null)
+                    {
                         ModificoUrl = negCue.CambiarURL((int)Session["IDStd"], "Recursos/Imagenes/usuarioGafas2.png");
                     }
                     else { ModificoUrl = negCue.CambiarURL((int)Session["IDAdmin"], "Recursos/Imagenes/usuarioGafas2.png"); }
-                    
+
                     break;
                 case 3:
                     if (cuenta.GetIDRef_Cu() != 0 && cuenta.GetIDRef_Cu().ToString() != null)
                     {
                         ModificoUrl = negCue.CambiarURL((int)Session["IDStd"], "Recursos/Imagenes/UsuarioKids.png");
                     }
-                    else 
-                    { 
+                    else
+                    {
                         ModificoUrl = negCue.CambiarURL((int)Session["IDAdmin"], "Recursos/Imagenes/UsuarioKids.png");
                     }
                     break;
-                   
-                    
+
+
             }
 
             /*if (!ModificoNombre)
@@ -232,24 +222,37 @@ namespace Vistas
             if (!ModificoEdad) lblErrorNombre.Visible = true;*/
 
 
-            Session["IDStd"] = null;
-           cuenta = negCue.GetByID((int)Session["IDAdmin"]); //vuelve el control ADMIN
-           Session["Cuenta"] = cuenta;
-            int cantMax = validarCantUsuariosMax(cuenta);
+
             //if ((int)Session["CantidadUsuariosAdmin"] == 1 || (int)Session["CantidadUsuariosAdmin"] < cantMax) CargarImgAdmin(cuenta);//validamos que no tenga usuarios ese admin
-            if (ModificoNombre || ModificoUrl || ModificoEdad)
-            { if(txtNuevoNombre.Text.ToString().Trim() != cuenta.GetNombre_Cu())
-                lblCambiosExitosos.Visible = true;
-                Response.Redirect("AdministrarUsuarios.aspx");
-                
-                
+            if (ModificoNombre|| ModificoEdad||ModificoUrl)
+            {
+                if (txtNuevoNombre.Text.ToString().Trim() != cuenta.GetNombre_Cu())
+                {
+                    lblCambiosExitosos.Visible = true;
+
+                    string script = "alert('¡Cambios efectuados exitosamente!');";
+                    Session["CambiosExito"] = script;
+
+                }
+                else
+                {
+                    string script = "alert('El nombre es igual al anterior!');";
+                    Session["NombreIgual"] = script;
+                }
+
             }
             else
             {
+                string script = "alert('¡No hubo cambios!');";
+                Session["Cambiosfallo"] = script;
                 lblErrorNombre.Visible = true;
                 lblCambiosExitosos.Visible = false;
             }
-            /* Response.Redirect("AdministrarUsuarios.aspx");*/
+            Session["IDStd"] = null;
+            cuenta = negCue.GetByID((int)Session["IDAdmin"]); //vuelve el control ADMIN
+            Session["Cuenta"] = cuenta;
+            int cantMax = validarCantUsuariosMax(cuenta);
+            Response.Redirect("AdministrarUsuarios.aspx");
         }
         public void CargarImgAdmin(Cuenta cuenta)
         {
@@ -258,6 +261,7 @@ namespace Vistas
             URLImagen = cuenta.URLImagenDefault1;
             imgAdmin.ImageUrl = URLImagen;
             lblNombreAdmin.Text = cuenta.GetNombre_Cu();
+            lblEdadAdmin.Text = Convert.ToString(cuenta.GetEdad_Cu());
             lblErrorNombre.Visible = false;
             lblCambiosExitosos.Visible = false;
 
@@ -272,7 +276,7 @@ namespace Vistas
 
         protected void btnAgregarUsuario_Click(object sender, EventArgs e)
         {
-            Response.Redirect("AgregarUsuario.aspx"); 
+            Response.Redirect("AgregarUsuario.aspx");
         }
 
         protected void btnCancelar_Click1(object sender, EventArgs e)
@@ -285,5 +289,32 @@ namespace Vistas
             Response.Redirect("EliminarUsuario.aspx");
         }
 
+        void MensajesAclarativos()
+        {
+
+            if (Session["AvisoCuentaEliminada"] != null)
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "AlertScript", Convert.ToString(Session["AvisoCuentaEliminada"]), true);
+                Session["AvisoCuentaEliminada"] = null;
+            }
+
+            if (Session["CambiosExito"] != null)
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "AlertScript", Convert.ToString(Session["CambiosExito"]), true);
+                Session["CambiosExito"] = null;
+            }
+
+            if (Session["NombreIgual"] != null)
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "AlertScript", Convert.ToString(Session["NombreIgual"]), true);
+                Session["NombreIgual"] = null;
+            }
+
+            if (Session["Cambiosfallo"] != null)
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "AlertScript", Convert.ToString(Session["Cambiosfallo"]), true);
+                Session["Cambiosfallo"] = null;
+            }
+        }
     }
 }
