@@ -24,7 +24,7 @@
                 <a class="botonesMenu"href="SeleccionarUsuario.aspx">USUARIOS </a>
                 <a class="botonesMenu" href="Configuraciones.aspx">AJUSTES </a>
                 <a class="botonesMenu" href="Log.aspx">CERRAR SESION </a>
-                <asp:Label ID="lblUserName" runat="server"></asp:Label>
+                <asp:Label ID="lblUserName" runat="server" ForeColor="White"></asp:Label>
                 <br />
             </nav>
         </header>
