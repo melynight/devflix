@@ -45,6 +45,9 @@ namespace Vistas
             {
                 
                 menu.Visible = true;
+                lblPIN.Visible = false;
+                txtPin.Visible = false;
+                btnAceptar.Visible = false;
             }
             else
             {

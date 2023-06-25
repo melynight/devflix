@@ -12,7 +12,7 @@
 
     <title>Eliminar Cuenta | DevFlix</title>
 </head>
-<body style="margin: 0; padding: 0;">
+<body style="background-image: url(Recursos/Imagenes/fondoSeleccionarUsuarios.jpg);background-size: cover; margin: 0; padding: 0;">
     <form id="form1" runat="server">
 
         <nav class="menu_principal">
@@ -39,9 +39,9 @@
                 <div class="MarginAdministrarUsers">
                     <asp:TextBox ID="txtContraCuenta" runat="server" TextMode="Password"></asp:TextBox>
                     <br />
-                    <asp:CustomValidator ID="cvErrorContrasenia" runat="server" ControlToValidate="txtContraCuenta" OnServerValidate="cvErrorContrasenia_ServerValidate" ValidationGroup="contrasenia" Display="Dynamic" ForeColor="#CC0000">Contraseña erronea. Verifique los datos</asp:CustomValidator>
+                    <asp:CustomValidator ID="cvErrorContrasenia" runat="server" ControlToValidate="txtContraCuenta" OnServerValidate="cvErrorContrasenia_ServerValidate" ValidationGroup="contrasenia" Display="Dynamic" ForeColor="#990033">Contraseña erronea. Verifique los datos</asp:CustomValidator>
                     <br />
-                    <asp:RequiredFieldValidator ID="rfvContrasenia" runat="server" ControlToValidate="txtContraCuenta" ForeColor="#CC0000" ValidationGroup="contrasenia" Display="Dynamic">Debe completar el campo!</asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="rfvContrasenia" runat="server" ControlToValidate="txtContraCuenta" ForeColor="#990033" ValidationGroup="contrasenia" Display="Dynamic">Debe completar el campo!</asp:RequiredFieldValidator>
                 </div>
             </article>
 
@@ -53,7 +53,7 @@
             </article>         
             <article class="FlexBoxEliminarUsers">
                 <div class="FlexBoxEliminarUsers">
-                    <asp:Label ID="lblConfirmDelete" runat="server" ForeColor="#CC0000" Text="Esta realmente seguro de borrar la cuenta?" Visible="False" CssClass="lblClassDelete"></asp:Label>
+                    <asp:Label ID="lblConfirmDelete" runat="server" ForeColor="Black" Text="Esta realmente seguro de borrar la cuenta?" Visible="False" CssClass="lblClassDelete"></asp:Label>
                     <br />
                     <asp:Button ID="btnCancelDelete" runat="server" Text="CANCELAR" CssClass="Botones" OnClick="btnCancelDelete_Click" Visible="False" />
                     <asp:Button ID="btnConfirmDelete" runat="server" Text="BORRAR PERMANENTE" CssClass="Botones" OnClick="btnConfirmDelete_Click" ValidationGroup="contrasenia" Visible="False" Width="155px" />

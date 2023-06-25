@@ -12,7 +12,7 @@
 
     <title>Cambiar Contraseña | DevFlix</title>
 </head>
-<body style="margin: 0; padding: 0;">
+<body style="background-image: url(Recursos/Imagenes/fondoSeleccionarUsuarios.jpg); background-size: cover; margin: 0; padding: 0;">
     <form id="form1" runat="server">
 
         <nav class="menu_principal">
@@ -42,7 +42,7 @@
                     <span>INGRESE CONTRASEÑA NUEVA </span>
                     <asp:TextBox ID="txtNewPassword" runat="server" TextMode="Password"></asp:TextBox>
                     <br />
-                    <asp:RequiredFieldValidator ID="rvClave2" runat="server" ControlToValidate="txtNewPassword" Display="Dynamic" ErrorMessage="RequiredFieldValidator" Font-Size="Smaller" ForeColor="Red">*Debe completar el campo</asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="rvClave2" runat="server" ControlToValidate="txtNewPassword" Display="Dynamic" ErrorMessage="RequiredFieldValidator" Font-Size="Smaller" ForeColor="Red" ValidationGroup="confirmPass">*Debe completar el campo</asp:RequiredFieldValidator>
                     <asp:Label ID="lblErrorIgualPassword" runat="server" Font-Size="Smaller" ForeColor="Red" Text="*La conttraseña nueva debe ser diferente a la antigua contraseña"></asp:Label>
                 </div>
                 <div class="MarginAdministrarUsers">
@@ -58,7 +58,7 @@
 
             <article class="FlexBoxEliminarUsers">
                 <div class="FlexBoxEliminarUsers">
-                    <asp:Button ID="btnVolver" runat="server" Text="CANCELAR" CssClass="Botones" OnClick="btnVolver_Click" />
+                    <asp:Button ID="btnVolver" runat="server" Text="CANCELAR" CssClass="Botones" OnClick="btnVolver_Click" UseSubmitBehavior="False" />
                     <asp:Button ID="btnAceptar" runat="server" Text="CONFIRMAR" CssClass="Botones" OnClick="btnAceptar_Click" ValidationGroup="confirmPass" />
                 </div>
             </article>
