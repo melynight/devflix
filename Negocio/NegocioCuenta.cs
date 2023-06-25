@@ -82,7 +82,7 @@ namespace Negocio
             DaoCuenta dao = new DaoCuenta();
             Cuenta cue = new Cuenta();
             cue.SetIDCuenta(id);
-            cue.SetEdad_Cu(edad);
+            cue.SetEdad_Cu(edad);            
             int op = dao.StdUserModificarEdad(cue);
             if (op == 1)
                 return true;
