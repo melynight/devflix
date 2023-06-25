@@ -10,21 +10,13 @@
     <title>Reportes | DevFlix</title>
     <link rel="stylesheet" type="text/css" href="Recursos\\Estilos\\ReportesStyle.css" />
     <link rel="icon" type="image/png" href="Recursos/Imagenes/favicon.png" />
-    <style type="text/css">
-        .auto-style1 {
-            width: 100%;
-        }
-        .auto-style2 {
-            width: 567px;
-        }
-    </style>
-</head>
-<body>
+    </head>
+<body style="background-image: url(Recursos/Imagenes/fondoSeleccionarUsuarios.jpg); background-size: cover; opacity: 10;">
     <form id="form1" runat="server">
         <header>
             <nav class="menu_principal">
 
-                <a class="botonesMenu" href="Home.aspx">HOME</a>
+                <a class="botonesMenu" href="Home.aspx"> <img src="Recursos/Imagenes/home.png" alt="Home"/> </a>
                 <a class="botonesMenu" href="Suscripciones.aspx">SUSCRIPCIONES</a>
                 <a class="botonesMenu" href="Favoritos.aspx">FAVORITOS</a>
                 <a class="botonesMenu" href="DescripcionPelicula.aspx">SORPRENDEME </a>
@@ -32,44 +24,31 @@
                 <a class="botonesMenu"href="SeleccionarUsuario.aspx">USUARIOS </a>
                 <a class="botonesMenu" href="Configuraciones.aspx">AJUSTES </a>
                 <a class="botonesMenu" href="Log.aspx">CERRAR SESION </a>
-                <asp:Label ID="lblBienvenidoUsuario" runat="server"></asp:Label>
+                <asp:Label ID="lblUserName" runat="server" ForeColor="White"></asp:Label>
                 <br />
             </nav>
         </header>
-        <div>
-            <table class="auto-style1">
-                <tr>
-                    <td class="auto-style2">Historial de suscripciones:</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-            </table>
-            <p>
+
+              <p class="titulo">Historial de suscripciones</p>
+               
+    
+
+        <div class="Configuracion-Reportes" >
+           
+        
                 Desde:
                 <asp:TextBox ID="txtFechaDesde" runat="server" TextMode="DateTimeLocal"></asp:TextBox>
 &nbsp;Hasta:
                 <asp:TextBox ID="txtFechaHasta" runat="server" TextMode="DateTimeLocal"></asp:TextBox>
                 <asp:Button ID="btnHistorial" runat="server" BackColor="Blue" BorderColor="#3399FF" Font-Bold="True" Font-Italic="False" ForeColor="White" OnClick="btnHistorial_Click" Text="Ver" Width="99px" />
-            </p>
-            <p>
+            
                 <asp:Label ID="lblError" runat="server" ForeColor="Red" Text="*Debe seleccionar ambas fechas!"></asp:Label>
-            </p>
-            <p>
+            
                 <asp:Button ID="btnHistorialTodo" runat="server" BackColor="Blue" BorderColor="#3399FF" Font-Bold="True" Font-Italic="False" ForeColor="White" OnClick="btnHistorialTodo_Click" Text="Ver Todo" Width="99px" />
-            </p>
-            <p>
-                <asp:GridView OnRowDataBound="grvFacturacion_RowDataBound" ID="grvFacturacion" CssClass="grvFacturacion" AutoPostBack="true" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" AutoGenerateSelectButton="True" OnSelectedIndexChanged="grvFacturacion_SelectedIndexChanged" OnSelectedIndexChanging="grvFacturacion_SelectedIndexChanging" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" OnPageIndexChanging="grvFacturacion_PageIndexChanging">
+            </div>
+
+                <div > 
+                <asp:GridView OnRowDataBound="grvFacturacion_RowDataBound" ID="grvFacturacion" CssClass="grvFacturacion" AutoPostBack="true" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" AutoGenerateSelectButton="True" OnSelectedIndexChanged="grvFacturacion_SelectedIndexChanged" OnSelectedIndexChanging="grvFacturacion_SelectedIndexChanging" BackColor="Black" BorderStyle="Solid" BorderWidth="2px" CellPadding="3" OnPageIndexChanging="grvFacturacion_PageIndexChanging">
                     <Columns>
                         <asp:TemplateField HeaderText="  Fecha">
                             <ItemTemplate>
@@ -92,6 +71,12 @@
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>
+                    <EmptyDataTemplate>
+                        <div class="NoResults">
+                            <h1> No se han encontrado resultados.</h1>
+                        </div>
+                        
+                    </EmptyDataTemplate>
                     <FooterStyle BackColor="White" ForeColor="#000066" />
                     <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" />
                     <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Left" />
@@ -102,8 +87,7 @@
                     <SortedDescendingCellStyle BackColor="#CAC9C9" />
                     <SortedDescendingHeaderStyle BackColor="#00547E" />
                 </asp:GridView>
-            </p>
-        </div>
+            </div>
     </form>
 </body>
 </html>

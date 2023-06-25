@@ -87,12 +87,22 @@ namespace Vistas
         protected global::System.Web.UI.WebControls.Label lblErrorNombre;
 
         /// <summary>
+
+
+        /// Control lblCambiosExitosos.
+
+        /// Control ListView1.
+
+
         /// Control lblCambiosExitosos.
         /// Control ListView1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+
+
+
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblCambiosExitosos;
 
@@ -116,12 +126,23 @@ namespace Vistas
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
 
         /// <summary>
+
+
+        /// Control btnVolver.
+
+        /// Control SqlDataSource2.
+
+
         /// Control btnVolver.
         /// Control SqlDataSource2.
+
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+
+
+
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource2;
 
@@ -140,6 +161,9 @@ namespace Vistas
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+
+
+
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnVolver;
 
