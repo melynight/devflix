@@ -31,7 +31,6 @@ namespace Vistas
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
             Cuenta cuentaNueva = new Cuenta();
-
             cuentaNueva.SetNombre_Cu(txtNombreUsuario.Text.Trim());
             cuentaNueva.SetEdad_Cu(Convert.ToInt32(txtEdadUsuario.Text));
             cuentaNueva.SetIDRef_Cu((int)Session["IDAdmin"]);
@@ -45,7 +44,8 @@ namespace Vistas
             }
 
 
-
+            txtEdadUsuario.Text = "";
+            txtNombreUsuario.Text = "";
             Response.Redirect("AdministrarUsuarios.aspx");
         }
     }

@@ -15,9 +15,9 @@ namespace Dao
 
         public Catalogo GetCatalogo(string idCatalogo)
         {
-            DataTable tabla = ds.ObtenerTabla("Catalogos", "Select * from Catalogos join [Generos] on IDGenero_Ge = IDGenero_Cat join [TipoSuscripciones] " +
-                "on CodTipo_Ts = CodTipo_Cat where IDContenido_Cat = '" + idCatalogo + "'");
-
+            DataTable tabla = ds.ObtenerTabla("Catalogos", "Select * from Catalogos as c inner join Generos as g on g.IDGenero_Ge = c.IDGenero_Cat inner join TipoSuscripciones as ts " +
+                "on ts.CodTipo_Ts = c.CodTipo_Cat where c.IDContenido_Cat = '" + idCatalogo + "'");
+        
             if (tabla.Rows.Count > 0)
             {
                 Generos genero = new Generos()
@@ -64,35 +64,36 @@ namespace Dao
             string filtroEdad = "", filtroTitulo = "", filtroGenero= "";
             if (edad > 0)
             {
-                filtroEdad = (filtros > 0 ? " and " : "") + "Clasif_Edad_Cat <= " + edad;
+                // pasa por falso en caso de que sea la primer condicion
+                filtroEdad = (filtros > 0 ? " and " : "") + " c.Clasif_Edad_Cat <= " + edad;
                 filtros++;
             }
 
             if (!string.IsNullOrWhiteSpace(titulo))
-            {
-                filtroTitulo = (filtros > 0 ? " and " : "") + "TituloContenido_Cat LIKE '%" + titulo + "%'";
+            {// pasa por falso en caso de que sea la primer condicion
+                filtroTitulo = (filtros > 0 ? " and " : "") + " c.TituloContenido_Cat LIKE '%" + titulo + "%'";
                 filtros++;
             }
             if (genero != "--Seleccionar Género--" )
-            {
-                filtroGenero = (filtros > 0 ? "and " : "") + "IDGenero_Cat LIKE '" + genero + "'";
+            {// pasa por falso en caso de que sea la primer condicion
+                filtroGenero = (filtros > 0 ? "and " : "") + " c.IDGenero_Cat LIKE '" + genero + "'";
                 filtros++;
             }
 
-            DataTable tabla = ds.ObtenerTabla("Catalogos", "Select * from Catalogos" + (filtros == 0 ? "" : " where " + filtroEdad + filtroTitulo + filtroGenero));
+            DataTable tabla = ds.ObtenerTabla("Catalogos", "Select * from Catalogos as c" + (filtros == 0 ? "" : " where " + filtroEdad + filtroTitulo + filtroGenero));
             return tabla;
         }
 
 
         public Boolean ExisteCatalogo(Catalogo catalogo)
         {
-            String consulta = "Select * from Catalogos where IDContenido_Cat= '" + catalogo.IDContenido_Cat1 + "'";
+            String consulta = "Select * from Catalogos as c where c.IDContenido_Cat= '" + catalogo.IDContenido_Cat1 + "'";
             return ds.existe(consulta);
         }
 
         public DataTable GetTablaCatalogo()
         {
-            DataTable tabla = ds.ObtenerTabla("Catalogos", "Select * from Catalogos");
+            DataTable tabla = ds.ObtenerTabla("Catalogos", "Select * from Catalogos as c");
             return tabla;
         }
 
@@ -147,7 +148,7 @@ namespace Dao
         public int GetIDUltimoCatalogo()
         {
             AccesoDatos ad = new AccesoDatos();
-            return ad.ObtenerMaximo("Select * from Catalogos");
+            return ad.ObtenerMaximo("Select * from Catalogos as c");
         }
     }
 }

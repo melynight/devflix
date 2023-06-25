@@ -35,17 +35,23 @@
                 <div class="MarginAdministrarUsers">
                     <span>INGRESE CONTRASEÑA ACTUAL </span>
                     <asp:TextBox ID="txtContraseniaActual" runat="server" TextMode="Password" ValidationGroup="contraActual"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="rfvContraseniaActual" runat="server" ControlToValidate="txtContraseniaActual" Display="Dynamic" Font-Size="Smaller" ValidationGroup="confirmPass">Debe completar la contraseña actual</asp:RequiredFieldValidator>
+                    <br />
+                    <asp:RequiredFieldValidator ID="rfvContraseniaActual" runat="server" ControlToValidate="txtContraseniaActual" Display="Dynamic" Font-Size="Smaller" ValidationGroup="confirmPass" ForeColor="Red">*Debe completar la contraseña actual</asp:RequiredFieldValidator>
                 </div>
                 <div class="MarginAdministrarUsers">
                     <span>INGRESE CONTRASEÑA NUEVA </span>
                     <asp:TextBox ID="txtNewPassword" runat="server" TextMode="Password"></asp:TextBox>
+                    <br />
+                    <asp:RequiredFieldValidator ID="rvClave2" runat="server" ControlToValidate="txtNewPassword" Display="Dynamic" ErrorMessage="RequiredFieldValidator" Font-Size="Smaller" ForeColor="Red">*Debe completar el campo</asp:RequiredFieldValidator>
+                    <asp:Label ID="lblErrorIgualPassword" runat="server" Font-Size="Smaller" ForeColor="Red" Text="*La conttraseña nueva debe ser diferente a la antigua contraseña"></asp:Label>
                 </div>
                 <div class="MarginAdministrarUsers">
                     <span>CONFIRME CONTRASEÑA NUEVA </span>
                     <asp:TextBox ID="txtConfirmNewPassword" runat="server" TextMode="Password" ValidationGroup="confirmPass"></asp:TextBox>
-                    <asp:CompareValidator ID="cvConfirmNewPassword" runat="server" ControlToCompare="txtNewPassword" ControlToValidate="txtConfirmNewPassword" Display="Dynamic" Font-Size="Smaller" ValidationGroup="confirmPass">Las nuevas contraseñas deben coincidir.</asp:CompareValidator>
                     <br />
+                    <asp:CompareValidator ID="cvConfirmNewPassword" runat="server" ControlToCompare="txtNewPassword" ControlToValidate="txtConfirmNewPassword" Display="Dynamic" Font-Size="Smaller" ValidationGroup="confirmPass" ForeColor="Red">*Las nuevas contraseñas deben coincidir.</asp:CompareValidator>
+                    <br />
+                    <asp:Label ID="lblExito" runat="server" ForeColor="Green" Text="La contraseña se cambio satisfactoriamente" Visible="False"></asp:Label>
                     <br />
                 </div>
             </article>

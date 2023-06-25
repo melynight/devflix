@@ -15,7 +15,7 @@ namespace Dao
 
         public Suscripcion GetSuscripcion(Suscripcion sus)
         {
-            DataTable tabla = ds.ObtenerTabla("Suscripciones", "SELECT * FROM Suscripciones WHERE CodSus_Sus=" + sus.CodSus_Sus1);
+            DataTable tabla = ds.ObtenerTabla("Suscripciones", "SELECT * FROM Suscripciones as s WHERE s.CodSus_Sus=" + sus.CodSus_Sus1);
             TipoSuscripcion tipo = new TipoSuscripcion();
             sus.CodSus_Sus1 = (Convert.ToInt32(tabla.Rows[0][0].ToString()));
             tipo.CodTipo_Ts1 = tabla.Rows[0][1].ToString();
@@ -49,7 +49,7 @@ namespace Dao
 
         public Boolean ExisteSuscripcion(Suscripcion sus)
         {
-            String consulta = "SELECT * FROM Suscripciones WHERE CodSus_Sus=" + sus.CodSus_Sus1;
+            String consulta = "SELECT * FROM Suscripciones as s WHERE s.CodSus_Sus=" + sus.CodSus_Sus1;
             return ds.existe(consulta);
         }
 

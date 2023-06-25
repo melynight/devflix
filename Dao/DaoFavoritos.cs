@@ -16,7 +16,7 @@ namespace Dao
         public Favoritos GetFavorito(Favoritos favorito)
 
         {
-            DataTable tabla = ds.ObtenerTabla("Favoritos", "Select *from favoritos where IDContenido_F  = '" + favorito.IDContenido_F1 + "' and ID_cuenta = " + favorito.IDCuenta_F1);
+            DataTable tabla = ds.ObtenerTabla("Favoritos", "Select * from favoritos as f where f.IDContenido_F  = '" + favorito.IDContenido_F1 + "' and f.ID_cuenta = " + favorito.IDCuenta_F1);
 
             favorito.IDContenido_F1 = (tabla.Rows[0][0].ToString());
             favorito.IDCuenta_F1 = (Convert.ToInt32(tabla.Rows[0][1].ToString()));
@@ -26,7 +26,7 @@ namespace Dao
 
         public Boolean ExisteFavorito(Favoritos favorito)
         {
-            string consulta = "select *from Favoritos where IDContenido_F = '" + favorito.IDContenido_F1 + "' and ID_cuenta = " + favorito.IDCuenta_F1;
+            string consulta = "select *from Favoritos as f where f.IDContenido_F = '" + favorito.IDContenido_F1 + "' and f.ID_cuenta = " + favorito.IDCuenta_F1;
             return ds.existe(consulta);
         }
 

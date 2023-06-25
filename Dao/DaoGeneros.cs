@@ -15,7 +15,7 @@ namespace Dao
 
         public Generos Getgenero(Generos genero)
         {
-            DataTable tabla = ds.ObtenerTabla("generos", "Select *from Generos where NombreGenero_Ge ='" + genero.NombreGenero_GE1 + "'");
+            DataTable tabla = ds.ObtenerTabla("generos", "Select *from Generos as g where g.NombreGenero_Ge ='" + genero.NombreGenero_GE1 + "'");
             genero.NombreGenero_GE1 = (tabla.Rows[0][1].ToString());
 
             return genero;
@@ -23,7 +23,7 @@ namespace Dao
 
         public Boolean existeGenero(Generos genero)
         {
-            string consulta = "select *from Generos where NombreGenero_Ge ='" + genero.NombreGenero_GE1 + "'";
+            string consulta = "select *from Generos as g where g.NombreGenero_Ge ='" + genero.NombreGenero_GE1 + "'";
             return ds.existe(consulta);
         }
 
