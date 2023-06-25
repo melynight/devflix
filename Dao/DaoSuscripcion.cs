@@ -15,11 +15,18 @@ namespace Dao
 
         public Suscripcion GetSuscripcion(Suscripcion sus)
         {
-            DataTable tabla = ds.ObtenerTabla("Suscripciones", "SELECT * FROM Suscripciones WHERE CodSus_Sus=" + sus.CodSus_Sus1);
-            TipoSuscripcion tipo = new TipoSuscripcion();
+            DataTable tabla = ds.ObtenerTabla("Suscripciones", "SELECT * FROM Suscripciones INNER JOIN TipoSuscripciones ON CodTipo_Ts=CodTipo_Sus WHERE CodSus_Sus=" + sus.CodSus_Sus1);
+            TipoSuscripcion tipoSus = new TipoSuscripcion()
+            {
+                CodTipo_Ts1 = tabla.Rows[0]["CodTipo_Ts"].ToString(),
+                Nombre_Ts1 = tabla.Rows[0]["Nombre_Ts"].ToString(),
+                Precio_Ts1 = Convert.ToDecimal(tabla.Rows[0]["Precio_Ts"]),
+                Beneficios_Ts1 = tabla.Rows[0]["Beneficios_Ts"].ToString(),
+                CantUsuarios_Ts1 = Convert.ToInt32(tabla.Rows[0]["CantUsuarios_Ts"]),
+                Estado_Ts1 = Convert.ToBoolean(tabla.Rows[0]["Estado_Ts"].ToString())
+            };
             sus.CodSus_Sus1 = (Convert.ToInt32(tabla.Rows[0][0].ToString()));
-            tipo.CodTipo_Ts1 = tabla.Rows[0][1].ToString();
-            sus.CodTipo_Sus1 = tipo;
+            sus.CodTipo_Sus1 = tipoSus;
             sus.Total_Sus = (Convert.ToDecimal(tabla.Rows[0][2].ToString()));
             sus.FechaCompra_Sus = (Convert.ToDateTime(tabla.Rows[0][3].ToString()));
             sus.Estado_Sus = (Convert.ToBoolean(tabla.Rows[0][4].ToString()));

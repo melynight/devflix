@@ -14,19 +14,25 @@ namespace Dao
         private AccesoDatos ds = new AccesoDatos();
 
         public Favoritos GetFavorito(Favoritos favorito)
-
         {
-            DataTable tabla = ds.ObtenerTabla("Favoritos", "Select *from favoritos where IDContenido_F  = '" + favorito.IDContenido_F1 + "' and ID_cuenta = " + favorito.IDCuenta_F1);
+            DataTable tabla = ds.ObtenerTabla("Favoritos", "select * from Favoritos inner join Catalogos on IDContenido_Cat = IDContenido_F where IDContenido_F  = '" + favorito.IDContenido_F1.IDContenido_Cat1 + "' and ID_cuenta = " + favorito.IDCuenta_F1.GetIDCuenta());
+           
+            Cuenta cuenta = new Cuenta();
+            Catalogo catalogo = new Catalogo();
+            
+            catalogo.IDContenido_Cat1 = Convert.ToString(tabla.Rows[0][0].ToString());
+            catalogo.TituloContenido_Cat1 = Convert.ToString(tabla.Rows[0][9].ToString());
+            cuenta.SetIDCuenta(Convert.ToInt32(tabla.Rows[0][1].ToString()));
 
-            favorito.IDContenido_F1 = (tabla.Rows[0][0].ToString());
-            favorito.IDCuenta_F1 = (Convert.ToInt32(tabla.Rows[0][1].ToString()));
+            favorito.IDContenido_F1 = catalogo;
+            favorito.IDCuenta_F1 = cuenta;
 
             return favorito;
         }
 
         public Boolean ExisteFavorito(Favoritos favorito)
         {
-            string consulta = "select *from Favoritos where IDContenido_F = '" + favorito.IDContenido_F1 + "' and ID_cuenta = " + favorito.IDCuenta_F1;
+            string consulta = "select * from Favoritos where IDContenido_F = '" + favorito.IDContenido_F1.IDContenido_Cat1 + "' and ID_cuenta = " + favorito.IDCuenta_F1.GetIDCuenta();
             return ds.existe(consulta);
         }
 
@@ -51,18 +57,18 @@ namespace Dao
         {
             SqlParameter sqlParametros = new SqlParameter();
             sqlParametros = comando.Parameters.Add("@IDContenido_F", SqlDbType.Char);
-            sqlParametros.Value = favorito.IDContenido_F1;
+            sqlParametros.Value = favorito.IDContenido_F1.IDContenido_Cat1;
             sqlParametros = comando.Parameters.Add("@ID_cuenta", SqlDbType.Int);
-            sqlParametros.Value = favorito.IDCuenta_F1;
+            sqlParametros.Value = favorito.IDCuenta_F1.GetIDCuenta();
         }
 
-            private void ArmarParametrosFavorito(ref SqlCommand comando, Favoritos favorito)
+        private void ArmarParametrosFavorito(ref SqlCommand comando, Favoritos favorito)
         {
             SqlParameter sqlParametros = new SqlParameter();
-            sqlParametros = comando.Parameters.Add("@IDContenido_F", SqlDbType.VarChar);
-            sqlParametros.Value = favorito.IDContenido_F1;
+            sqlParametros = comando.Parameters.Add("@IDContenido_F", SqlDbType.Char);
+            sqlParametros.Value = favorito.IDContenido_F1.IDContenido_Cat1;
             sqlParametros = comando.Parameters.Add("@ID_cuenta", SqlDbType.Int);
-            sqlParametros.Value = favorito.IDCuenta_F1;
+            sqlParametros.Value = favorito.IDCuenta_F1.GetIDCuenta();
         }
         public int EliminarFavorito(Favoritos favorito)
         {

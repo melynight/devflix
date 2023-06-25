@@ -22,15 +22,27 @@ namespace Negocio
         {
             DaoFavoritos dao = new DaoFavoritos();
             Favoritos favorito = new Favoritos();
-            favorito.IDContenido_F1 = id;
+            Catalogo cat = new Catalogo();
+
+            cat.IDContenido_Cat1 = id;
+
+            favorito.IDContenido_F1 = cat;
+            favorito.IDContenido_F1.IDContenido_Cat1 = id;
             return dao.GetFavorito(favorito);
         }
         public bool EliminarFavorito(string idContenido, int idCuenta)
         {
             DaoFavoritos dao = new DaoFavoritos();
             Favoritos favorito = new Favoritos();
-            favorito.IDContenido_F1 = idContenido;
-            favorito.IDCuenta_F1 = idCuenta;
+            Catalogo cat = new Catalogo();
+            Cuenta cue = new Cuenta();
+
+            cue.SetIDCuenta(idCuenta);
+            cat.IDContenido_Cat1 = idContenido;
+
+            favorito.IDContenido_F1 = cat;
+            favorito.IDCuenta_F1 = cue;
+
             int op = dao.EliminarFavorito(favorito);
             if (op == 1)
                 return true;
@@ -40,23 +52,32 @@ namespace Negocio
 
         public bool ExisteFavorito(string idContenido, int idCuenta)
         {
-            Favoritos favorito = new Favoritos
-            {
-                IDContenido_F1 = idContenido,
-                IDCuenta_F1 = idCuenta
-            };
+            Favoritos favorito = new Favoritos();
             DaoFavoritos dao = new DaoFavoritos();
+
+            Catalogo cat = new Catalogo();
+            Cuenta cue = new Cuenta();
+
+            cue.SetIDCuenta(idCuenta);
+            cat.IDContenido_Cat1 = idContenido;
+            
+            favorito.IDContenido_F1 = cat;
+            favorito.IDCuenta_F1 = cue;
             return dao.ExisteFavorito(favorito);
         }
 
         public bool MarcarFavorito(string idContenido, int idCuenta)
         {
             bool favMarcado = false;
-            Favoritos favorito = new Favoritos
-            {
-                IDContenido_F1 = idContenido,
-                IDCuenta_F1 = idCuenta
-            };
+            Favoritos favorito = new Favoritos();
+            Catalogo cat = new Catalogo();
+            Cuenta cue = new Cuenta();
+
+            cue.SetIDCuenta(idCuenta);
+            cat.IDContenido_Cat1 = idContenido;
+
+            favorito.IDContenido_F1 = cat;
+            favorito.IDCuenta_F1 = cue;
             DaoFavoritos dao = new DaoFavoritos();
             var eliminar = dao.ExisteFavorito(favorito);
             favMarcado = dao.MarcarFavorito(favorito, eliminar);

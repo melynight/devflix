@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Favoritos.aspx.cs" Inherits="Vistas.WebForm2" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Favoritos.aspx.cs" Inherits="Vistas.WebForm2" EnableEventValidation="false" %>
 
 <!DOCTYPE html>
 
@@ -11,9 +11,23 @@
     <link rel="stylesheet" type="text/css" href="Recursos\\Estilos\\Suscripciones.css" />
     <title>Favoritos | DevFlix</title>
 
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function () {
+            checkSearchBarShown(document.getElementById("txtBusqueda"));
+        });
+
+        function checkSearchBarShown(obj) {
+            if (obj.value.length > 0) {
+                obj.classList.add('show');
+            } else {
+                obj.classList.remove('show');
+            }
+        }
+    </script>
+
     </head>
 
-<body style="background-image: url(Recursos/Imagenes/fondoHome2.jpg); background-size: cover; opacity: 10;">
+<body style="background-image: url(Recursos/Imagenes/fondoSeleccionarUsuarios.jpg); background-size: cover; opacity: 10;">
     <form id="form1" runat="server">
 
         <nav class="menu_principal">
@@ -32,12 +46,20 @@
             <br />
             <p>&nbsp;&nbsp;</p>
             <p id="titulo">Mi lista</p>
-        &nbsp;<asp:ListView ID="lvFavoritos" runat="server" DataSourceID="FavoritosDataSource" GroupItemCount="5">
+        </div>
+            <div class="SearchBox">
+
+                <asp:TextBox ID="txtBusqueda" class="SearchBox-input" runat="server" onkeyup="checkSearchBarShown(this)"> </asp:TextBox>
+                <asp:ImageButton ID="imgbtnBuscar" class="SearchBox-button" runat="server" src="Recursos/Imagenes/lupaa.png" OnClick="imgBtnFiltrar_Click" Height="32px" Width="32px" />
+
+            </div>
+            <div>
+        &nbsp;<asp:ListView ID="lvFavoritos" runat="server" DataSourceID="FavoritosDataSource" GroupItemCount="5" OnPagePropertiesChanging="lvFavoritos_PagePropertiesChanging">
                 <AlternatingItemTemplate>
-                    <td runat="server" style="padding: 20px; text-align: center">
+                    <td runat="server" style="text-align: center">
                         <asp:Label ID="TituloContenido_CatLabel" runat="server" ForeColor="White" Text='<%# Eval("TituloContenido_Cat") %>'></asp:Label>
                         <br />
-                        <asp:ImageButton ID="imgbtnPortada" runat="server" Height="375px" ImageUrl='<%# Eval("URLPortada_Cat") %>' Width="246px" />
+                        <asp:ImageButton ID="imgbtnPortada" runat="server" Height="375px" ImageUrl='<%# Eval("URLPortada_Cat") %>' Width="246px" CommandArgument='<%# Eval("IDContenido_F") %>' CommandName="eventoSeleccion" OnCommand="imgbtnPortada_Command" />
                         <br />
                         <br />
                         <asp:Button ID="btnEliminar" runat="server" CommandArgument='<%# Eval("IDContenido_F") %>' CommandName="eventoSeleccionar" OnCommand="btnEliminar_Command" Text="Eliminar de favoritos" BorderColor="#63B9CD" />
@@ -94,7 +116,7 @@
                     <td runat="server" style="text-align: center">
                         <asp:Label ID="TituloContenido_CatLabel" runat="server" ForeColor="White" Text='<%# Eval("TituloContenido_Cat") %>'></asp:Label>
                         <br />
-                        <asp:ImageButton ID="imgbtnPortada" runat="server" Height="375px" ImageUrl='<%# Eval("URLPortada_Cat") %>' Width="246px" />
+                        <asp:ImageButton ID="imgbtnPortada" runat="server" Height="375px" ImageUrl='<%# Eval("URLPortada_Cat") %>' Width="246px" CommandArgument='<%# Eval("IDContenido_F") %>' CommandName="eventoSeleccion" OnCommand="imgbtnPortada_Command" />
                         <br />
                         <br />
                         <asp:Button ID="btnEliminar" runat="server" CommandArgument='<%# Bind("IDContenido_F") %>' CommandName="eventoSeleccionar" OnCommand="btnEliminar_Command" Text="Eliminar de favoritos" BorderColor="#63B9CD" />
@@ -113,11 +135,11 @@
                         </tr>
                         <tr runat="server">
                             <td runat="server" style="padding: 10px; text-align: center; color: #6699FF;">
-                                <asp:DataPager ID="DataPager1" runat="server" PageSize="12">
+                                <asp:DataPager ID="DataPager1" runat="server" PageSize="5">
                                     <Fields>
-                                        <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" />
-                                        <asp:NumericPagerField />
-                                        <asp:NextPreviousPagerField ButtonType="Button" ShowLastPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" />
+                                        <asp:NextPreviousPagerField ButtonCssClass="botoncito-page" ButtonType="Button" ShowFirstPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" />
+                                        <asp:NumericPagerField NumericButtonCssClass="botoncito-page" />
+                                        <asp:NextPreviousPagerField ButtonCssClass="botoncito-page" ButtonType="Button" ShowLastPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" />
                                     </Fields>
                                 </asp:DataPager>
                             </td>
@@ -143,10 +165,175 @@
                     <asp:SessionParameter Name="IDcuenta" SessionField="IDCuenta" Type="Int32" />
                 </SelectParameters>
             </asp:SqlDataSource>
+        <asp:SqlDataSource ID="filtroDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:DevFlixDBConnectionString %>" SelectCommand="SP_CargarListViewFiltro" SelectCommandType="StoredProcedure">
+            <SelectParameters>
+                <asp:ControlParameter ControlID="txtBusqueda" Name="Titulo" PropertyName="Text" Type="String" DefaultValue="" />
+                <asp:SessionParameter Name="IDCuenta" SessionField="IDCuenta" Type="Int32" />
+            </SelectParameters>
+        </asp:SqlDataSource>
         <p>
             &nbsp;</p>
         <p>
-            &nbsp;</p>
+            <!--<asp:ListView ID="ListView1" runat="server" DataKeyNames="IDContenido_F,ID_cuenta,IDContenido_Cat" DataSourceID="filtroDataSource" GroupItemCount="5">
+                <AlternatingItemTemplate>
+                    <td runat="server" style="padding: 20px; text-align: center;">
+                        <asp:Label ID="TituloContenido_CatLabel" runat="server" ForeColor="White" Text='<%# Eval("TituloContenido_Cat") %>' />
+                        <br />
+                        <asp:ImageButton ID="imgbtnPortada" runat="server" CommandArgument='<%# Eval("IDContenido_F") %>' CommandName="eventoSeleccion" Height="375px" ImageUrl='<%# Eval("URLPortada_Cat") %>' OnCommand="imgbtnPortada_Command" Width="246px" />
+                        <br /><br />
+                        <asp:Button ID="btnEliminar" runat="server" BorderColor="#63B9CD" CommandArgument='<%# Eval("IDContenido_F") %>' CommandName="eventoSeleccionar" OnCommand="btnEliminar_Command" Text="Eliminar de favoritos" />
+                        <br /></td>
+                </AlternatingItemTemplate>
+                <EditItemTemplate>
+                    <td runat="server" style="">IDContenido_F:
+                        <asp:Label ID="IDContenido_FLabel1" runat="server" Text='<%# Eval("IDContenido_F") %>' />
+                        <br />ID_cuenta:
+                        <asp:Label ID="ID_cuentaLabel1" runat="server" Text='<%# Eval("ID_cuenta") %>' />
+                        <br />
+                        <asp:CheckBox ID="estado_FACheckBox" runat="server" Checked='<%# Bind("estado_FA") %>' Text="estado_FA" />
+                        <br />IDContenido_Cat:
+                        <asp:Label ID="IDContenido_CatLabel1" runat="server" Text='<%# Eval("IDContenido_Cat") %>' />
+                        <br />IDGenero_Cat:
+                        <asp:TextBox ID="IDGenero_CatTextBox" runat="server" Text='<%# Bind("IDGenero_Cat") %>' />
+                        <br />CodTipo_Cat:
+                        <asp:TextBox ID="CodTipo_CatTextBox" runat="server" Text='<%# Bind("CodTipo_Cat") %>' />
+                        <br />Sinopsis_Cat:
+                        <asp:TextBox ID="Sinopsis_CatTextBox" runat="server" Text='<%# Bind("Sinopsis_Cat") %>' />
+                        <br />Duracion_Cat:
+                        <asp:TextBox ID="Duracion_CatTextBox" runat="server" Text='<%# Bind("Duracion_Cat") %>' />
+                        <br />URLPortada_Cat:
+                        <asp:TextBox ID="URLPortada_CatTextBox" runat="server" Text='<%# Bind("URLPortada_Cat") %>' />
+                        <br />TituloContenido_Cat:
+                        <asp:TextBox ID="TituloContenido_CatTextBox" runat="server" Text='<%# Bind("TituloContenido_Cat") %>' />
+                        <br />Season_Cat:
+                        <asp:TextBox ID="Season_CatTextBox" runat="server" Text='<%# Bind("Season_Cat") %>' />
+                        <br />URLVideo_Cat:
+                        <asp:TextBox ID="URLVideo_CatTextBox" runat="server" Text='<%# Bind("URLVideo_Cat") %>' />
+                        <br />Clasif_Edad_Cat:
+                        <asp:TextBox ID="Clasif_Edad_CatTextBox" runat="server" Text='<%# Bind("Clasif_Edad_Cat") %>' />
+                        <br />
+                        <asp:CheckBox ID="Estado_CatCheckBox" runat="server" Checked='<%# Bind("Estado_Cat") %>' Text="Estado_Cat" />
+                        <br />
+                        <asp:Button ID="UpdateButton" runat="server" CommandName="Update" Text="Actualizar" />
+                        <br />
+                        <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Cancelar" />
+                        <br /></td>
+                </EditItemTemplate>
+                <EmptyDataTemplate>
+                    <table runat="server" style="">
+                        <tr>
+                            <td>No se han devuelto datos.</td>
+                        </tr>
+                    </table>
+                </EmptyDataTemplate>
+                <EmptyItemTemplate>
+<td runat="server" />
+                </EmptyItemTemplate>
+                <GroupTemplate>
+                    <tr id="itemPlaceholderContainer" runat="server">
+                        <td id="itemPlaceholder" runat="server"></td>
+                    </tr>
+                </GroupTemplate>
+                <InsertItemTemplate>
+                    <td runat="server" style="">IDContenido_F:
+                        <asp:TextBox ID="IDContenido_FTextBox" runat="server" Text='<%# Bind("IDContenido_F") %>' />
+                        <br />ID_cuenta:
+                        <asp:TextBox ID="ID_cuentaTextBox" runat="server" Text='<%# Bind("ID_cuenta") %>' />
+                        <br />
+                        <asp:CheckBox ID="estado_FACheckBox" runat="server" Checked='<%# Bind("estado_FA") %>' Text="estado_FA" />
+                        <br />IDContenido_Cat:
+                        <asp:TextBox ID="IDContenido_CatTextBox" runat="server" Text='<%# Bind("IDContenido_Cat") %>' />
+                        <br />IDGenero_Cat:
+                        <asp:TextBox ID="IDGenero_CatTextBox" runat="server" Text='<%# Bind("IDGenero_Cat") %>' />
+                        <br />CodTipo_Cat:
+                        <asp:TextBox ID="CodTipo_CatTextBox" runat="server" Text='<%# Bind("CodTipo_Cat") %>' />
+                        <br />Sinopsis_Cat:
+                        <asp:TextBox ID="Sinopsis_CatTextBox" runat="server" Text='<%# Bind("Sinopsis_Cat") %>' />
+                        <br />Duracion_Cat:
+                        <asp:TextBox ID="Duracion_CatTextBox" runat="server" Text='<%# Bind("Duracion_Cat") %>' />
+                        <br />URLPortada_Cat:
+                        <asp:TextBox ID="URLPortada_CatTextBox" runat="server" Text='<%# Bind("URLPortada_Cat") %>' />
+                        <br />TituloContenido_Cat:
+                        <asp:TextBox ID="TituloContenido_CatTextBox" runat="server" Text='<%# Bind("TituloContenido_Cat") %>' />
+                        <br />Season_Cat:
+                        <asp:TextBox ID="Season_CatTextBox" runat="server" Text='<%# Bind("Season_Cat") %>' />
+                        <br />URLVideo_Cat:
+                        <asp:TextBox ID="URLVideo_CatTextBox" runat="server" Text='<%# Bind("URLVideo_Cat") %>' />
+                        <br />Clasif_Edad_Cat:
+                        <asp:TextBox ID="Clasif_Edad_CatTextBox" runat="server" Text='<%# Bind("Clasif_Edad_Cat") %>' />
+                        <br />
+                        <asp:CheckBox ID="Estado_CatCheckBox" runat="server" Checked='<%# Bind("Estado_Cat") %>' Text="Estado_Cat" />
+                        <br />
+                        <asp:Button ID="InsertButton" runat="server" CommandName="Insert" Text="Insertar" />
+                        <br />
+                        <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Borrar" />
+                        <br /></td>
+                </InsertItemTemplate>
+                <ItemTemplate>
+                    <td runat="server" style="text-align: center">
+                        <asp:Label ID="TituloContenido_CatLabel" runat="server" ForeColor="White" Text='<%# Eval("TituloContenido_Cat") %>'></asp:Label>
+                        <br />
+                        <asp:ImageButton ID="imgbtnPortada" runat="server" CommandArgument='<%# Eval("IDContenido_F") %>' CommandName="eventoSeleccion" Height="375px" ImageUrl='<%# Eval("URLPortada_Cat") %>' OnCommand="imgbtnPortada_Command" Width="246px" />
+                        <br /><br />
+                        <asp:Button ID="btnEliminar" runat="server" BorderColor="#63B9CD" CommandArgument='<%# Eval("IDContenido_F") %>' CommandName="eventoSeleccionar" OnCommand="btnEliminar_Command" Text="Eliminar de favoritos" />
+                        <br /></td>
+                </ItemTemplate>
+                <LayoutTemplate>
+                    <table runat="server">
+                        <tr runat="server">
+                            <td runat="server">
+                                <table id="groupPlaceholderContainer" runat="server" border="0" style="">
+                                    <tr id="groupPlaceholder" runat="server">
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr runat="server">
+                            <td runat="server" style="text-align: center">
+                                <asp:DataPager ID="DataPager2" runat="server" PageSize="5">
+                                    <Fields>
+                                        <asp:NextPreviousPagerField ButtonCssClass="botoncito-page" ButtonType="Button" ShowFirstPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" />
+                                        <asp:NumericPagerField NumericButtonCssClass="botoncito-page"/>
+                                        <asp:NextPreviousPagerField  ButtonCssClass="botoncito-page" ButtonType="Button" ShowLastPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" />
+                                    </Fields>
+                                </asp:DataPager>
+                            </td>
+                        </tr>
+                    </table>
+                </LayoutTemplate>
+                <SelectedItemTemplate>
+                    <td runat="server" style="">IDContenido_F:
+                        <asp:Label ID="IDContenido_FLabel" runat="server" Text='<%# Eval("IDContenido_F") %>' />
+                        <br />ID_cuenta:
+                        <asp:Label ID="ID_cuentaLabel" runat="server" Text='<%# Eval("ID_cuenta") %>' />
+                        <br />
+                        <asp:CheckBox ID="estado_FACheckBox" runat="server" Checked='<%# Eval("estado_FA") %>' Enabled="false" Text="estado_FA" />
+                        <br />IDContenido_Cat:
+                        <asp:Label ID="IDContenido_CatLabel" runat="server" Text='<%# Eval("IDContenido_Cat") %>' />
+                        <br />IDGenero_Cat:
+                        <asp:Label ID="IDGenero_CatLabel" runat="server" Text='<%# Eval("IDGenero_Cat") %>' />
+                        <br />CodTipo_Cat:
+                        <asp:Label ID="CodTipo_CatLabel" runat="server" Text='<%# Eval("CodTipo_Cat") %>' />
+                        <br />Sinopsis_Cat:
+                        <asp:Label ID="Sinopsis_CatLabel" runat="server" Text='<%# Eval("Sinopsis_Cat") %>' />
+                        <br />Duracion_Cat:
+                        <asp:Label ID="Duracion_CatLabel" runat="server" Text='<%# Eval("Duracion_Cat") %>' />
+                        <br />URLPortada_Cat:
+                        <asp:Label ID="URLPortada_CatLabel" runat="server" Text='<%# Eval("URLPortada_Cat") %>' />
+                        <br />TituloContenido_Cat:
+                        <asp:Label ID="TituloContenido_CatLabel" runat="server" Text='<%# Eval("TituloContenido_Cat") %>' />
+                        <br />Season_Cat:
+                        <asp:Label ID="Season_CatLabel" runat="server" Text='<%# Eval("Season_Cat") %>' />
+                        <br />URLVideo_Cat:
+                        <asp:Label ID="URLVideo_CatLabel" runat="server" Text='<%# Eval("URLVideo_Cat") %>' />
+                        <br />Clasif_Edad_Cat:
+                        <asp:Label ID="Clasif_Edad_CatLabel" runat="server" Text='<%# Eval("Clasif_Edad_Cat") %>' />
+                        <br />
+                        <asp:CheckBox ID="Estado_CatCheckBox" runat="server" Checked='<%# Eval("Estado_Cat") %>' Enabled="false" Text="Estado_Cat" />
+                        <br /></td>
+                </SelectedItemTemplate>
+            </asp:ListView>-->
+        </p>
     </form>
 </body>
 </html>
