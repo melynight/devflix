@@ -239,9 +239,5 @@ namespace Vistas
             Response.Redirect("EliminarUsuario.aspx");
         }
 
-        protected void btnEliminarUsuario_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("EliminarUsuario.aspx");
-        }
     }
 }
