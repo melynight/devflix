@@ -25,17 +25,18 @@ namespace Vistas
             ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
 
             cuenta = (Cuenta)Session["Cuenta"];
-            Session["limite"] = LimiteUsers(cuenta);
             
 
-            if (!IsPostBack) {
 
+            if (!IsPostBack) {
+                cuentaAdminAux = nCuenta.GetByID((int)Session["IDAdmin"]);
                 if (cuenta.GetIDRef_Cu() != 0 && cuenta.GetIDRef_Cu().ToString() != null) //no es admin
                 {
-                   cuentaAdminAux = nCuenta.GetByID((int)Session["IDAdmin"]);
+                   
                     CargarImgAdmin(cuentaAdminAux);
                     lblIDRef.Text = cuentaAdminAux.GetIDCuenta().ToString();
                     ocultarValidarPIN();
+                    Session["CantidadUsuariosAdmin"] = validarCantUsuariosMax(cuentaAdminAux);
                     lblError.Text = "";
                 }
 
@@ -44,7 +45,7 @@ namespace Vistas
                     Session["IDAdmin"] = cuenta.GetIDCuenta();
                     cuenta = (Cuenta)Session["Cuenta"];
                     CargarImgAdmin(cuenta);
-                    Session["CantidadUsuariosAdmin"] = validarCantUsuariosMax(cuenta);
+                    Session["CantidadUsuariosAdmin"] = validarCantUsuariosMax(cuentaAdminAux);
 
                     lblIDRef.Text = cuenta.GetIDCuenta().ToString();
                     lblNombreAdmin.Text = cuenta.GetNombre_Cu();

@@ -21,9 +21,23 @@ namespace Vistas
         protected void Page_Load(object sender, EventArgs e)
         {
             ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
-
+            lblErrorPermiso.Visible = false;
             cuenta = (Cuenta)Session["Cuenta"];
-
+            if (cuenta.GetSus_Cu().CodSus_Sus1 == 0)
+            {
+                Label1.Visible = false;
+                Label2.Visible = false;
+                txtPIN.Visible = false;
+                lblErrorPermiso.Visible = true;
+                btnPaquete.Visible = false;
+                ddlSuscripciones.Visible = false;
+                lblMensajeError.Visible = false;
+                btnNo.Visible = false;
+                btnSi.Visible = false;
+                btnAceptar.Visible = false;
+                lvSuscripciones.Visible = false;
+                return;
+            }
             RefrescarTipoSuscripcion();
             lblPlanActual.Text = "Tu plan actual es: " + (string)Session["NombreSus"];
             ddlSuscripciones.Visible = false;

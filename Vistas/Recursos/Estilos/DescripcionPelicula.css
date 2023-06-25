@@ -51,8 +51,8 @@ main {
     background: url(/Recursos/Imagenes/star-empty.png)no-repeat cyan center;
     cursor: pointer;
     position: relative;
-    left: 21px;
-    margin: 10px;
+    float: left;
+    margin: 20px;
 }
 
     #BtnFavoritos.filled {

@@ -37,8 +37,12 @@
             
             <p>&nbsp;</p>
             <p id="titulo">Membresías</p>
-            <p>&nbsp;</p>
-            <p style="color: #FFFFFF">Ingresar PIN de administrador: 
+
+            <p>
+                <asp:Label ID="lblErrorPermiso" runat="server" ForeColor="Red" Text="Acceso denegado! el usuario no tiene permisos" Font-Bold="True" Font-Italic="False" Font-Size="XX-Large" Font-Strikeout="False"></asp:Label>
+            </p>
+            <p style="color: #FFFFFF">
+                <asp:Label ID="Label2" runat="server" Text="Ingresar PIN de administrador: "></asp:Label>
                 <asp:TextBox ID="txtPIN" runat="server" MaxLength="4" TextMode="Password" ValidationGroup="PIN"></asp:TextBox>
                 <asp:Label ID="lblMensajeError" runat="server" ForeColor="White" Visible="False"></asp:Label>
                 <asp:RequiredFieldValidator ID="rfvPIN" runat="server" ControlToValidate="txtPIN" Display="Dynamic" ValidationGroup="PIN">*Debe ingresar un PIN para continuar</asp:RequiredFieldValidator>
@@ -188,7 +192,8 @@
         </div>
 
         <article>
-            <p style="color: #FFFFFF">&#8226;Para cancelaciones de membresías©, por favor dirigirse a Ajustes → Eliminar Cuenta.<asp:SqlDataSource ID="SqlDataSourceSus" runat="server" ConnectionString="<%$ ConnectionStrings:DevFlixDBConnectionString4 %>" SelectCommand="SELECT [Nombre_Ts], [Precio_Ts], [Beneficios_Ts], [CantUsuarios_Ts] FROM [TipoSuscripciones] WHERE [CodTipo_Ts] <> 'PUNIVERSAL'"></asp:SqlDataSource>
+            <p style="color: #FFFFFF">&#8226;<asp:Label ID="Label1" runat="server" ForeColor="#999999" Text="Para cancelaciones de membresías©, por favor dirigirse a Ajustes → Eliminar Cuenta."></asp:Label>
+                <asp:SqlDataSource ID="SqlDataSourceSus" runat="server" ConnectionString="<%$ ConnectionStrings:DevFlixDBConnectionString4 %>" SelectCommand="SELECT [Nombre_Ts], [Precio_Ts], [Beneficios_Ts], [CantUsuarios_Ts] FROM [TipoSuscripciones] WHERE [CodTipo_Ts] <> 'PUNIVERSAL'"></asp:SqlDataSource>
 
             </p>
         </article>
