@@ -238,5 +238,9 @@ namespace Vistas
         {
             Response.Redirect("EliminarUsuario.aspx");
         }
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/main
     }
 }
