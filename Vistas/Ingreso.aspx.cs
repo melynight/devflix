@@ -55,11 +55,9 @@ namespace Vistas
                 Session["Cuenta"] = cuenta;
                 Application["tipoSuscripcion"] = tip;
                 Session["NombreSus"] = tip.Nombre_Ts1;
-<<<<<<< HEAD
                 Session["EdadUsuario"] = cuenta.GetEdad_Cu();
-=======
                 Session["IDAdmin"] = cuenta.GetIDCuenta();
->>>>>>> origin/main
+                Session["EdadUsuario"] = cuenta.GetEdad_Cu();
                 lblError.Visible = false;
                 txtClave.Text = "";
                 txtEmail.Text = "";

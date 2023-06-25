@@ -172,7 +172,7 @@
                 <div class="menu">
                     
                     <asp:Label ID="lblNombre" runat="server" Text="Actualizar nombre:" Visible="False"></asp:Label>
-                    <asp:TextBox ID="txtNuevoNombre" runat="server" Visible="False" ValidationGroup="ErrorNombre"></asp:TextBox>
+                    <asp:TextBox ID="txtNuevoNombre" runat="server" Visible="False" ValidationGroup="ErrorNombre" MaxLength="50"></asp:TextBox>
                     <asp:Label ID="lblNuevaEdad" runat="server" Text="Actualizar edad:" Visible="False"></asp:Label>
                     <asp:TextBox ID="txtNuevaEdad" runat="server" MaxLength="3" TextMode="Number" Visible="False" ValidationGroup="ErrorEdad"></asp:TextBox>
                     &nbsp;<br />

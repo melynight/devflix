@@ -170,8 +170,14 @@ namespace Vistas
                 if (cuenta.GetIDRef_Cu() != 0 && cuenta.GetIDRef_Cu().ToString() != null)
                 {
                     ModificoEdad = negCue.CambiarEdad((int)Session["IDStd"], Convert.ToInt32(txtNuevaEdad.Text));
+                    Session["EdadUsuario"] = Convert.ToInt32(txtNuevaEdad.Text);
                 }
-                else { ModificoEdad = negCue.CambiarEdad((int)Session["IDAdmin"], Convert.ToInt32(txtNuevaEdad.Text)); }
+                else
+                {
+                    ModificoEdad = negCue.CambiarEdad((int)Session["IDAdmin"], Convert.ToInt32(txtNuevaEdad.Text));
+                    Session["EdadUsuario"] = Convert.ToInt32(txtNuevaEdad.Text);
+                    
+                }
             }
             bool ModificoUrl = false;
 
@@ -224,7 +230,7 @@ namespace Vistas
 
 
             //if ((int)Session["CantidadUsuariosAdmin"] == 1 || (int)Session["CantidadUsuariosAdmin"] < cantMax) CargarImgAdmin(cuenta);//validamos que no tenga usuarios ese admin
-            if (ModificoNombre|| ModificoEdad||ModificoUrl)
+            if (ModificoNombre || ModificoEdad || ModificoUrl)
             {
                 if (txtNuevoNombre.Text.ToString().Trim() != cuenta.GetNombre_Cu())
                 {

@@ -86,7 +86,7 @@ namespace Vistas
             }
             else
             {
-                lblMensajePlan.Text = "Esta seguro que desea cambiar su plan actual a " + ddlSuscripciones.SelectedItem + "?";
+                lblMensajePlan.Text = "Esta seguro que desea cambiar su plan actual a " + ddlSuscripciones.SelectedItem + "?, ";
                 btnSi.Visible = true;
                 btnNo.Visible = true;
             }

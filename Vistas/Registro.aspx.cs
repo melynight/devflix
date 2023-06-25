@@ -96,9 +96,10 @@ namespace Vistas
             cuenta.SetNROTarjeta_Cu(txtNroTarjeta.Text.Trim().ToLower());
             cuenta.SetPIN_Cu(txtPIN.Text.Trim().ToLower());
             cuenta.URLImagenDefault1 = "Recursos/Imagenes/usuario.png";
+            Session["EdadUsuario"] =  cuenta.GetEdad_Cu();
             //La fecha se setea automaticamente como el id
 
-            
+
 
             AgregadoCorrectamente = negCue.AgregarCuenta(cuenta);
             if (!AgregadoCorrectamente)

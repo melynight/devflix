@@ -53,7 +53,6 @@ GO
 
 --ULTIMOS INSERTS CATALOGOS--
 
-
 INSERT INTO Catalogos (IDContenido_Cat, IDGenero_Cat, CodTipo_Cat, Sinopsis_Cat,
 Duracion_Cat,
 URLPortada_Cat,
