@@ -171,10 +171,14 @@
 
                 <div class="menu">
                     
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <asp:RangeValidator ID="rvEdad" runat="server" ControlToValidate="txtNuevaEdad" Display="Dynamic" ForeColor="Red" MaximumValue="118" MinimumValue="3" Type="Integer" ValidationGroup="ErrorNombre">La edad debe estar entre los 3 y 118 años</asp:RangeValidator>
+                    <br />
+                    
                     <asp:Label ID="lblNombre" runat="server" Text="Actualizar nombre:" Visible="False"></asp:Label>
                     <asp:TextBox ID="txtNuevoNombre" runat="server" Visible="False" ValidationGroup="ErrorNombre" MaxLength="50"></asp:TextBox>
                     <asp:Label ID="lblNuevaEdad" runat="server" Text="Actualizar edad:" Visible="False"></asp:Label>
-                    <asp:TextBox ID="txtNuevaEdad" runat="server" MaxLength="3" TextMode="Number" Visible="False" ValidationGroup="ErrorEdad"></asp:TextBox>
+                    <asp:TextBox ID="txtNuevaEdad" runat="server" MaxLength="3" TextMode="Number" Visible="False" ValidationGroup="ErrorNombre"></asp:TextBox>
                     &nbsp;<br />
 &nbsp;<asp:Image ID="imgGafas1" runat="server" ImageUrl="~/Recursos/Imagenes/usuarioGafas.png" Visible="False" />
                     <asp:Image ID="imgGafas2" runat="server" ImageUrl="~/Recursos/Imagenes/usuarioGafas2.png" Visible="False" />
