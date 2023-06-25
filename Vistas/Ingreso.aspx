@@ -25,7 +25,7 @@
             </p>
             <p>
                 <asp:Label ID="lblError" runat="server" ForeColor="Red" Text="Error al iniciar sesión" Visible="False"></asp:Label>
-            </p>
+            &nbsp;</p>
         </div>
         <p class="p-container">
             &nbsp;<asp:Button ID="btnIniciarSesion" runat="server" Text="Iniciar Sesion" OnClick="btnIniciarSesion_Click" />
