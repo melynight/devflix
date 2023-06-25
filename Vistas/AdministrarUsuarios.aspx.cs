@@ -28,7 +28,7 @@ namespace Vistas
                // if ((bool)Session["AgregarUsuario"] == false && (int)Session["CantidadUsuariosAdmin"] < cantMax) btnAgregarUsuario.Enabled = false;
                 CargarImgAdmin(cuenta);
                 OcultarMenuModificar();
-                lblBienvenidoUsuario.Text = "Bienvenid@ " + cuenta.GetNombre_Cu();
+                lblUserName.Text = cuenta.GetNombre_Cu();
                 
                 
             }

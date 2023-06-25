@@ -47,9 +47,8 @@ table {
 .menu_principal {
     background-color: #63b9cd;
     display: flex;
-    padding: 10px;
-    justify-content: space-between;
-    align-items: baseline;
+    justify-content: space-around;
+    align-items: center;
 }
 
 
@@ -190,6 +189,5 @@ button {
 }
 
 #lblBienvenidoUsuario {
-    font-size: 20px;
     color: white;
 }

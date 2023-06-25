@@ -43,9 +43,8 @@ blockquote, q {
 .menu_principal {
     background-color: #63b9cd;
     display: flex;
-    padding: 10px;
-    justify-content: space-between;
-    align-items: baseline;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .botonesMenu {
@@ -59,9 +58,25 @@ blockquote, q {
     font-family: 'Times New Roman';
 }
 
-#lblBienvenidoUsuario {
-    font-size: 20px;
+#lblUserName {
+ 
     color: white;
+}
+
+.Plan-Actual {
+    display: flex;
+    justify-content: space-around;
+}
+
+.TxtplanActual {
+    color: White;
+    font-size: 20px;
+    border-color: #6889cb;
+    border-style: dotted;
+    border-width: medium;
+    border-style: dotted;
+    border-inline-width: 0;
+    width: fit-content;
 }
 
 .SearchBox {
@@ -126,6 +141,7 @@ p{
     text-decoration: underline;
     text-align: center;
     font-size: xx-large;
+    margin: 30px;
 }
 
 .list-view {

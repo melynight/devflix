@@ -24,7 +24,7 @@
         <header>
             <nav class="menu_principal">
 
-                <a class="botonesMenu" href="Home.aspx">HOME</a>
+                <a class="botonesMenu" href="Home.aspx"> <img src="Recursos/Imagenes/home.png" alt="Home"/> </a>
                 <a class="botonesMenu" href="Suscripciones.aspx">SUSCRIPCIONES</a>
                 <a class="botonesMenu" href="Favoritos.aspx">FAVORITOS</a>
                 <a class="botonesMenu" href="DescripcionPelicula.aspx">SORPRENDEME </a>
@@ -32,7 +32,7 @@
                 <a class="botonesMenu" href="SeleccionarUsuario.aspx">USUARIOS </a>
                 <a class="botonesMenu" href="Configuraciones.aspx">AJUSTES </a>
                 <a class="botonesMenu" href="Log.aspx">CERRAR SESION </a>
-                <asp:Label ID="lblBienvenidoUsuario" runat="server"></asp:Label>
+                <asp:Label ID="lblUserName" runat="server"></asp:Label>
             </nav>
         </header>
         <article class="RecuadroAdministrarUser">
@@ -51,13 +51,14 @@
                 <div>
                     <asp:Button ID="btnEliminarUsuario" runat="server" Text="ELIMINAR USUARIO" Width="160px" class="MarginAdministrarUsers" OnClick="btnEliminarUsuario_Click" />
                     <br />
+                    <asp:Label ID="lblErrorNombre" runat="server" Text="El nombre debe ser distinto al actual." ForeColor="#CC0000" Font-Size="Medium"></asp:Label>
                     <br />
                     <br />
-                   
+                  
                 </div>
             </div>
         </article>
-         <asp:Label ID="lblErrorNombre" runat="server" Text="El nombre ya existe!!" ForeColor="#CC0000" Font-Size="XX-Large"></asp:Label>
+         
         <article class="RecuadroUsers">
             <div class="FlexBoxAdministrarUsers">
                 <div class="listview">

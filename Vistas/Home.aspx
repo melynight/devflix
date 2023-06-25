@@ -32,7 +32,7 @@
     <form id="form1" runat="server">
         <header>
             <nav class="menu_principal">
-                <a class="botonesMenu" href="Home.aspx">HOME</a>
+                <a class="botonesMenu" href="Home.aspx"> <img src="Recursos/Imagenes/home.png" alt="Home"/> </a>
                 <a class="botonesMenu" href="Suscripciones.aspx">SUSCRIPCIONES</a>
                 <a class="botonesMenu" href="Favoritos.aspx">FAVORITOS</a>
                 <a class="botonesMenu" href="DescripcionPelicula.aspx">SORPRENDEME </a>

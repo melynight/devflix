@@ -22,7 +22,7 @@
     <form id="form1" runat="server">
 
         <nav class="menu_principal">
-                <a class="botonesMenu" href="Home.aspx">HOME</a>
+                <a class="botonesMenu" href="Home.aspx"> <img src="Recursos/Imagenes/home.png" alt="Home"/> </a>
                 <a class="botonesMenu" href="Suscripciones.aspx">SUSCRIPCIONES</a>
                 <a class="botonesMenu" href="Favoritos.aspx">FAVORITOS</a>
                 <a class="botonesMenu" href="DescripcionPelicula.aspx">SORPRENDEME </a>
@@ -30,11 +30,11 @@
                 <a class="botonesMenu" href="SeleccionarUsuario.aspx">USUARIOS </a>
                 <a class="botonesMenu" href="Configuraciones.aspx">AJUSTES </a>
                 <a class="botonesMenu" href="Log.aspx">CERRAR SESION </a>
-                <asp:Label ID="lblBienvenidoUsuario" runat="server"></asp:Label>
+                <asp:Label ID="lblUserName" runat="server"></asp:Label>
         </nav>
         <div>
-            <h4>&nbsp;</h4>
-            <h4><asp:Label ID="lblPlanActual" runat="server" BackColor="#63B9CD" ForeColor="White"></asp:Label></h4>
+          
+            
             <p>&nbsp;</p>
             <p id="titulo">Membresías</p>
             <p>&nbsp;</p>
@@ -164,7 +164,10 @@
 
             </div>
             <br />
-
+        <div class="Plan-Actual">
+             <h4 class="TxtplanActual"><asp:Label ID="lblPlanActual" runat="server" ForeColor="White"></asp:Label></h4>
+        </div>
+       
 
         <article id="suscribirse">
             <asp:DropDownList ID="ddlSuscripciones" runat="server" Height="22px" Width="170px" Visible="False">
