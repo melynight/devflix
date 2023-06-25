@@ -67,7 +67,7 @@ main {
     background-position: center;
     cursor: pointer;
     position: relative;
-    left: 274px;
+    float   :right;
     margin: 10px;
 }
 

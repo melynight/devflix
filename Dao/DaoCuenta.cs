@@ -52,7 +52,7 @@ namespace Dao
 
         public Cuenta GetCuenta(Cuenta cue)
         {
-            DataTable tabla = ds.ObtenerTabla("Cuentas", "Select * from Cuentas where Email_Cu= '" + cue.GetEmail_Cu() + "'");
+            DataTable tabla = ds.ObtenerTabla("Cuentas", "Select * from Cuentas as c where c.Email_Cu= '" + cue.GetEmail_Cu() + "'");
 
             if (tabla.Rows.Count == 1)
             {
@@ -63,7 +63,7 @@ namespace Dao
 
         public Cuenta GetCuentaByID(Cuenta cue)
         {
-            DataTable tabla = ds.ObtenerTabla("Cuentas", "Select * from Cuentas where IDCuenta= " + cue.GetIDCuenta());
+            DataTable tabla = ds.ObtenerTabla("Cuentas", "Select * from Cuentas as c where c.IDCuenta= " + cue.GetIDCuenta());
             //convierto los datos de la tabla para setear las columnas en el objeto 
             if (tabla.Rows.Count == 1)
             {
@@ -75,7 +75,7 @@ namespace Dao
         public Cuenta GetStandard(Cuenta cue) //by IDCuenta => usuario no administrador
         {
 
-            DataTable tabla = ds.ObtenerTabla("Cuentas", "Select * from Cuentas where IDCuenta= " + cue.GetIDCuenta());
+            DataTable tabla = ds.ObtenerTabla("Cuentas", "Select * from Cuentas as c where c.IDCuenta= " + cue.GetIDCuenta());
             //convierto los datos de la tabla para setear las columnas en el objeto 
             if (tabla.Rows.Count == 1)
             {
@@ -100,31 +100,31 @@ namespace Dao
 
         public Boolean ExisteCuenta(Cuenta cue)
         {
-            String consulta = "Select * from Cuentas where Email_Cu='" + cue.GetEmail_Cu() + "' and Estado_Cu=1";
+            String consulta = "Select * from Cuentas as c where c.Email_Cu='" + cue.GetEmail_Cu() + "' and c.Estado_Cu=1";
             return ds.existe(consulta);
         }
         public Boolean ExisteCuentaStd(Cuenta cue)
         {
-            String consulta = "Select * from Cuentas where  IDCuenta='" + cue.GetIDCuenta() + "' and Estado_Cu=1";
+            String consulta = "Select * from Cuentas as c where c.IDCuenta='" + cue.GetIDCuenta() + "' and c.Estado_Cu=1";
             return ds.existe(consulta);
         }
 
 
         public Boolean CoincidenClaves(Cuenta cue)
         {
-            String consulta = "Select * from Cuentas where Clave_Cu='" + cue.GetClave_Cu() + "'";
+            String consulta = "Select * from Cuentas as c where c.Clave_Cu='" + cue.GetClave_Cu() + "'";
             return ds.existe(consulta);
         }
 
         public Boolean CoincidenPINS(Cuenta cu, string pin)
         {
-            string consulta = "Select * from Cuentas where PIN_Cu ='" + pin + "' and IDCuenta = " + cu.GetIDCuenta();
+            string consulta = "Select * from Cuentas as c where c.PIN_Cu ='" + pin + "' and c.IDCuenta = " + cu.GetIDCuenta();
             return ds.existe(consulta);
         }
 
         public DataTable GetTablaCuentas()
         {
-            DataTable tabla = ds.ObtenerTabla("Cuentas", "Select * from Cuentas");
+            DataTable tabla = ds.ObtenerTabla("Cuentas", "Select * from Cuentas as c");
             return tabla;
         }
 
@@ -296,7 +296,7 @@ namespace Dao
         public int GetIDUltimaCuenta(Cuenta cuenta)
         {
             AccesoDatos ad = new AccesoDatos();
-            return ad.ObtenerMaximo("Select * from Cuentas where Email_Cu='" + cuenta.GetEmail_Cu() + "'");
+            return ad.ObtenerMaximo("Select * from Cuentas as c where c.Email_Cu='" + cuenta.GetEmail_Cu() + "'");
         }
     }
 }

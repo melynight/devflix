@@ -37,3 +37,23 @@ AS
 	end
 go
 
+CREATE TRIGGER TR_DeleteCuenta
+ON Cuentas
+INSTEAD OF DELETE
+AS
+BEGIN
+SET NOCOUNT ON
+    -- Eliminar registros de Facturacion correspondientes a las filas eliminadas en Cuentas
+    DELETE f
+    FROM Facturacion as f
+    INNER JOIN deleted as d ON f.IDCuenta_F = d.IDCuenta
+
+	DELETE fv
+    FROM Favoritos as fv
+    INNER JOIN deleted as d ON fv.ID_cuenta = d.IDCuenta
+
+    -- Eliminar las filas de Cuentas
+    DELETE FROM Cuentas
+    WHERE IDCuenta IN (SELECT IDCuenta FROM deleted);
+END
+GO

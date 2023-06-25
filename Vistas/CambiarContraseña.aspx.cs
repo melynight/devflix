@@ -12,9 +12,14 @@ namespace Vistas
         NegocioCuenta negCue = new NegocioCuenta();
         protected void Page_Load(object sender, EventArgs e)
         {
+            lblErrorIgualPassword.Visible = false;
+            lblExito.Visible = false;
             ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
             if (!IsPostBack)
+            {
+                
                 lblBienvenidoUsuario.Text = "Bienvenid@ " + cuenta.GetNombre_Cu();
+            }
         }
 
         protected void btnVolver_Click(object sender, EventArgs e)
@@ -25,6 +30,13 @@ namespace Vistas
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
             bool Exitoso = false;
+            lblErrorIgualPassword.Visible = false;
+            if (txtNewPassword.Text == txtContraseniaActual.Text)
+            {
+                lblErrorIgualPassword.Visible = true;
+                return;
+            }
+
             Cuenta cuenta = (Cuenta)Session["Cuenta"];
             if (txtContraseniaActual.Text == cuenta.GetClave_Cu())
             {
@@ -33,7 +45,7 @@ namespace Vistas
                 {
                     int IDadmin = (int)Session["IDAdmin"];
                     Session["Cuenta"] = negCue.GetByID(IDadmin);
-                    Response.Redirect("Configuraciones.aspx");
+                    lblExito.Visible = true;
                 }
             }
         }
