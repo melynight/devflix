@@ -10,13 +10,13 @@ namespace Vistas
     {
         private Cuenta cuenta = new Cuenta();
         private NegocioCatalogo negCatalogo = new NegocioCatalogo();
-        string id;
+        private string id;
 
         protected void Page_Load(object sender, EventArgs e)
         {    // cargar el contenido que se va a mostrar
             // si existe parámetro id se busca ese id
             cuenta = (Cuenta)Session["Cuenta"];
-             id = Request["id"];
+            id = Request["id"];
 
             if (!IsPostBack)
 
@@ -40,15 +40,14 @@ namespace Vistas
                 // rellena la estrellita si esta marcado como favorito
                 if (new NegocioFavorito().ExisteFavorito(catalogo.IDContenido_Cat1, cuenta.GetIDCuenta()))
                     BtnFavoritos.CssClass = "filled";
+               
             }
             else
             {
-               
-
                 id = negCatalogo.IDCatalogoRandom();
                 Session["idRand"] = id;
                 catalogo = negCatalogo.Get(id);
-                
+
                 var tituloClean = catalogo.TituloContenido_Cat1.Replace(Environment.NewLine, "").Replace("\n", "").Replace("\r", "");
 
                 if (!string.IsNullOrWhiteSpace(tituloClean))
@@ -66,6 +65,11 @@ namespace Vistas
                 if (new NegocioFavorito().ExisteFavorito(catalogo.IDContenido_Cat1, cuenta.GetIDCuenta()))
                     BtnFavoritos.CssClass = "filled";
             }
+            if (Convert.ToInt32(Session["EdadUsuario"]) < 18)
+
+            { BtnSorprendeme.Visible = false;
+
+             }
         }
 
         protected void BtnFavoritos_Click(object sender, EventArgs e)
@@ -93,7 +97,7 @@ namespace Vistas
         protected void BtnSorprendeme_Click(object sender, EventArgs e)
         {
             Session["idRand"] = id;
-            Response.Redirect("/DescripcionPelicula.aspx?id=" + Session["idRand"]); 
+            Response.Redirect("/DescripcionPelicula.aspx?id=" + Session["idRand"]);
         }
     }
 }
