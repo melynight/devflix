@@ -87,16 +87,24 @@ namespace Vistas
         protected global::System.Web.UI.WebControls.Label lblErrorNombre;
 
         /// <summary>
+<<<<<<< HEAD
 
         /// Control lblCambiosExitosos.
 
         /// Control ListView1.
 
+=======
+        /// Control lblCambiosExitosos.
+        /// Control ListView1.
+>>>>>>> f09f9d62390abb48f6956af2e1ebbf019680500d
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+<<<<<<< HEAD
 
+=======
+>>>>>>> f09f9d62390abb48f6956af2e1ebbf019680500d
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblCambiosExitosos;
 
@@ -120,16 +128,24 @@ namespace Vistas
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
 
         /// <summary>
+<<<<<<< HEAD
 
         /// Control btnVolver.
 
         /// Control SqlDataSource2.
 
+=======
+        /// Control btnVolver.
+        /// Control SqlDataSource2.
+>>>>>>> f09f9d62390abb48f6956af2e1ebbf019680500d
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+<<<<<<< HEAD
 
+=======
+>>>>>>> f09f9d62390abb48f6956af2e1ebbf019680500d
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource2;
 
@@ -148,7 +164,10 @@ namespace Vistas
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+<<<<<<< HEAD
 
+=======
+>>>>>>> f09f9d62390abb48f6956af2e1ebbf019680500d
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnVolver;
 
