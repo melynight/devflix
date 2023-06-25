@@ -17,7 +17,7 @@
 
         <nav class="menu_principal">
 
-                <a class="botonesMenu" href="Home.aspx">HOME</a>
+                <a class="botonesMenu" href="Home.aspx"> <img src="Recursos/Imagenes/home.png" alt="Home"/> </a>
                 <a class="botonesMenu" href="Suscripciones.aspx">SUSCRIPCIONES</a>
                 <a class="botonesMenu" href="Favoritos.aspx">FAVORITOS</a>
                 <a class="botonesMenu" href="DescripcionPelicula.aspx">SORPRENDEME </a>
@@ -25,7 +25,7 @@
                 <a class="botonesMenu" href="SeleccionarUsuario.aspx">USUARIOS </a>
                 <a class="botonesMenu" href="Configuraciones.aspx">AJUSTES </a>
                 <a class="botonesMenu" href="Log.aspx">CERRAR SESION </a>
-                <asp:Label ID="lblBienvenidoUsuario" runat="server"></asp:Label>
+                <asp:Label ID="lblUserName" runat="server"></asp:Label>
         </nav>
         <section class="seccionEliminarUser">
             <article class="FlexBoxEliminarUsers">

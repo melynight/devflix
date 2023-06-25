@@ -13,7 +13,7 @@ namespace Vistas
         {
             Cuenta cuenta = (Cuenta)Session["cuenta"];
             if (!IsPostBack)
-                lblBienvenidoUsuario.Text = "Bienvenid@ " + cuenta.GetNombre_Cu();
+                lblUserName.Text =  cuenta.GetNombre_Cu();
             
 
         }
