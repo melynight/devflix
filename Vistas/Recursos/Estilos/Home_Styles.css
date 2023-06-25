@@ -191,3 +191,23 @@ button {
 #lblBienvenidoUsuario {
     color: white;
 }
+
+.botonesFooter {
+    text-shadow: 2px 2px 4px white;
+    padding: 3px 40px;
+    color: white;
+    background: white;
+    font-size: 16px;
+    text-decoration: solid;
+    font-family: 'Times New Roman';
+    margin: 10px;
+}
+
+
+.footer {
+    background-color: #63b9cd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+}

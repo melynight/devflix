@@ -16,16 +16,17 @@ namespace Dao
         public Suscripcion GetSuscripcion(Suscripcion sus)
         {
             DataTable tabla = ds.ObtenerTabla("Suscripciones", "SELECT * FROM Suscripciones as s INNER JOIN TipoSuscripciones as ts ON ts.CodTipo_Ts=s.CodTipo_Sus WHERE s.CodSus_Sus=" + sus.CodSus_Sus1);
-           
-            TipoSuscripcion tipoSus = new TipoSuscripcion()
-            {
-                CodTipo_Ts1 = tabla.Rows[0]["CodTipo_Ts"].ToString(),
-                Nombre_Ts1 = tabla.Rows[0]["Nombre_Ts"].ToString(),
-                Precio_Ts1 = Convert.ToDecimal(tabla.Rows[0]["Precio_Ts"]),
-                Beneficios_Ts1 = tabla.Rows[0]["Beneficios_Ts"].ToString(),
-                CantUsuarios_Ts1 = Convert.ToInt32(tabla.Rows[0]["CantUsuarios_Ts"]),
-                Estado_Ts1 = Convert.ToBoolean(tabla.Rows[0]["Estado_Ts"].ToString())
-            };
+
+            TipoSuscripcion tipoSus = new TipoSuscripcion();
+
+
+            tipoSus.CodTipo_Ts1 = tabla.Rows[0]["CodTipo_Ts"].ToString();
+            tipoSus.Nombre_Ts1 = tabla.Rows[0]["Nombre_Ts"].ToString();
+            tipoSus.Precio_Ts1 = Convert.ToDecimal(tabla.Rows[0]["Precio_Ts"]);
+            tipoSus.Beneficios_Ts1 = tabla.Rows[0]["Beneficios_Ts"].ToString();
+            tipoSus.CantUsuarios_Ts1 = Convert.ToInt32(tabla.Rows[0]["CantUsuarios_Ts"]);
+            tipoSus.Estado_Ts1 = Convert.ToBoolean(tabla.Rows[0]["Estado_Ts"].ToString());
+            
 
             sus.CodSus_Sus1 = (Convert.ToInt32(tabla.Rows[0][0].ToString()));
             sus.CodTipo_Sus1 = tipoSus;

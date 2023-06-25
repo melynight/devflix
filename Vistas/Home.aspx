@@ -169,6 +169,12 @@
                 <img src="Recursos/Imagenes/5.jpg" alt="" class="pic" />
             </div>
         </main>
+         <footer>
+            <nav class="footer">
+                <a class="botonesFooter" href="#"> <img src="Recursos/Imagenes/flechaArriba.png" alt="Home"/> </a>
+                <p> Desarrolladores: Guido Benetti, Zoe Rouco, Patricio Bordón, Luciano Vitale, Melany Nahir Dalama</p>
+            </nav>
+        </footer>
     </form>
 </body>
 </html>
