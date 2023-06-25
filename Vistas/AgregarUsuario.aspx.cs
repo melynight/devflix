@@ -19,7 +19,7 @@ namespace Vistas
             ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
             cuenta = (Cuenta)Session["Cuenta"];
             if(!IsPostBack)
-            lblBienvenidoUsuario.Text = "Bienvenid@ " + cuenta.GetNombre_Cu();
+            lblUserName.Text = cuenta.GetNombre_Cu();
 
         }
 

@@ -146,13 +146,14 @@ p{
 
 .list-view {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     text-align: center;
     padding: 80px;
 }
 
 #suscribirse {
     text-align: center;
+    margin: 30px;
 }
 
 .botoncito-page {

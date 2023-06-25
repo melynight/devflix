@@ -89,6 +89,14 @@
     text-align: center;
 }
 
+.MarginCrearUser {
+    display: grid;
+    margin: 5px;
+    text-align: center;
+    color: white;
+    justify-content: center;
+}
+
 .seccionEliminarUser {
     width: 315px;
     margin-top: 5%;
