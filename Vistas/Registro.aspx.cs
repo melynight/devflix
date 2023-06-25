@@ -113,6 +113,7 @@ namespace Vistas
             Session["Cuenta"] = negCue.GetByID(ID);
 
             Application["tipoSuscripcion"] = tip;
+            Session["NombreSus"] = tip.Nombre_Ts1;
 
             txtEmail.Text = "";
             txtNombre.Text = "";

@@ -24,9 +24,11 @@ namespace Vistas
 
             cuenta = (Cuenta)Session["Cuenta"];
 
+            RefrescarTipoSuscripcion();
+            lblPlanActual.Text = "Tu plan actual es: " + (string)Session["NombreSus"];
             ddlSuscripciones.Visible = false;
             btnPaquete.Visible = false;
-
+            Session["IDCuenta"] = cuenta.GetIDCuenta();
             if (!IsPostBack)
             {
                 lblBienvenidoUsuario.Text = "Bienvenid@ " + cuenta.GetNombre_Cu();
@@ -62,9 +64,18 @@ namespace Vistas
         protected void btnPaquete_Click(object sender, EventArgs e)
         {
             lblMensajePlan.Visible = true;
-            lblMensajePlan.Text = "Esta seguro que desea cambiar su plan actual a " + ddlSuscripciones.SelectedItem + "?";
-            btnSi.Visible = true;
-            btnNo.Visible = true;
+            if ((string)Session["NombreSus"] == ddlSuscripciones.SelectedItem.ToString())
+            {
+                lblMensajePlan.Text = ddlSuscripciones.SelectedItem + " ya es tu plan actual.";
+                btnNo.Visible = false;
+                btnSi.Visible = false;
+            }
+            else
+            {
+                lblMensajePlan.Text = "Esta seguro que desea cambiar su plan actual a " + ddlSuscripciones.SelectedItem + "?";
+                btnSi.Visible = true;
+                btnNo.Visible = true;
+            }
         }
 
         protected void btnAceptar_Click(object sender, EventArgs e)
@@ -97,8 +108,10 @@ namespace Vistas
             negCue.CambiarPlan(Convert.ToInt32(ddlSuscripciones.SelectedValue), cuenta.GetEmail_Cu());
             Session["Cuenta"] = negCue.GetByID((int)Session["IDAdmin"]);
             lblMensajePlan.Text = "El cambio se ha realizado con exito!";
+            lblPlanActual.Text = "Tu plan actual es: " + (string)Session["NombreSus"];
             btnNo.Visible = false;
             btnSi.Visible = false;
+            Response.Redirect("Suscripciones.aspx");
         }
 
         protected void btnNo_Click(object sender, EventArgs e)
@@ -116,6 +129,15 @@ namespace Vistas
         {
             if (args.Value.Length == 4) args.IsValid = true;
             else args.IsValid = false;
+        }
+
+        protected void RefrescarTipoSuscripcion()
+        {
+            sus = negSuscripcion.Get(cuenta.GetSus_Cu().CodSus_Sus1);
+            tip = tipoSus.Get(sus.CodTipo_Sus1.CodTipo_Ts1);
+
+            Application["tipoSuscripcion"] = tip;
+            Session["NombreSus"] = tip.Nombre_Ts1;
         }
     }
 }

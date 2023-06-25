@@ -33,6 +33,8 @@
                 <asp:Label ID="lblBienvenidoUsuario" runat="server"></asp:Label>
         </nav>
         <div>
+            <h4>&nbsp;</h4>
+            <h4><asp:Label ID="lblPlanActual" runat="server" BackColor="#63B9CD" ForeColor="White"></asp:Label></h4>
             <p>&nbsp;</p>
             <p id="titulo">Membresías</p>
             <p>&nbsp;</p>

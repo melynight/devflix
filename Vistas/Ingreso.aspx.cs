@@ -54,6 +54,7 @@ namespace Vistas
 
                 Session["Cuenta"] = cuenta;
                 Application["tipoSuscripcion"] = tip;
+                Session["NombreSus"] = tip.Nombre_Ts1;
                 lblError.Visible = false;
                 txtClave.Text = "";
                 txtEmail.Text = "";
