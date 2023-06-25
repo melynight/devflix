@@ -1,8 +1,8 @@
 ﻿.menu_principal {
     background-color: #63b9cd;
     display: flex;
-    padding: 10px;
-    justify-content: space-between;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .botonesMenu {
