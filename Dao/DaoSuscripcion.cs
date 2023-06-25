@@ -15,7 +15,7 @@ namespace Dao
 
         public Suscripcion GetSuscripcion(Suscripcion sus)
         {
-            DataTable tabla = ds.ObtenerTabla("Suscripciones", "SELECT * FROM Suscripciones INNER JOIN TipoSuscripciones ON CodTipo_Ts=CodTipo_Sus WHERE CodSus_Sus=" + sus.CodSus_Sus1);
+            DataTable tabla = ds.ObtenerTabla("Suscripciones", "SELECT * FROM Suscripciones as s INNER JOIN TipoSuscripciones as ts ON ts.CodTipo_Ts=s.CodTipo_Sus WHERE s.CodSus_Sus=" + sus.CodSus_Sus1);
             TipoSuscripcion tipoSus = new TipoSuscripcion()
             {
                 CodTipo_Ts1 = tabla.Rows[0]["CodTipo_Ts"].ToString(),
@@ -25,6 +25,7 @@ namespace Dao
                 CantUsuarios_Ts1 = Convert.ToInt32(tabla.Rows[0]["CantUsuarios_Ts"]),
                 Estado_Ts1 = Convert.ToBoolean(tabla.Rows[0]["Estado_Ts"].ToString())
             };
+
             sus.CodSus_Sus1 = (Convert.ToInt32(tabla.Rows[0][0].ToString()));
             sus.CodTipo_Sus1 = tipoSus;
             sus.Total_Sus = (Convert.ToDecimal(tabla.Rows[0][2].ToString()));
@@ -56,7 +57,7 @@ namespace Dao
 
         public Boolean ExisteSuscripcion(Suscripcion sus)
         {
-            String consulta = "SELECT * FROM Suscripciones WHERE CodSus_Sus=" + sus.CodSus_Sus1;
+            String consulta = "SELECT * FROM Suscripciones as s WHERE s.CodSus_Sus=" + sus.CodSus_Sus1;
             return ds.existe(consulta);
         }
 
@@ -68,9 +69,9 @@ namespace Dao
             SqlParametros.Value = sus.CodTipo_Sus1.CodTipo_Ts1;
             SqlParametros = Comando.Parameters.Add("@total", SqlDbType.Int);
             SqlParametros.Value = sus.Total_Sus;
-            SqlParametros = Comando.Parameters.Add("@fechaCompra", SqlDbType.VarChar);
+            SqlParametros = Comando.Parameters.Add("@fechaCompra", SqlDbType.Date);
             SqlParametros.Value = sus.FechaCompra_Sus;
-            SqlParametros = Comando.Parameters.Add("@estado", SqlDbType.VarChar);
+            SqlParametros = Comando.Parameters.Add("@estado", SqlDbType.Bit);
             SqlParametros.Value = sus.Estado_Sus;
         }
 

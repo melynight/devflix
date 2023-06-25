@@ -15,7 +15,7 @@ namespace Dao
 
         public Favoritos GetFavorito(Favoritos favorito)
         {
-            DataTable tabla = ds.ObtenerTabla("Favoritos", "select * from Favoritos inner join Catalogos on IDContenido_Cat = IDContenido_F where IDContenido_F  = '" + favorito.IDContenido_F1.IDContenido_Cat1 + "' and ID_cuenta = " + favorito.IDCuenta_F1.GetIDCuenta());
+            DataTable tabla = ds.ObtenerTabla("Favoritos", "select * from Favoritos as f inner join Catalogos as c on c.IDContenido_Cat = f.IDContenido_F where f.IDContenido_F  = '" + favorito.IDContenido_F1.IDContenido_Cat1 + "' and f.ID_cuenta = " + favorito.IDCuenta_F1.GetIDCuenta());
            
             Cuenta cuenta = new Cuenta();
             Catalogo catalogo = new Catalogo();
@@ -32,7 +32,7 @@ namespace Dao
 
         public Boolean ExisteFavorito(Favoritos favorito)
         {
-            string consulta = "select * from Favoritos where IDContenido_F = '" + favorito.IDContenido_F1.IDContenido_Cat1 + "' and ID_cuenta = " + favorito.IDCuenta_F1.GetIDCuenta();
+            string consulta = "select * from Favoritos as f where f.IDContenido_F = '" + favorito.IDContenido_F1.IDContenido_Cat1 + "' and f.ID_cuenta = " + favorito.IDCuenta_F1.GetIDCuenta();            
             return ds.existe(consulta);
         }
 
