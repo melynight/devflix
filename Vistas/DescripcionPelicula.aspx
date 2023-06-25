@@ -71,7 +71,9 @@
                 <div class="descripcionVideo">
                     
                     <asp:Label ID="lblTitulo" runat="server" CssClass="titulo"></asp:Label>
+                    <br />
                     <asp:Label ID="lblDuracion" runat="server" CssClass="duracion"></asp:Label>
+                    <br />
                     <asp:Label ID="lblSinopsis" runat="server" CssClass="sinopsis"></asp:Label>
                 </div>
 
