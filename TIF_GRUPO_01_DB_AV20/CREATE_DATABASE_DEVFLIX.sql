@@ -4,6 +4,7 @@ GO
 CREATE DATABASE DevFlixDB
 go
 
+
 Use DevFlixDB
 go
 

@@ -49,7 +49,7 @@
                     <asp:Button ID="btnModificarUsuario" runat="server" Text="MODIFICAR USUARIO" Width="160px" class="MarginAdministrarUsers" OnClick="btnModificarUsuario_Click" />
                 </div>
                 <div>
-                    <asp:Button ID="btnEliminarUsuario" runat="server" Text="ELIMINAR USUARIO" Width="160px" class="MarginAdministrarUsers" />
+                    <asp:Button ID="btnEliminarUsuario" runat="server" Text="ELIMINAR USUARIO" Width="160px" class="MarginAdministrarUsers" OnClick="btnEliminarUsuario_Click" />
                     <br />
                 </div>
             </div>

@@ -119,7 +119,7 @@ namespace Vistas
             }
 
             if (!string.IsNullOrEmpty(txtNuevoNombre.Text)){
-                if (cuenta.GetIDRef_Cu() != 0 && cuenta.GetIDRef_Cu().ToString() != null)
+                if (cuenta.GetIDRef_Cu() > 0 )
                 {
                    ModificoNombre = negCue.CambiarNombre((int)Session["IDStd"], txtNuevoNombre.Text.Trim());
                 }
@@ -202,6 +202,11 @@ namespace Vistas
             Response.Redirect("AgregarUsuario.aspx"); 
 
 
+        }
+
+        protected void btnEliminarUsuario_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("EliminarUsuario.aspx");
         }
     }
 }
