@@ -148,16 +148,6 @@ input[type=submit] {
         <p class="p-container">
             &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp;<asp:Button ID="btnRegistro" runat="server" Text="Registrarse" OnClick="btnRegistro_Click" />
         </p>
-        <p class="p-container">
-            &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Conectar con
-        </p>
-
-
-        <p class="p-container"> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-            <asp:ImageButton ID="imgGoogleApi" runat="server" Height="50px" ImageAlign="Middle" ImageUrl="~/Recursos/Imagenes/Glogo.png" />
-            <asp:ImageButton ID="imgFacebookApi" runat="server" Height="50px" ImageAlign="Middle" ImageUrl="~/Recursos/Imagenes/Flogo.png" />
-            <asp:ImageButton ID="imgTwitterApi" runat="server" Height="50px" ImageAlign="Middle" ImageUrl="~/Recursos/Imagenes/Tlogo.png" />
-        </p>
     </div>
     </form>
 </body>

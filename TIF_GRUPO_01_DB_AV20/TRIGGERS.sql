@@ -36,4 +36,21 @@ AS
 		-- Con la condicion IDRef_Cu = null funciona cuando se da de alta el admin y no se agrega otro registro cuando agrega usuario
 	end
 go
+select *from Cuentas
+
+
+ALTER TRIGGER TR_CargarFacturacionDelete
+on cuentas
+instead of Delete
+AS
+	begin
+	set nocount on
+	delete Facturacion
+	where Facturacion.IDCuenta_F= (select deleted.IDCuenta from deleted)
+	delete Favoritos where Favoritos.ID_cuenta = (select deleted.IDCuenta from deleted)
+	delete Cuentas where IDCuenta= (select deleted.IDCuenta from deleted)
+	end
+go
+
+
 
