@@ -74,19 +74,20 @@ namespace Vistas
 
             int cantUsuariosMax = tipoSuscripcion.CantUsuarios_Ts1;
 
-            if (cantUsuariosMax == 1)
+            if (cantUsuariosMax == 1) //=> se valida la suscripcion y se muestran los usuarios que puede administrar.
             {
-                lvlUsers.DataSourceID = "DevFlix";
+                lvlUsers.DataSourceID = "Devflix"; ///data source común sin TOP
                 lvlUsers.DataBind();
+                lvlUsers.Visible = false;
 
             }else if (cantUsuariosMax == 2)
             {
-                lvlUsers.DataSourceID = "DevFlix2";
+                lvlUsers.DataSourceID = "DevFlix2"; //datasource top 1
                 lvlUsers.DataBind();
             }
             else
             {
-                lvlUsers.DataSourceID = "DevFlix3";
+                lvlUsers.DataSourceID = "DevFlix3"; //datasource top 2
                 lvlUsers.DataBind();
             }
 

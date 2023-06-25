@@ -40,7 +40,7 @@
 
         <div class="seleccion-usuarios">
                  
-                <asp:SqlDataSource ID="DevFlix" runat="server" ConnectionString="<%$ ConnectionStrings:DevFlixDBConnectionString3 %>" SelectCommand="SELECT top 0 [IDCuenta], [IDRef_Cu], [URLImagenDefault], [Nombre_Cu] FROM [Cuentas] WHERE ([IDRef_Cu] = @IDRef_Cu)" OnSelecting="DevFlix_Selecting">
+                <asp:SqlDataSource ID="DevFlix" runat="server" ConnectionString="<%$ ConnectionStrings:DevFlixDBConnectionString3 %>" SelectCommand="SELECT IDCuenta, IDRef_Cu, URLImagenDefault, Nombre_Cu FROM Cuentas WHERE (IDRef_Cu = @IDRef_Cu)" OnSelecting="DevFlix_Selecting">
                     <SelectParameters>
                         <asp:SessionParameter Name="IDRef_Cu" SessionField="IDAdmin" Type="Int32" />
                     </SelectParameters>
