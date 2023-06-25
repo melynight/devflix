@@ -171,7 +171,7 @@ namespace Vistas
 
             else {
 
-                lblError.Text = "El PIN ingreso no es correcto.";
+                lblError.Text = "El PIN ingresado no es correcto o no tiene permisos.";
                 txtPin.Text = "";
                 ocultarValidarPIN();
 
