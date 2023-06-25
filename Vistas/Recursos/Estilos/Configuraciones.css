@@ -4,8 +4,10 @@
     background-color: #63b9cd;
     display: flex;
     padding: 10px;
-    justify-content: space-between;
+    justify-content: space-around;
+    align-items: baseline;
 }
+
 
 .botonesMenu {
     text-shadow: 2px 2px 4px #000000;
@@ -70,10 +72,10 @@
 }
 
 #lblUserName {
-    font-size: 20px;
+  font-size: 15px;
     color: white;
-    background-color: #108087;
 }
+
 
 
 .FlexBoxAdministrarUsers {
@@ -136,6 +138,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+#txtPin {
+    Width: 128px;
+    margin-left: 15px;
 }
 
 

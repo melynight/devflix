@@ -51,13 +51,14 @@
                 <div>
                     <asp:Button ID="btnEliminarUsuario" runat="server" Text="ELIMINAR USUARIO" Width="160px" class="MarginAdministrarUsers" OnClick="btnEliminarUsuario_Click" />
                     <br />
+                    <asp:Label ID="lblErrorNombre" runat="server" Text="El nombre debe ser distinto al actual." ForeColor="#CC0000" Font-Size="Medium"></asp:Label>
                     <br />
                     <br />
-                   
+                  
                 </div>
             </div>
         </article>
-         <asp:Label ID="lblErrorNombre" runat="server" Text="El nombre ya existe!!" ForeColor="#CC0000" Font-Size="XX-Large"></asp:Label>
+         
         <article class="RecuadroUsers">
             <div class="FlexBoxAdministrarUsers">
                 <div class="listview">

@@ -35,7 +35,7 @@
                 <a class="botonesMenu" href="Log.aspx">CERRAR SESION </a>
                 <br />
                 <br />
-        <asp:Label ID="lblUserName" runat="server" Text="Label"></asp:Label>
+        <asp:Label ID="lblUserName" runat="server"></asp:Label>
             </nav>
 
         </header>
@@ -54,7 +54,7 @@
         </article>
     <div class="IngresoPin">
         <asp:Label ID="lblPIN" runat="server" Text="Ingresar PIN de administrador:"></asp:Label>
-        <asp:TextBox ID="txtPin" runat="server" Width="128px" TextMode="Password"></asp:TextBox>
+        <asp:TextBox ID="txtPin" runat="server" TextMode="Password"></asp:TextBox>
         <asp:RequiredFieldValidator ID="rfvPin" runat="server" Display="Dynamic" ControlToValidate="txtPin" ValidationGroup="ValidarPin">*Debe ingresar un PIN para continuar.</asp:RequiredFieldValidator>
   
         <p class="auto-style1">
