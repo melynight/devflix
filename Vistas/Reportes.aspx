@@ -66,13 +66,10 @@
                 <asp:Label ID="lblError" runat="server" ForeColor="Red" Text="*Debe seleccionar ambas fechas!"></asp:Label>
             </p>
             <p>
-                <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
-            </p>
-            <p>
                 <asp:Button ID="btnHistorialTodo" runat="server" BackColor="Blue" BorderColor="#3399FF" Font-Bold="True" Font-Italic="False" ForeColor="White" OnClick="btnHistorialTodo_Click" Text="Ver Todo" Width="99px" />
             </p>
             <p>
-                <asp:GridView OnRowDataBound="grvFacturacion_RowDataBound" ID="grvFacturacion" CssClass="grvFacturacion" AutoPostBack="true" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" AutoGenerateSelectButton="True" OnSelectedIndexChanged="grvFacturacion_SelectedIndexChanged" OnSelectedIndexChanging="grvFacturacion_SelectedIndexChanging" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3">
+                <asp:GridView OnRowDataBound="grvFacturacion_RowDataBound" ID="grvFacturacion" CssClass="grvFacturacion" AutoPostBack="true" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" AutoGenerateSelectButton="True" OnSelectedIndexChanged="grvFacturacion_SelectedIndexChanged" OnSelectedIndexChanging="grvFacturacion_SelectedIndexChanging" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" OnPageIndexChanging="grvFacturacion_PageIndexChanging">
                     <Columns>
                         <asp:TemplateField HeaderText="  Fecha">
                             <ItemTemplate>

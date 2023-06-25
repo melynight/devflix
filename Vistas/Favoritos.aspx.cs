@@ -65,5 +65,10 @@ namespace Vistas
             dataPager.SetPageProperties(e.StartRowIndex, e.MaximumRows, false);
             MostrarCatalogo();
         }
+
+        protected void lvFavoritos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

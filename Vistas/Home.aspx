@@ -66,7 +66,7 @@
 
             <div class="list-view">
 
-                <asp:ListView ID="lvCatalogo" runat="server" GroupItemCount="3" OnPagePropertiesChanging="lvCatalogo_PagePropertiesChanging">
+                <asp:ListView ID="lvCatalogo" runat="server" GroupItemCount="3" OnPagePropertiesChanging="lvCatalogo_PagePropertiesChanging" OnSelectedIndexChanged="lvCatalogo_SelectedIndexChanged">
                     <EditItemTemplate>
                         <td runat="server" style="">TituloContenido_Cat:
                             <asp:TextBox ID="TituloContenido_CatTextBox" runat="server" Text='<%# Bind("TituloContenido_Cat") %>' />

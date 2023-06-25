@@ -56,7 +56,7 @@
 
 
             <div>
-        &nbsp;<asp:ListView ID="lvFavoritos" runat="server" DataSourceID="FavoritosDataSource" GroupItemCount="5" OnPagePropertiesChanging="lvFavoritos_PagePropertiesChanging">
+        &nbsp;<asp:ListView ID="lvFavoritos" runat="server" DataSourceID="FavoritosDataSource" GroupItemCount="5" OnPagePropertiesChanging="lvFavoritos_PagePropertiesChanging" OnSelectedIndexChanged="lvFavoritos_SelectedIndexChanged">
                 <AlternatingItemTemplate>
                     <td runat="server" style="padding: 20px; text-align: center">
                         <asp:Label ID="TituloContenido_CatLabel" runat="server" ForeColor="White" Text='<%# Eval("TituloContenido_Cat") %>'></asp:Label>

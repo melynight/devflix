@@ -39,7 +39,6 @@ namespace Vistas
             {
                 lblError.Visible = false;
                 grvFacturacion.Visible = true;
-                Label1.Text = txtFechaDesde.Text;
                 foreach (GridViewRow row in grvFacturacion.Rows)
                 {
                     row.Visible = true;
@@ -95,6 +94,15 @@ namespace Vistas
             DataTable ds = negFacturacion.GetTabla(cuenta.GetIDCuenta());
             grvFacturacion.DataSource = ds;
 
+            grvFacturacion.DataBind();
+        }
+
+        protected void grvFacturacion_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            grvFacturacion.PageIndex = e.NewPageIndex;
+            grvFacturacion.Visible = true;
+            DataTable ds = negFacturacion.GetTabla(cuenta.GetIDCuenta());
+            grvFacturacion.DataSource = ds;
             grvFacturacion.DataBind();
         }
     }
