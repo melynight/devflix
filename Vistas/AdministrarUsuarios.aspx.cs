@@ -238,13 +238,16 @@ namespace Vistas
             int cantMax = validarCantUsuariosMax(cuenta);
             //if ((int)Session["CantidadUsuariosAdmin"] == 1 || (int)Session["CantidadUsuariosAdmin"] < cantMax) CargarImgAdmin(cuenta);//validamos que no tenga usuarios ese admin
             if (ModificoNombre || ModificoUrl || ModificoEdad)
-            {
+            { if(txtNuevoNombre.Text.ToString().Trim() != cuenta.GetNombre_Cu())
+                lblCambiosExitosos.Visible = true;
                 Response.Redirect("AdministrarUsuarios.aspx");
+                
                 
             }
             else
             {
                 lblErrorNombre.Visible = true;
+                lblCambiosExitosos.Visible = false;
             }
             /* Response.Redirect("AdministrarUsuarios.aspx");*/
         }
@@ -256,6 +259,7 @@ namespace Vistas
             imgAdmin.ImageUrl = URLImagen;
             lblNombreAdmin.Text = cuenta.GetNombre_Cu();
             lblErrorNombre.Visible = false;
+            lblCambiosExitosos.Visible = false;
 
         }
 

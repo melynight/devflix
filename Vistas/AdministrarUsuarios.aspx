@@ -53,6 +53,7 @@
                     <br />
                     <asp:Label ID="lblErrorNombre" runat="server" Text="El nombre debe ser distinto al actual." ForeColor="#CC0000" Font-Size="Medium"></asp:Label>
                     <br />
+                    <asp:Label ID="lblCambiosExitosos" runat="server" Text="Cambios realizados con exito!" ForeColor="#669900" Font-Size="Medium"></asp:Label>
                     <br />
                   
                 </div>
