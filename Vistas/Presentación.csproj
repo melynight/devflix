@@ -81,6 +81,7 @@
     <Content Include="Recursos\Imagenes\3.jpg" />
     <Content Include="Recursos\Imagenes\4.png" />
     <Content Include="Recursos\Imagenes\5.jpg" />
+    <Content Include="Recursos\Imagenes\alerta.jpg" />
     <Content Include="Recursos\Imagenes\boton-agregarUsuario.png" />
     <Content Include="Recursos\Imagenes\comic.png" />
     <Content Include="Recursos\Imagenes\flechaArriba.png" />

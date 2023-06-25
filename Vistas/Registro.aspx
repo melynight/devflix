@@ -64,7 +64,7 @@
                 Edad</p>
             <p>
                 <asp:TextBox ID="txtEdad" runat="server" TextMode="Number" BackColor="Black" ForeColor="Cyan"></asp:TextBox>
-                <asp:RangeValidator ID="RangeValidator1" runat="server" ControlToValidate="txtEdad" Display="Dynamic" ErrorMessage="Debe ser mayor de edad" ForeColor="Red" MaximumValue="9999" MinimumValue="18"></asp:RangeValidator>
+                <asp:RangeValidator ID="RangeValidator1" runat="server" ControlToValidate="txtEdad" Display="Dynamic" ErrorMessage="Debe ser mayor de edad" ForeColor="Red" MaximumValue="125" MinimumValue="18" Type="Integer"></asp:RangeValidator>
             </p>
             <p>
                 Suscripción

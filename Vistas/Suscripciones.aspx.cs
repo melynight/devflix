@@ -36,6 +36,8 @@ namespace Vistas
                 btnSi.Visible = false;
                 btnAceptar.Visible = false;
                 lvSuscripciones.Visible = false;
+                imgAlerta.Visible = false;
+                lblAtencion.Visible = false;
                 return;
             }
             RefrescarTipoSuscripcion();
@@ -83,12 +85,16 @@ namespace Vistas
                 lblMensajePlan.Text = ddlSuscripciones.SelectedItem + " ya es tu plan actual.";
                 btnNo.Visible = false;
                 btnSi.Visible = false;
+                lblAtencion.Visible = false;
+                imgAlerta.Visible = false;
             }
             else
             {
-                lblMensajePlan.Text = "Esta seguro que desea cambiar su plan actual a " + ddlSuscripciones.SelectedItem + "?, ";
+                lblMensajePlan.Text = "Esta seguro que desea cambiar su plan actual a " + ddlSuscripciones.SelectedItem + "?";
                 btnSi.Visible = true;
                 btnNo.Visible = true;
+                lblAtencion.Visible = true;
+                imgAlerta.Visible = true;
             }
         }
 
@@ -97,6 +103,8 @@ namespace Vistas
             lblMensajeError.Visible = false;
             lblMensajePlan.Visible = false;
             lblMensajeError.Visible = false;
+            imgAlerta.Visible = false;
+            lblAtencion.Visible = false;
             btnSi.Visible = false;
             btnNo.Visible = false;
             if (negCue.ValidarPINS(cuenta, txtPIN.Text) && txtPIN.Text.Trim().Length != 0)
@@ -110,7 +118,7 @@ namespace Vistas
             {
                 btnPaquete.Visible = false;
                 ddlSuscripciones.Visible = false;
-                lblMensajeError.Text = "*El PIN ingresado no es correcto o no tiene permisos";
+                lblMensajeError.Text = "*El PIN ingresado no es correcto";
                 lblMensajeError.Visible = true;
             }
             txtPIN.Text = "";
@@ -121,10 +129,11 @@ namespace Vistas
             cuenta = (Cuenta)Session["Cuenta"];
             negCue.CambiarPlan(Convert.ToInt32(ddlSuscripciones.SelectedValue), cuenta.GetEmail_Cu());
             Session["Cuenta"] = negCue.GetByID((int)Session["IDAdmin"]);
-            lblMensajePlan.Text = "El cambio se ha realizado con exito!";
             lblPlanActual.Text = "Tu plan actual es: " + (string)Session["NombreSus"];
             btnNo.Visible = false;
             btnSi.Visible = false;
+            lblAtencion.Visible = false;
+            imgAlerta.Visible = false;
             Response.Redirect("Suscripciones.aspx");
         }
 
@@ -135,6 +144,8 @@ namespace Vistas
             lblMensajeError.Visible = false;
             btnNo.Visible = false;
             btnSi.Visible = false;
+            imgAlerta.Visible = false;
+            lblAtencion.Visible = false;
             lblMensajePlan.Text = "Se ha cancelado la compra.";
             lblMensajePlan.Visible = true;
         }

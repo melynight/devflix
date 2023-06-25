@@ -38,8 +38,9 @@
                     <br />
                     &nbsp;&nbsp;&nbsp;
                     Ingrese edad:<br />
-                    <asp:TextBox ID="txtEdadUsuario" runat="server" TextMode="Number"></asp:TextBox>
+                    <asp:TextBox ID="txtEdadUsuario" runat="server" TextMode="Number" MaxLength="2"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtEdadUsuario" ErrorMessage="RequiredFieldValidator" ValidationGroup="CrearUsuario">*</asp:RequiredFieldValidator>
+                      <asp:RangeValidator ID="RangeValidator1" runat="server" ControlToValidate="txtEdadUsuario" Display="Dynamic" ForeColor="Red" MaximumValue="140" MinimumValue="3" SetFocusOnError="True" Type="Integer" ValidationGroup="CrearUsuario">La edad ingresada no es correcta</asp:RangeValidator>
                 </div>
 
         
