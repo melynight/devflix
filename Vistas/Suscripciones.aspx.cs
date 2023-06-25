@@ -31,7 +31,7 @@ namespace Vistas
             Session["IDCuenta"] = cuenta.GetIDCuenta();
             if (!IsPostBack)
             {
-                lblBienvenidoUsuario.Text = "Bienvenid@ " + cuenta.GetNombre_Cu();
+                lblUserName.Text = cuenta.GetNombre_Cu();
                 DataTable ds2 = negSuscripcion.getTabla();
                 DataTable ds3 = tipoSus.getTabla();
 
