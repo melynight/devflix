@@ -15,7 +15,7 @@ namespace Dao
 
         public Paises GetPais(Paises pais)
         {
-            DataTable tabla = ds.ObtenerTabla("Paises", "Select *from Paises where IDPais_PA ='" + pais.IDPais_PA1 + "'");
+            DataTable tabla = ds.ObtenerTabla("Paises", "Select * from Paises as p where p.IDPais_PA ='" + pais.IDPais_PA1 + "'");
             pais.IDPais_PA1 = (Convert.ToString(tabla.Rows[0][0].ToString()));
             pais.Nombre_PA1 = (tabla.Rows[0][1].ToString());
 
@@ -24,7 +24,7 @@ namespace Dao
 
         public Boolean existePais(Paises pais)
         {
-            string consulta = "select *from paises where NombrePais_PA ='" + pais.Nombre_PA1 + "'";
+            string consulta = "select * from paises as p where p.NombrePais_PA ='" + pais.Nombre_PA1 + "'";
             return ds.existe(consulta);
         }
 

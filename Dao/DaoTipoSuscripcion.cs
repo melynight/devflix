@@ -15,7 +15,7 @@ namespace Dao
 
         public TipoSuscripcion GetTipoSuscripcion(TipoSuscripcion tsus)
         {
-            DataTable tabla = ds.ObtenerTabla("TipoSuscripciones", "SELECT * FROM TipoSuscripciones WHERE CodTipo_Ts= '" + tsus.CodTipo_Ts1 + "'");
+            DataTable tabla = ds.ObtenerTabla("TipoSuscripciones", "SELECT * FROM TipoSuscripciones as ts WHERE ts.CodTipo_Ts= '" + tsus.CodTipo_Ts1 + "'");
 
             tsus.CodTipo_Ts1 = tabla.Rows[0][0].ToString();
             tsus.Nombre_Ts1 = tabla.Rows[0][1].ToString();
@@ -29,7 +29,7 @@ namespace Dao
 
         public TipoSuscripcion GetTipoSuscripcionPorNombre(TipoSuscripcion tsus)
         {
-            DataTable tabla = ds.ObtenerTabla("TipoSuscripciones", "SELECT * FROM TipoSuscripciones WHERE Nombre_Ts= '" + tsus.Nombre_Ts1 + "'");
+            DataTable tabla = ds.ObtenerTabla("TipoSuscripciones", "SELECT * FROM TipoSuscripciones as ts WHERE ts.Nombre_Ts= '" + tsus.Nombre_Ts1 + "'");
 
             tsus.CodTipo_Ts1 = tabla.Rows[0][0].ToString();
             tsus.Nombre_Ts1 = tabla.Rows[0][1].ToString();
@@ -64,7 +64,7 @@ namespace Dao
 
         public Boolean ExisteTipoSuscripcion(TipoSuscripcion tsus)
         {
-            String consulta = "SELECT * FROM TipoSuscripciones WHERE CodTipo_Ts= '" + tsus.CodTipo_Ts1 + "'";
+            String consulta = "SELECT * FROM TipoSuscripciones as ts WHERE ts.CodTipo_Ts= '" + tsus.CodTipo_Ts1 + "'";
             return ds.existe(consulta);
         }
 

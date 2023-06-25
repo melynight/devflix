@@ -18,7 +18,7 @@ namespace Negocio
             return dao.GetTablaFacturacion(ID);
         }
 
-        public DataTable GetTablaFecha(string desde, string hasta, int ID)
+        public DataTable GetTablaFecha(DateTime desde, DateTime hasta, int ID)
         {
             DaoFacturacion dao = new DaoFacturacion();
             return dao.GetTablaFiltroFecha(desde, hasta, ID);

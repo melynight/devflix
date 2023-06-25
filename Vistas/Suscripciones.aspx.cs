@@ -72,6 +72,8 @@ namespace Vistas
             lblMensajeError.Visible = false;
             lblMensajePlan.Visible = false;
             lblMensajeError.Visible = false;
+            btnSi.Visible = false;
+            btnNo.Visible = false;
             if (negCue.ValidarPINS(cuenta, txtPIN.Text) && txtPIN.Text.Trim().Length != 0)
             {
                 btnPaquete.Visible = true;

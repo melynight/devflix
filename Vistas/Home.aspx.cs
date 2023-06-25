@@ -57,7 +57,10 @@ namespace Vistas
 
         protected void imgBtnPortada_Command(object sender, CommandEventArgs e)
         {
-            Response.Redirect("/DescripcionPelicula.aspx?id=" + e.CommandArgument);
+            if (e.CommandName == "eventoSeleccion")
+            {
+                Response.Redirect("/DescripcionPelicula.aspx?id=" + e.CommandArgument);
+            }
         }
 
         protected void imgBtnFiltrar_Click(object sender, ImageClickEventArgs e)

@@ -15,7 +15,7 @@ namespace Dao
 
         public Facturacion GetFacturacion(Facturacion facturacion)
         {
-            DataTable tabla = ds.ObtenerTabla("Facturacion", "Select *from Facturacion where IDFacturacion ='" + facturacion.IDFacturacion1 + "'");
+            DataTable tabla = ds.ObtenerTabla("Facturacion", "Select * from Facturacion as f where IDFacturacion ='" + facturacion.IDFacturacion1 + "'");
             facturacion.IDFacturacion1 = (Convert.ToInt32(tabla.Rows[0][0].ToString()));
             facturacion.IDCuenta_F1 = (Convert.ToInt32(tabla.Rows[0][1].ToString()));
             facturacion.CodSus_F1 = (Convert.ToInt32(tabla.Rows[0][2].ToString()));
@@ -28,22 +28,22 @@ namespace Dao
 
         public Boolean ExisteFacturacion(Facturacion facturacion)
         {
-            string consulta = "select * from Facturacion where  IDFacturacion='" + facturacion.IDFacturacion1 + "'";
+            string consulta = "select * from Facturacion as f  where  IDFacturacion='" + facturacion.IDFacturacion1 + "'";
             return ds.existe(consulta);
         }
 
         public DataTable GetTablaFacturacion(int ID)
         {
-            DataTable tabla = ds.ObtenerTabla("Facturacion", "select * from Suscripciones inner join Facturacion on CodSus_Sus = CodSus_F " +
-                "WHERE IDCuenta_F= " +
+            DataTable tabla = ds.ObtenerTabla("Facturacion", "select * from Suscripciones as s inner join Facturacion as f on s.CodSus_Sus = f.CodSus_F " +
+                "WHERE f.IDCuenta_F= " +
                 ID+ "");
             return tabla;
         }
 
-        public DataTable GetTablaFiltroFecha(string desde, string hasta, int id)
+        public DataTable GetTablaFiltroFecha(DateTime desde, DateTime hasta, int id)
         {
-            DataTable tabla = ds.ObtenerTabla("Facturacion", "select * from Suscripciones inner join Facturacion on CodSus_Sus = CodSus_F " +
-                "where Fecha_F >= '" + desde + "' AND Fecha_F <= '" + hasta + "'" + " and " + "IDCuenta_F = " + id+"");
+            DataTable tabla = ds.ObtenerTabla("Facturacion", "select * from Suscripciones as s inner join Facturacion as f on s.CodSus_Sus = f.CodSus_F " +
+                "where f.Fecha_F >= '" + desde + "' AND f.Fecha_F <= '" + hasta + "'" + " and " + "f.IDCuenta_F = " + id+"");
             return tabla;
         }
 
@@ -60,7 +60,7 @@ namespace Dao
         }
         public int AgregarFacturacion(Facturacion facturacion)
         {
-            facturacion.IDFacturacion1 = (ds.ObtenerMaximo("Select max(IDFacturacion) from Facturacion ") + 1);
+            facturacion.IDFacturacion1 = (ds.ObtenerMaximo("Select max(IDFacturacion) from Facturacion as f") + 1);
             SqlCommand comando = new SqlCommand();
             ArmarParametrosFacturacionAgregar(ref comando, facturacion);
             return ds.EjecutarProcedimientoAlmacenado(comando, "spAgregarFacturacion");

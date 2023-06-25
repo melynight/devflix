@@ -49,12 +49,15 @@
                     <asp:Button ID="btnModificarUsuario" runat="server" Text="MODIFICAR USUARIO" Width="160px" class="MarginAdministrarUsers" OnClick="btnModificarUsuario_Click" />
                 </div>
                 <div>
-                    <asp:Button ID="btnEliminarUsuario" runat="server" Text="ELIMINAR USUARIO" Width="160px" class="MarginAdministrarUsers" />
+                    <asp:Button ID="btnEliminarUsuario" runat="server" Text="ELIMINAR USUARIO" Width="160px" class="MarginAdministrarUsers" OnClick="btnEliminarUsuario_Click" />
                     <br />
+                    <br />
+                    <br />
+                   
                 </div>
             </div>
         </article>
-
+         <asp:Label ID="lblErrorNombre" runat="server" Text="El nombre ya existe!!" ForeColor="#CC0000" Font-Size="XX-Large"></asp:Label>
         <article class="RecuadroUsers">
             <div class="FlexBoxAdministrarUsers">
                 <div class="listview">
@@ -134,7 +137,6 @@
                             </td>
                         </SelectedItemTemplate>
                     </asp:ListView>
-                    <asp:Label ID="lblFallo" runat="server" Text="Los cambios fallaron!!" Visible="False"></asp:Label>
                     <br />
                     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DevFlixDBConnectionString4 %>" SelectCommand="SELECT [Nombre_Cu], [Edad_Cu], [IDRef_Cu], [IDCuenta], [URLImagenDefault] FROM [Cuentas] WHERE ([IDRef_Cu] = @IDRef_Cu)">
                         <SelectParameters>
@@ -147,10 +149,10 @@
                 <div class="menu">
                     
                     <asp:Label ID="lblNombre" runat="server" Text="Actualizar nombre:" Visible="False"></asp:Label>
-                    <asp:TextBox ID="txtNuevoNombre" runat="server" Visible="False"></asp:TextBox>
+                    <asp:TextBox ID="txtNuevoNombre" runat="server" Visible="False" ValidationGroup="ErrorNombre"></asp:TextBox>
                     <asp:Label ID="lblNuevaEdad" runat="server" Text="Actualizar edad:" Visible="False"></asp:Label>
-                    <asp:TextBox ID="txtNuevaEdad" runat="server" MaxLength="3" TextMode="Number" Visible="False"></asp:TextBox>
-                    <br />
+                    <asp:TextBox ID="txtNuevaEdad" runat="server" MaxLength="3" TextMode="Number" Visible="False" ValidationGroup="ErrorEdad"></asp:TextBox>
+                    &nbsp;<br />
 &nbsp;<asp:Image ID="imgGafas1" runat="server" ImageUrl="~/Recursos/Imagenes/usuarioGafas.png" Visible="False" />
                     <asp:Image ID="imgGafas2" runat="server" ImageUrl="~/Recursos/Imagenes/usuarioGafas2.png" Visible="False" />
                     <asp:Image ID="imgKids" runat="server" ImageUrl="~/Recursos/Imagenes/UsuarioKids.png" Visible="False" Width="128px" />
@@ -162,8 +164,8 @@
                         <asp:ListItem Value="3">Kids</asp:ListItem>
                     </asp:DropDownList>
 &nbsp;&nbsp;&nbsp;&nbsp;
-                    <asp:Button ID="btnAceptar" runat="server" OnClick="btnAceptar_Click" Text="Aceptar" Visible="False" />
-                    <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" Visible="False" />
+                    <asp:Button ID="btnAceptar" runat="server" OnClick="btnAceptar_Click" Text="Aceptar" Visible="False" ValidationGroup="ErrorNombre" />
+                    <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" Visible="False" OnClick="btnCancelar_Click1" />
                 </div>
             </div>
         </article>
