@@ -58,7 +58,7 @@
                 <asp:DropDownList ID="ddlGeneros" runat="server" ForeColor="#0066FF">
                     <asp:ListItem Selected="True">--Seleccionar Género--</asp:ListItem>
                 </asp:DropDownList>
-                <asp:Button ID="btnFiltrarGenero" runat="server" Text="Filtrar por Género" Width="130px" BorderColor="#0066CC" BorderWidth="2px" ForeColor="#0066CC" OnClick="btnFiltrarGenero_Click" />
+                <asp:Button ID="btnFiltrarGenero" runat="server" Text="Filtrar " Width="130px" BorderColor="#0066CC" BorderWidth="2px" ForeColor="#0066CC" OnClick="btnFiltrarGenero_Click" />
             </div>
 
             <div class="nombreUsuario">

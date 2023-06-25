@@ -27,7 +27,7 @@ namespace Vistas
                 DataTable ds = negFacturacion.GetTabla(cuenta.GetIDCuenta());
                 grvFacturacion.DataSource = ds;
                 grvFacturacion.DataBind();
-                lblBienvenidoUsuario.Text = "Bienvenid@ " + cuenta.GetNombre_Cu();
+                lblUserName.Text = cuenta.GetNombre_Cu();
                 grvFacturacion.Visible = false;
             }
 

@@ -143,12 +143,17 @@ p{
     font-size: xx-large;
     margin: 30px;
 }
-
-.list-view {
+.list-view,#lvSuscripciones {
     display: flex;
     justify-content: center;
     text-align: center;
-    padding: 80px;
+    padding: 20px;
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
 }
 
 #suscribirse {

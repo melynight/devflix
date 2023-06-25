@@ -55,7 +55,7 @@
                 <a class="botonesMenu" href="SeleccionarUsuario.aspx">USUARIOS </a>
                 <a class="botonesMenu" href="Configuraciones.aspx">AJUSTES </a>
                 <a class="botonesMenu" href="Log.aspx">CERRAR SESION </a>
-                <asp:Label ID="lblUserName" runat="server"></asp:Label>
+                <asp:Label ID="lblUserName" runat="server" ForeColor="White"></asp:Label>
             </nav>
         </header>
 
@@ -71,7 +71,9 @@
                 <div class="descripcionVideo">
                     
                     <asp:Label ID="lblTitulo" runat="server" CssClass="titulo"></asp:Label>
+                    <br />
                     <asp:Label ID="lblDuracion" runat="server" CssClass="duracion"></asp:Label>
+                    <br />
                     <asp:Label ID="lblSinopsis" runat="server" CssClass="sinopsis"></asp:Label>
                 </div>
 
