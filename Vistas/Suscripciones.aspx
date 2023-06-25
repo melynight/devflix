@@ -18,7 +18,7 @@
     </style>
 
     </head>
-    <body style="background-image: url(Recursos/Imagenes/fondoHome2.jpg); background-size: cover; opacity: 10;">
+    <body style="background-image: url(Recursos/Imagenes/fondoSeleccionarUsuarios.jpg); background-size: cover; opacity: 10;">
     <form id="form1" runat="server">
 
         <nav class="menu_principal">
@@ -34,14 +34,14 @@
         </nav>
         <div>
             <p>&nbsp;</p>
-            <p id="titulo">Membersias</p>
+            <p id="titulo">Membresías</p>
             <p>&nbsp;</p>
             <p style="color: #FFFFFF">Ingresar PIN de administrador: 
                 <asp:TextBox ID="txtPIN" runat="server" MaxLength="4" TextMode="Password" ValidationGroup="PIN"></asp:TextBox>
                 <asp:Label ID="lblMensajeError" runat="server" ForeColor="White" Visible="False"></asp:Label>
                 <asp:RequiredFieldValidator ID="rfvPIN" runat="server" ControlToValidate="txtPIN" Display="Dynamic" ValidationGroup="PIN">*Debe ingresar un PIN para continuar</asp:RequiredFieldValidator>
                 <asp:CustomValidator ID="cvDigitos" runat="server" ControlToValidate="txtPIN" Display="Dynamic" OnServerValidate="cvDigitos_ServerValidate" ValidationGroup="PIN"> y el PIN ingresado debe ser de 4 digitos.</asp:CustomValidator>
-                <asp:RegularExpressionValidator ID="revNumeros" runat="server" ControlToValidate="txtPIN" ValidationExpression="^\d+$" ValidationGroup="PIN">*Debe ingresar solo numeros</asp:RegularExpressionValidator>
+                <asp:RegularExpressionValidator ID="revNumeros" runat="server" ControlToValidate="txtPIN" ValidationExpression="^\d+$" ValidationGroup="PIN" Display="Dynamic">*Debe ingresar solo numeros</asp:RegularExpressionValidator>
             </p>
             <p>&nbsp;</p>
             <p style="color: #FFFFFF">
@@ -183,7 +183,7 @@
         </div>
 
         <article>
-            <p style="color: #FFFFFF">&#8226;Para cancelaciones de membersías©, por favor dirigirse a Ajustes → Eliminar Cuenta.<asp:SqlDataSource ID="SqlDataSourceSus" runat="server" ConnectionString="<%$ ConnectionStrings:DevFlixDBConnectionString4 %>" SelectCommand="SELECT [Nombre_Ts], [Precio_Ts], [Beneficios_Ts], [CantUsuarios_Ts] FROM [TipoSuscripciones] WHERE [CodTipo_Ts] <> 'PUNIVERSAL'"></asp:SqlDataSource>
+            <p style="color: #FFFFFF">&#8226;Para cancelaciones de membresías©, por favor dirigirse a Ajustes → Eliminar Cuenta.<asp:SqlDataSource ID="SqlDataSourceSus" runat="server" ConnectionString="<%$ ConnectionStrings:DevFlixDBConnectionString4 %>" SelectCommand="SELECT [Nombre_Ts], [Precio_Ts], [Beneficios_Ts], [CantUsuarios_Ts] FROM [TipoSuscripciones] WHERE [CodTipo_Ts] <> 'PUNIVERSAL'"></asp:SqlDataSource>
 
             </p>
         </article>

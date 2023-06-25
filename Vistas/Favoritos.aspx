@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Favoritos.aspx.cs" Inherits="Vistas.WebForm2" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Favoritos.aspx.cs" Inherits="Vistas.WebForm2" EnableEventValidation="false" %>
 
 <!DOCTYPE html>
 
@@ -11,9 +11,23 @@
     <link rel="stylesheet" type="text/css" href="Recursos\\Estilos\\Suscripciones.css" />
     <title>Favoritos | DevFlix</title>
 
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function () {
+            checkSearchBarShown(document.getElementById("txtBusqueda"));
+        });
+
+        function checkSearchBarShown(obj) {
+            if (obj.value.length > 0) {
+                obj.classList.add('show');
+            } else {
+                obj.classList.remove('show');
+            }
+        }
+    </script>
+
     </head>
 
-<body style="background-image: url(Recursos/Imagenes/fondoHome2.jpg); background-size: cover; opacity: 10;">
+<body style="background-image: url(Recursos/Imagenes/fondoSeleccionarUsuarios.jpg); background-size: cover; opacity: 10;">
     <form id="form1" runat="server">
 
         <nav class="menu_principal">
@@ -32,12 +46,22 @@
             <br />
             <p>&nbsp;&nbsp;</p>
             <p id="titulo">Mi lista</p>
-        &nbsp;<asp:ListView ID="lvFavoritos" runat="server" DataSourceID="FavoritosDataSource" GroupItemCount="5">
+        </div>
+            <div class="SearchBox">
+
+                <asp:TextBox ID="txtBusqueda" class="SearchBox-input" runat="server" onkeyup="checkSearchBarShown(this)"> </asp:TextBox>
+                <asp:ImageButton ID="imgbtnBuscar" class="SearchBox-button" runat="server" src="Recursos/Imagenes/lupaa.png" OnClick="imgBtnFiltrar_Click" Height="32px" Width="32px" />
+
+            </div>
+
+
+            <div>
+        &nbsp;<asp:ListView ID="lvFavoritos" runat="server" DataSourceID="FavoritosDataSource" GroupItemCount="5" OnPagePropertiesChanging="lvFavoritos_PagePropertiesChanging">
                 <AlternatingItemTemplate>
                     <td runat="server" style="padding: 20px; text-align: center">
                         <asp:Label ID="TituloContenido_CatLabel" runat="server" ForeColor="White" Text='<%# Eval("TituloContenido_Cat") %>'></asp:Label>
                         <br />
-                        <asp:ImageButton ID="imgbtnPortada" runat="server" Height="375px" ImageUrl='<%# Eval("URLPortada_Cat") %>' Width="246px" />
+                        <asp:ImageButton ID="imgbtnPortada" runat="server" Height="375px" ImageUrl='<%# Eval("URLPortada_Cat") %>' Width="246px" CommandArgument='<%# Eval("IDContenido_F") %>' CommandName="eventoSeleccion" OnCommand="imgbtnPortada_Command" />
                         <br />
                         <br />
                         <asp:Button ID="btnEliminar" runat="server" CommandArgument='<%# Eval("IDContenido_F") %>' CommandName="eventoSeleccionar" OnCommand="btnEliminar_Command" Text="Eliminar de favoritos" BorderColor="#63B9CD" />
@@ -91,10 +115,10 @@
                     </td>
                 </InsertItemTemplate>
                 <ItemTemplate>
-                    <td runat="server" style="text-align: center">
+                    <td runat="server" style="text-align: center; padding: 20px;">
                         <asp:Label ID="TituloContenido_CatLabel" runat="server" ForeColor="White" Text='<%# Eval("TituloContenido_Cat") %>'></asp:Label>
                         <br />
-                        <asp:ImageButton ID="imgbtnPortada" runat="server" Height="375px" ImageUrl='<%# Eval("URLPortada_Cat") %>' Width="246px" />
+                        <asp:ImageButton ID="imgbtnPortada" runat="server" Height="375px" ImageUrl='<%# Eval("URLPortada_Cat") %>' Width="246px" CommandArgument='<%# Eval("IDContenido_F") %>' CommandName="eventoSeleccion" OnCommand="imgbtnPortada_Command" />
                         <br />
                         <br />
                         <asp:Button ID="btnEliminar" runat="server" CommandArgument='<%# Bind("IDContenido_F") %>' CommandName="eventoSeleccionar" OnCommand="btnEliminar_Command" Text="Eliminar de favoritos" BorderColor="#63B9CD" />
@@ -104,7 +128,7 @@
                 <LayoutTemplate>
                     <table runat="server">
                         <tr runat="server">
-                            <td runat="server">
+                            <td runat="server" style="text-align: center;">
                                 <table id="groupPlaceholderContainer" runat="server" border="0" style="">
                                     <tr id="groupPlaceholder" runat="server">
                                     </tr>
@@ -112,12 +136,12 @@
                             </td>
                         </tr>
                         <tr runat="server">
-                            <td runat="server" style="padding: 10px; text-align: center; color: #6699FF;">
-                                <asp:DataPager ID="DataPager1" runat="server" PageSize="12">
+                            <td runat="server" style="padding: 20px; text-align: center; ">
+                                <asp:DataPager ID="DataPager1" runat="server" PageSize="5">
                                     <Fields>
-                                        <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" />
-                                        <asp:NumericPagerField />
-                                        <asp:NextPreviousPagerField ButtonType="Button" ShowLastPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" />
+                                        <asp:NextPreviousPagerField ButtonCssClass="botoncito-page" ButtonType="Button" ShowFirstPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" />
+                                        <asp:NumericPagerField NumericButtonCssClass="botoncito-page" />
+                                        <asp:NextPreviousPagerField ButtonCssClass="botoncito-page" ButtonType="Button" ShowLastPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" />
                                     </Fields>
                                 </asp:DataPager>
                             </td>
@@ -143,10 +167,12 @@
                     <asp:SessionParameter Name="IDcuenta" SessionField="IDCuenta" Type="Int32" />
                 </SelectParameters>
             </asp:SqlDataSource>
-        <p>
-            &nbsp;</p>
-        <p>
-            &nbsp;</p>
+        <asp:SqlDataSource ID="filtroDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:DevFlixDBConnectionString %>" SelectCommand="SP_CargarListViewFiltro" SelectCommandType="StoredProcedure">
+            <SelectParameters>
+                <asp:ControlParameter ControlID="txtBusqueda" Name="Titulo" PropertyName="Text" Type="String" DefaultValue="" />
+                <asp:SessionParameter Name="IDCuenta" SessionField="IDCuenta" Type="Int32" />
+            </SelectParameters>
+        </asp:SqlDataSource>
     </form>
 </body>
 </html>

@@ -53,7 +53,8 @@
             </div>
         </article>
     <div class="IngresoPin">
-        Ingresar PIN de administrador:<asp:TextBox ID="txtPin" runat="server" Width="128px" TextMode="Password"></asp:TextBox>
+        <asp:Label ID="lblPIN" runat="server" Text="Ingresar PIN de administrador:"></asp:Label>
+        <asp:TextBox ID="txtPin" runat="server" Width="128px" TextMode="Password"></asp:TextBox>
         <asp:RequiredFieldValidator ID="rfvPin" runat="server" Display="Dynamic" ControlToValidate="txtPin" ValidationGroup="ValidarPin">*Debe ingresar un PIN para continuar.</asp:RequiredFieldValidator>
   
         <p class="auto-style1">

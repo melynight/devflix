@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Web.UI;
+using System.Web.UI.WebControls;
 using Entidades;
 using Negocio;
 
@@ -27,6 +29,7 @@ namespace Vistas
                 CargarImgAdmin(cuenta);
                 OcultarMenuModificar();
                 lblBienvenidoUsuario.Text = "Bienvenid@ " + cuenta.GetNombre_Cu();
+                
                 
             }
             if ((bool)Session["AgregarUsuario"] == false) btnAgregarUsuario.Enabled = false;
@@ -125,7 +128,13 @@ namespace Vistas
                 }
                 else
                 {
-                   ModificoNombre = negCue.CambiarNombre((int)Session["IDAdmin"], txtNuevoNombre.Text.Trim());
+                    if (txtNuevoNombre.Text.ToString().Trim() != cuenta.GetNombre_Cu()) { ModificoNombre = negCue.CambiarNombre((int)Session["IDAdmin"], txtNuevoNombre.Text.Trim()); }
+                    else{
+                        ModificoNombre = false;
+                        lblErrorNombre.Visible = true;
+                        /*ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert ('ERROR DEBE COLOCAR DATOS EN LAS CAJAS DE TEXTO ')", true);*/
+                    }
+                   
                 }                  
             }
             if (!string.IsNullOrEmpty(txtNuevaEdad.Text))
@@ -167,17 +176,35 @@ namespace Vistas
                    
                     
             }
-            if (!ModificoUrl) lblFallo.Visible = true;
-            if (!ModificoNombre) lblFallo.Visible = true;
-            if (!ModificoEdad) lblFallo.Visible=true;
+
+            /*if (!ModificoNombre)
+            {
+                lblErrorNombre.Visible = true;
+            }
+            else
+            {
+                Response.Redirect("AdministrarUsuarios.aspx");
+            }*/
+            /*if (!ModificoUrl) lblErrorNombre.Visible = true;
+            if (!ModificoNombre) lblErrorNombre.Visible = true;
+            if (!ModificoEdad) lblErrorNombre.Visible = true;*/
+
 
             Session["IDStd"] = null;
            cuenta = negCue.GetByID((int)Session["IDAdmin"]); //vuelve el control ADMIN
            Session["Cuenta"] = cuenta;
             int cantMax = validarCantUsuariosMax(cuenta);
-            if ((int)Session["CantidadUsuariosAdmin"] == 1 || (int)Session["CantidadUsuariosAdmin"] < cantMax) CargarImgAdmin(cuenta);//validamos que no tenga usuarios ese admin
-            
-           Response.Redirect("AdministrarUsuarios.aspx");
+            //if ((int)Session["CantidadUsuariosAdmin"] == 1 || (int)Session["CantidadUsuariosAdmin"] < cantMax) CargarImgAdmin(cuenta);//validamos que no tenga usuarios ese admin
+            if (ModificoNombre || ModificoUrl || ModificoEdad)
+            {
+                Response.Redirect("AdministrarUsuarios.aspx");
+                
+            }
+            else
+            {
+                lblErrorNombre.Visible = true;
+            }
+            /* Response.Redirect("AdministrarUsuarios.aspx");*/
         }
         public void CargarImgAdmin(Cuenta cuenta)
         {
@@ -186,7 +213,8 @@ namespace Vistas
             URLImagen = cuenta.URLImagenDefault1;
             imgAdmin.ImageUrl = URLImagen;
             lblNombreAdmin.Text = cuenta.GetNombre_Cu();
-            
+            lblErrorNombre.Visible = false;
+
         }
 
 
@@ -198,10 +226,17 @@ namespace Vistas
 
         protected void btnAgregarUsuario_Click(object sender, EventArgs e)
         {
-
             Response.Redirect("AgregarUsuario.aspx"); 
+        }
 
+        protected void btnCancelar_Click1(object sender, EventArgs e)
+        {
+            OcultarMenuModificar();
+        }
 
+        protected void btnEliminarUsuario_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("EliminarUsuario.aspx");
         }
 
         protected void btnEliminarUsuario_Click(object sender, EventArgs e)

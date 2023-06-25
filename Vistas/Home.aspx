@@ -116,7 +116,7 @@
                         <td runat="server" style="">&nbsp;<asp:Label ID="TituloContenido_CatLabel" runat="server" Text='<%# Eval("TituloContenido_Cat") %>' CssClass="tituloContenido" />
                             <br />
                             &nbsp;
-                                <asp:ImageButton ID="imgBtnPortada" runat="server" ImageUrl='<%# Eval("URLPortada_Cat") %>' OnCommand="imgBtnPortada_Command" CommandArgument='<%# Eval("IDContenido_Cat") %>' />
+                                <asp:ImageButton ID="imgBtnPortada" runat="server" ImageUrl='<%# Eval("URLPortada_Cat") %>' OnCommand="imgBtnPortada_Command" CommandName="eventoSeleccion" CommandArgument='<%# Eval("IDContenido_Cat") %>' />
                             <br />
                             <br />
                         </td>
