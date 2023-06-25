@@ -47,7 +47,9 @@
 
             <nav class="menu_principal">
 
-                <a class="botonesMenu" href="Home.aspx"> <img src="Recursos/Imagenes/home.png" alt="Home"/> </a>
+                <a class="botonesMenu" href="Home.aspx">
+                    <img src="Recursos/Imagenes/home.png" alt="Home" />
+                </a>
                 <a class="botonesMenu" href="Suscripciones.aspx">SUSCRIPCIONES</a>
                 <a class="botonesMenu" href="Favoritos.aspx">FAVORITOS</a>
                 <a class="botonesMenu" href="DescripcionPelicula.aspx">SORPRENDEME </a>
@@ -61,15 +63,14 @@
 
         <main>
             <div>
-                 <asp:Button ID="BtnFavoritos" title="Marcar/Desmarcar como favorito" runat="server" OnClick="BtnFavoritos_Click" />
-            <asp:Button ID="BtnSorprendeme" runat="server" title="Sorprendeme con contenido aleatorio" OnClick="BtnSorprendeme_Click" />
+                <asp:Button ID="BtnFavoritos" title="Marcar/Desmarcar como favorito" runat="server" OnClick="BtnFavoritos_Click" />
+                <asp:Button ID="BtnSorprendeme" runat="server" title="Sorprendeme con contenido aleatorio" OnClick="BtnSorprendeme_Click" />
             </div>
-           
 
             <div class="video">
 
                 <div class="descripcionVideo">
-                    
+
                     <asp:Label ID="lblTitulo" runat="server" CssClass="titulo"></asp:Label>
                     <br />
                     <asp:Label ID="lblDuracion" runat="server" CssClass="duracion"></asp:Label>

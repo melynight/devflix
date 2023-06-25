@@ -40,15 +40,15 @@ namespace Vistas
                 // rellena la estrellita si esta marcado como favorito
                 if (new NegocioFavorito().ExisteFavorito(catalogo.IDContenido_Cat1, cuenta.GetIDCuenta()))
                     BtnFavoritos.CssClass = "filled";
-               
             }
             else
             {
                 id = negCatalogo.IDCatalogoRandom();
                 Session["idRand"] = id;
                 catalogo = negCatalogo.Get(id);
-
-                var tituloClean = catalogo.TituloContenido_Cat1.Replace(Environment.NewLine, "").Replace("\n", "").Replace("\r", "");
+                if (Convert.ToInt32(Session["EdadUsuario"]) >= 18)
+                {
+                    var tituloClean = catalogo.TituloContenido_Cat1.Replace(Environment.NewLine, "").Replace("\n", "").Replace("\r", "");
 
                 if (!string.IsNullOrWhiteSpace(tituloClean))
                     titulo.Text = tituloClean + " | " + titulo.Text;
@@ -64,12 +64,17 @@ namespace Vistas
 
                 if (new NegocioFavorito().ExisteFavorito(catalogo.IDContenido_Cat1, cuenta.GetIDCuenta()))
                     BtnFavoritos.CssClass = "filled";
+               
+                }
+                else
+                    BtnSorprendeme.Visible = false;
+                BtnFavoritos.Visible = false;
+                    lblDuracion.Visible = false;
+                    lblSinopsis.Visible = false;
+                    trailer.Visible = false;
+                    lblTitulo.Text = "El usuario debe ser mayor de edad para poder recomendarle contenido.";
+                
             }
-            if (Convert.ToInt32(Session["EdadUsuario"]) < 18)
-
-            { BtnSorprendeme.Visible = false;
-
-             }
         }
 
         protected void BtnFavoritos_Click(object sender, EventArgs e)
