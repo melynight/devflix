@@ -25,6 +25,7 @@ namespace Vistas
             ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
 
             cuenta = (Cuenta)Session["Cuenta"];
+            Session["limite"] = LimiteUsers(cuenta);
             
 
             if (!IsPostBack) {
@@ -50,16 +51,18 @@ namespace Vistas
 
                     ocultarValidarPIN();
                 }
+                
 
             }
             
 
 
-
+            
           
 
 
         }
+
 
 
 
@@ -69,6 +72,22 @@ namespace Vistas
             tipoSuscripcion = nTipoSuscripcion.Get(suscripcion.CodTipo_Sus1.CodTipo_Ts1);
 
             int cantUsuariosMax = tipoSuscripcion.CantUsuarios_Ts1;
+
+            if (cantUsuariosMax == 1)
+            {
+                lvlUsers.DataSourceID = "DevFlix";
+                lvlUsers.DataBind();
+
+            }else if (cantUsuariosMax == 2)
+            {
+                lvlUsers.DataSourceID = "DevFlix2";
+                lvlUsers.DataBind();
+            }
+            else
+            {
+                lvlUsers.DataSourceID = "DevFlix3";
+                lvlUsers.DataBind();
+            }
 
             int cantUsuarios = nCuenta.contarUsuariosAdmin((int)Session["IDAdmin"], (Cuenta)Session["Cuenta"]) + 1;
 
@@ -85,10 +104,22 @@ namespace Vistas
             }
 
             
-                
-                return cantUsuarios;
+
+
+            return cantUsuarios;
 
             
+        }
+
+        public int LimiteUsers(Cuenta cuenta)
+        {
+            suscripcion = nSuscripcion.Get(cuenta.GetSus_Cu().CodSus_Sus1);
+            tipoSuscripcion = nTipoSuscripcion.Get(suscripcion.CodTipo_Sus1.CodTipo_Ts1);
+
+            int cantUsuariosMax = tipoSuscripcion.CantUsuarios_Ts1;
+
+            return cantUsuariosMax;
+
         }
 
         protected void btnAdmin_Click(object sender, System.Web.UI.ImageClickEventArgs e)
@@ -176,6 +207,11 @@ namespace Vistas
         {
             imgbtnAgregarUsuario.Visible = true;
             ocultarValidarPIN();
+        }
+
+        protected void DevFlix_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
+        {
+
         }
     }
 }

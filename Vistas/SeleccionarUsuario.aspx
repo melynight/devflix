@@ -40,13 +40,25 @@
 
         <div class="seleccion-usuarios">
                  
-                <asp:SqlDataSource ID="DevFlix" runat="server" ConnectionString="<%$ ConnectionStrings:DevFlixDBConnectionString3 %>" SelectCommand="SELECT [IDCuenta], [IDRef_Cu], [URLImagenDefault], [Nombre_Cu] FROM [Cuentas] WHERE ([IDRef_Cu] = @IDRef_Cu)">
+                <asp:SqlDataSource ID="DevFlix" runat="server" ConnectionString="<%$ ConnectionStrings:DevFlixDBConnectionString3 %>" SelectCommand="SELECT top 0 [IDCuenta], [IDRef_Cu], [URLImagenDefault], [Nombre_Cu] FROM [Cuentas] WHERE ([IDRef_Cu] = @IDRef_Cu)" OnSelecting="DevFlix_Selecting">
+                    <SelectParameters>
+                        <asp:SessionParameter Name="IDRef_Cu" SessionField="IDAdmin" Type="Int32" />
+                    </SelectParameters>
+                </asp:SqlDataSource>
+                 
+                <asp:SqlDataSource ID="DevFlix2" runat="server" ConnectionString="<%$ ConnectionStrings:DevFlixDBConnectionString3 %>" SelectCommand="SELECT top 1 [IDCuenta], [IDRef_Cu], [URLImagenDefault], [Nombre_Cu] FROM [Cuentas] WHERE ([IDRef_Cu] = @IDRef_Cu)" OnSelecting="DevFlix_Selecting">
+                    <SelectParameters>
+                        <asp:SessionParameter Name="IDRef_Cu" SessionField="IDAdmin" Type="Int32" />
+                    </SelectParameters>
+                </asp:SqlDataSource>
+                 
+                <asp:SqlDataSource ID="DevFlix3" runat="server" ConnectionString="<%$ ConnectionStrings:DevFlixDBConnectionString3 %>" SelectCommand="SELECT top 3 [IDCuenta], [IDRef_Cu], [URLImagenDefault], [Nombre_Cu] FROM [Cuentas] WHERE ([IDRef_Cu] = @IDRef_Cu)" OnSelecting="DevFlix_Selecting">
                     <SelectParameters>
                         <asp:SessionParameter Name="IDRef_Cu" SessionField="IDAdmin" Type="Int32" />
                     </SelectParameters>
                 </asp:SqlDataSource>
                 <br />
-                <asp:ListView ID="ListView1" runat="server" DataKeyNames="IDCuenta" DataSourceID="DevFlix">
+                <asp:ListView ID="lvlUsers" runat="server" DataKeyNames="IDCuenta" DataSourceID="DevFlix">
                     <EditItemTemplate>
                         <td runat="server" style="">IDCuenta:
                             <asp:Label ID="IDCuentaLabel1" runat="server" Text='<%# Eval("IDCuenta") %>' />
