@@ -188,6 +188,14 @@
 &nbsp;&nbsp;&nbsp;
                 <asp:Button ID="btnNo" runat="server" BorderColor="#63B9CD" OnClick="btnNo_Click" Text="No, prefiero quedarme con el anterior." Visible="False" Width="276px" />
             </p>
+            <p> 
+                &nbsp;</p>
+            <p> 
+                <asp:Image ID="imgAlerta" runat="server" ImageUrl="Recursos/Imagenes/alerta.png" Visible="False" Height="47px" Width="52px" />
+            </p>
+            <p> 
+               <asp:Label ID="lblAtencion" runat="server" ForeColor="White" Text="Atencion! Si compra un plan más bajo que el actual, el acceso a los ultimos usuarios sera modificado." Visible="False"></asp:Label>
+            </p>
             <p> &nbsp;</p>
         </div>
 

@@ -168,6 +168,24 @@ namespace Vistas
         protected global::System.Web.UI.WebControls.Button btnNo;
 
         /// <summary>
+        /// Control imgAlerta.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image imgAlerta;
+
+        /// <summary>
+        /// Control lblAtencion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAtencion;
+
+        /// <summary>
         /// Control Label1.
         /// </summary>
         /// <remarks>
