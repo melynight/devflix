@@ -20,7 +20,7 @@ namespace Vistas
 
             if (!IsPostBack)
 
-                lblBienvenidoUsuario.Text = "Bienvenid@ " + cuenta.GetNombre_Cu();
+                lblUserName.Text = cuenta.GetNombre_Cu();
 
             Catalogo catalogo = negCatalogo.Get(id);
 
