@@ -124,7 +124,7 @@ namespace Vistas
             txtEdad.Text = "";
             txtNroTarjeta.Text = "";
             txtPIN.Text = "";
-
+            Session["IDAdmin"] = cuenta.GetIDCuenta();
             Response.Redirect("SeleccionarUsuario.aspx");
         }
     }
