@@ -52,6 +52,7 @@ GO
 
 --ULTIMOS INSERTS CATALOGOS--
 
+
 INSERT INTO Catalogos (IDContenido_Cat, IDGenero_Cat, CodTipo_Cat, Sinopsis_Cat,
 Duracion_Cat,
 URLPortada_Cat,
@@ -83,7 +84,7 @@ SELECT 'P006', 'G003', 'PUNIVERSAL', 'La sirena Ariel está fascinada por el mund
 UNION
 SELECT 'P007', 'G003', 'PUNIVERSAL', 'Elina vive en un mundo llamado Fairytopia al lado de otras hadas y la malvada Laverna desea convertirse en la reina del lugar secuestrando a siete guardianes para absorber el poder de sus collares y lograr su propósito.',
 2, 'Recursos/Imagenes/Portadas/infantiles3_Barbie_Fairytopia.JPG', 
-'Barbie Fairytopia', 0, 'https://www.youtube.com/results?search_query=Barbie+Fairytopia+trailer', 3, 1 
+'Barbie Fairytopia', 0, 'https://www.youtube.com/embed/2gaJF7k7L6Y', 3, 1 
 UNION
 SELECT 'P008', 'G003', 'PUNIVERSAL',' Después de que una fuerza oscura conquista Canterlot, las Mane 6 se embarcan en un viaje inolvidable más allá de Equestria para salvar su patria. Allí conocerán a nuevos amigos, como Capper, La Reina Novo y su hija Skystar, o la Capitana Gelaeno, y se enfrentarán a desafíos emocionantes.',
 2, 'Recursos/Imagenes/Portadas/series3_infantil_My_Little_Pony.JPG', 
@@ -109,19 +110,19 @@ SELECT 'P013', 'G002', 'PUNIVERSAL','Surge una nueva historia de amor cuando la 
 3, 'Recursos/Imagenes/Portadas/series4_romance_Besos_Kitty.JPG', 
 'Besos Kitty', 0, 'https://www.youtube.com/watch?v=g40ODSkvemI', 16, 1 
 UNION
-SELECT 'P015', 'G004' , 'PUNIVERSAL','El padre Lamont es el encargado de investigar la muerte del padre Merrin y la causa de la posesión diabólica de la joven Regan. Lamont viajará a África para investigar otro caso de posesión demoníaca. Cuando regresa a Nueva York, Regan está nuevamente poseída pero, en esta ocasión, por la máquina hipnótica del doctor Gene Tuskin.',
+SELECT 'P014', 'G004' , 'PUNIVERSAL','El padre Lamont es el encargado de investigar la muerte del padre Merrin y la causa de la posesión diabólica de la joven Regan. Lamont viajará a África para investigar otro caso de posesión demoníaca. Cuando regresa a Nueva York, Regan está nuevamente poseída pero, en esta ocasión, por la máquina hipnótica del doctor Gene Tuskin.',
 3, 'Recursos/Imagenes/Portadas/terror5_El_Exorcista_II.JPG', 
 'EL EXORCISTA II', 0, 'https://www.youtube.com/watch?v=LDraTxCzewY', 18, 1 
 UNION
-SELECT 'P016', 'G004' , 'PUNIVERSAL','Durante su estancia en las Bermudas, Ellen Brody se da cuenta de que el tiburón que mató a su hijo la está acechando.',
+SELECT 'P015', 'G004' , 'PUNIVERSAL','Durante su estancia en las Bermudas, Ellen Brody se da cuenta de que el tiburón que mató a su hijo la está acechando.',
 3, 'Recursos/Imagenes/Portadas/terror4_Tiburon_4.JPG', 
 'TIBURON 4', 0, 'https://www.youtube.com/watch?v=RVgZR-v2qHo', 18, 1 
 UNION
-SELECT 'P017', 'G004' , 'PUNIVERSAL','En los años cincuenta, una nave espacial se estrella contra la Tierra expulsando un peligroso organismo extraterrestre. Un joven ve una extraña luz que procede del lugar y se acerca para comprobar de qué se trata, pero al instante el chico desaparece. Veintisiete años después, dos universitarios roban un cadáver congelado de la facultad de medicina, que resulta ser el del joven desaparecido, y lo descongelan.',
+SELECT 'P016', 'G004' , 'PUNIVERSAL','En los años cincuenta, una nave espacial se estrella contra la Tierra expulsando un peligroso organismo extraterrestre. Un joven ve una extraña luz que procede del lugar y se acerca para comprobar de qué se trata, pero al instante el chico desaparece. Veintisiete años después, dos universitarios roban un cadáver congelado de la facultad de medicina, que resulta ser el del joven desaparecido, y lo descongelan.',
 3, 'Recursos/Imagenes/Portadas/terror3_El_Terror_Llama_A_Su_Puerta.JPG', 
 'EL TERROR LLAMA A SU PUERTA', 0, 'https://www.youtube.com/watch?v=HShJXeYAGrw', 18, 1 
 UNION
-SELECT 'P018', 'G004' , 'PUNIVERSAL',' El destino del mundo está en manos de Damien, un niño con rostro angelical que, en realidad, es la encarnación del Anticristo.',
+SELECT 'P017', 'G004' , 'PUNIVERSAL',' El destino del mundo está en manos de Damien, un niño con rostro angelical que, en realidad, es la encarnación del Anticristo.',
 3, 'Recursos/Imagenes/Portadas/terror2_la_profecia.JPG', 
 'LA PROFECIA', 0, 'https://www.youtube.com/watch?v=AiwP5udhskk', 18, 1 
 UNION
@@ -129,3 +130,6 @@ SELECT 'P018', 'G003', 'PUNIVERSAL','Vinland Saga es una serie anime que gira en
 3, 'Recursos/Imagenes/Portadas/Serie2Accion_VINLANDSAGA.JPG', 
 'Vinland Saga', 0, 'https://www.youtube.com/watch?v=n2VuKI0yT8w', 16, 1 
 GO
+
+select * from Catalogos
+go

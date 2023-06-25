@@ -31,9 +31,29 @@ AS
 	from inserted 
 		inner join Suscripciones on
 		inserted.CodSus_Cu = Suscripciones.CodSus_Sus
-		where inserted.IDRef_Cu<>0 -- aca solo se van a agregar registros de admin por q si agrega usuario,
+		where inserted.CodSus_Cu<>0 -- aca solo se van a agregar registros de admin por q si agrega usuario,
 		--el registro de usuario no va a tener codSus y va a cargar null en Facturacion
 		-- Con la condicion IDRef_Cu = null funciona cuando se da de alta el admin y no se agrega otro registro cuando agrega usuario
 	end
 go
 
+CREATE TRIGGER TR_DeleteCuenta
+ON Cuentas
+INSTEAD OF DELETE
+AS
+BEGIN
+SET NOCOUNT ON
+    -- Eliminar registros de Facturacion correspondientes a las filas eliminadas en Cuentas
+    DELETE f
+    FROM Facturacion as f
+    INNER JOIN deleted as d ON f.IDCuenta_F = d.IDCuenta
+
+	DELETE fv
+    FROM Favoritos as fv
+    INNER JOIN deleted as d ON fv.ID_cuenta = d.IDCuenta
+
+    -- Eliminar las filas de Cuentas
+    DELETE FROM Cuentas
+    WHERE IDCuenta IN (SELECT IDCuenta FROM deleted);
+END
+GO

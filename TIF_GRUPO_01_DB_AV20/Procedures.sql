@@ -1,7 +1,7 @@
 use DevFlixDB
 go
 
-select * from Facturacion
+
 
 SELECT Nombre_Ts, CodSus_Sus FROM Suscripciones
 inner join TipoSuscripciones
@@ -14,8 +14,7 @@ CREATE PROCEDURE spEliminarUsuarios
 @IDref INT 
 )
 AS
-update Cuentas
-set Estado_Cu=0
+DELETE Cuentas
 WHERE IDRef_Cu=@IDref
 RETURN
 GO
@@ -265,6 +264,14 @@ WHERE ID_cuenta = @IDcuenta
 RETURN
 GO
 
+CREATE PROCEDURE SP_CargarListViewFiltro
+@Titulo varchar(50), @IDCuenta int
+AS
+SELECT * FROM Favoritos INNER JOIN Catalogos 
+ON IDContenido_Cat = IDContenido_F 
+WHERE TituloContenido_Cat LIKE '%' + @Titulo + '%' AND ID_cuenta = @IDCuenta
+RETURN
+GO
 ----------------------------------------------------
 --Facturacion
 ----------------------------------------------------
