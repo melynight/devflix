@@ -1,7 +1,6 @@
 USE DevFlixDB
 go
-
-INSERT INTO Paises (IDPais_Pa,Nombre_PA)
+INSERT INTO Paises (IDPais_Pa,Nombre_PA)
 select 'ARG','Argentina' union
 select 'BRA','Brasil' union
 select 'URU','Uruguay'

@@ -36,21 +36,24 @@ AS
 		-- Con la condicion IDRef_Cu = null funciona cuando se da de alta el admin y no se agrega otro registro cuando agrega usuario
 	end
 go
-select *from Cuentas
 
-
-ALTER TRIGGER TR_CargarFacturacionDelete
-on cuentas
-instead of Delete
+CREATE TRIGGER TR_DeleteCuenta
+ON Cuentas
+INSTEAD OF DELETE
 AS
-	begin
-	set nocount on
-	delete Facturacion
-	where Facturacion.IDCuenta_F= (select deleted.IDCuenta from deleted)
-	delete Favoritos where Favoritos.ID_cuenta = (select deleted.IDCuenta from deleted)
-	delete Cuentas where IDCuenta= (select deleted.IDCuenta from deleted)
-	end
-go
+BEGIN
+SET NOCOUNT ON
+    -- Eliminar registros de Facturacion correspondientes a las filas eliminadas en Cuentas
+    DELETE f
+    FROM Facturacion as f
+    INNER JOIN deleted as d ON f.IDCuenta_F = d.IDCuenta
 
+	DELETE fv
+    FROM Favoritos as fv
+    INNER JOIN deleted as d ON fv.ID_cuenta = d.IDCuenta
 
-
+    -- Eliminar las filas de Cuentas
+    DELETE FROM Cuentas
+    WHERE IDCuenta IN (SELECT IDCuenta FROM deleted);
+END
+GO
