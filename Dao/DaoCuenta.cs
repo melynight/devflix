@@ -17,13 +17,29 @@ namespace Dao
         public Cuenta CargarCuenta(DataTable tabla, Cuenta cue)
         {
             Paises pais = new Paises();
-            Suscripcion su = new Suscripcion();
-
+            Suscripcion sus = new Suscripcion();
+            TipoSuscripcion ts = new TipoSuscripcion();
+   
             pais.IDPais_PA1 = Convert.ToString(tabla.Rows[0][1].ToString());
-            su.CodSus_Sus1 = Convert.ToInt32(tabla.Rows[0][2].ToString());
+
+            ts.CodTipo_Ts1 = tabla.Rows[0]["CodTipo_Ts"].ToString();
+            ts.Nombre_Ts1 = tabla.Rows[0]["Nombre_Ts"].ToString();
+            ts.Precio_Ts1 = Convert.ToDecimal(tabla.Rows[0]["Precio_Ts"]);
+            ts.Beneficios_Ts1 = tabla.Rows[0]["Beneficios_Ts"].ToString();
+            ts.CantUsuarios_Ts1 = Convert.ToInt32(tabla.Rows[0]["CantUsuarios_Ts"]);
+            ts.Estado_Ts1 = Convert.ToBoolean(tabla.Rows[0]["Estado_Ts"].ToString());
+
+
+            sus.CodSus_Sus1 = (Convert.ToInt32(tabla.Rows[0]["CodSus_Sus"].ToString()));
+            sus.CodTipo_Sus1 = ts;
+            sus.Total_Sus = (Convert.ToDecimal(tabla.Rows[0]["Total_Sus"].ToString()));
+            sus.FechaCompra_Sus = (Convert.ToDateTime(tabla.Rows[0]["FechaCompra_Sus"].ToString()));
+            sus.Estado_Sus = (Convert.ToBoolean(tabla.Rows[0]["Estado_Sus"].ToString()));
+        
+
             //convierto los datos de la tabla para setear las columnas en el objeto 
             cue.Set_Pais_Cu(pais);
-            cue.SetCodSus_Cu(su);
+            cue.SetCodSus_Cu(sus);
             cue.SetIDCuenta(Convert.ToInt32(tabla.Rows[0][0].ToString()));
             cue.SetEmail_Cu(tabla.Rows[0][3].ToString());
             cue.SetClave_Cu(tabla.Rows[0][4].ToString());
@@ -52,7 +68,10 @@ namespace Dao
 
         public Cuenta GetCuenta(Cuenta cue)
         {
-            DataTable tabla = ds.ObtenerTabla("Cuentas", "Select * from Cuentas as c where c.Email_Cu= '" + cue.GetEmail_Cu() + "'");
+            DataTable tabla = ds.ObtenerTabla("Cuentas", "Select * from Cuentas as c " +
+                "inner join Suscripciones on c.CodSus_Cu = Suscripciones.CodSus_Sus" +
+               " inner join TipoSuscripciones on Suscripciones.CodTipo_Sus = TipoSuscripciones.CodTipo_Ts " +
+                "where c.Email_Cu = '" + cue.GetEmail_Cu() + "'");
 
             if (tabla.Rows.Count == 1)
             {
@@ -63,7 +82,11 @@ namespace Dao
 
         public Cuenta GetCuentaByID(Cuenta cue)
         {
-            DataTable tabla = ds.ObtenerTabla("Cuentas", "Select * from Cuentas as c where c.IDCuenta= " + cue.GetIDCuenta());
+            DataTable tabla = ds.ObtenerTabla("Cuentas", "Select * from Cuentas as c " +
+                " inner join Suscripciones on c.CodSus_Cu = Suscripciones.CodSus_Sus" +
+               " inner join TipoSuscripciones on Suscripciones.CodTipo_Sus = TipoSuscripciones.CodTipo_Ts " +
+                "where c.IDCuenta= " + cue.GetIDCuenta());
+
             //convierto los datos de la tabla para setear las columnas en el objeto 
             if (tabla.Rows.Count == 1)
             {

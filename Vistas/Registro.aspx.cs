@@ -83,8 +83,10 @@ namespace Vistas
 
             int codigoSus = Convert.ToInt32(ddlSuscripcion.SelectedValue);
             sus = negSus.Get(codigoSus);
-            tip= negTipo.GetxNombre(ddlSuscripcion.SelectedItem.Text);
-
+            tip = negTipo.GetxNombre(ddlSuscripcion.SelectedItem.Text);
+           // sus.CodTipo_Sus1 = tip;
+            
+      
 
             cuenta.SetEmail_Cu(txtConfirmarEmail.Text.Trim().ToLower());
             cuenta.SetClave_Cu(txtClave.Text);
@@ -112,6 +114,7 @@ namespace Vistas
 
             int ID = negCue.GetIDUltimaCuenta(cuenta);
             Session["Cuenta"] = negCue.GetByID(ID);
+            cuenta = (Cuenta)Session["Cuenta"];
 
             Application["tipoSuscripcion"] = tip;
             Session["NombreSus"] = tip.Nombre_Ts1;

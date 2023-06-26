@@ -24,15 +24,17 @@ namespace Vistas
         {
             ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
 
+
             cuenta = (Cuenta)Session["Cuenta"];
             
 
-
             if (!IsPostBack) {
-                cuentaAdminAux = nCuenta.GetByID((int)Session["IDAdmin"]);
+
+                
+
                 if (cuenta.GetIDRef_Cu() != 0 && cuenta.GetIDRef_Cu().ToString() != null) //no es admin
                 {
-                   
+                    cuentaAdminAux = nCuenta.GetByID((int)Session["IDAdmin"]);
                     CargarImgAdmin(cuentaAdminAux);
                     lblIDRef.Text = cuentaAdminAux.GetIDCuenta().ToString();
                     ocultarValidarPIN();
@@ -42,10 +44,10 @@ namespace Vistas
 
                 else
                 {
-                    Session["IDAdmin"] = cuenta.GetIDCuenta();
-                    cuenta = (Cuenta)Session["Cuenta"];
+                   //Session["IDAdmin"] = cuenta.GetIDCuenta();
+                    cuenta = nCuenta.GetByID((int)Session["IDAdmin"]);
                     CargarImgAdmin(cuenta);
-                    Session["CantidadUsuariosAdmin"] = validarCantUsuariosMax(cuentaAdminAux);
+                    Session["CantidadUsuariosAdmin"] = validarCantUsuariosMax(cuenta);
 
                     lblIDRef.Text = cuenta.GetIDCuenta().ToString();
                     lblNombreAdmin.Text = cuenta.GetNombre_Cu();
@@ -57,20 +59,12 @@ namespace Vistas
             }
             
 
-
-            
-          
-
-
         }
 
-
-
-
-        public int validarCantUsuariosMax(Cuenta cuenta)  
+        public int validarCantUsuariosMax(Cuenta auxCuenta)
         {
-            cuenta = (Cuenta)Session["Cuenta"];
-            suscripcion = nSuscripcion.Get(cuenta.GetSus_Cu().CodSus_Sus1);
+          
+            suscripcion = nSuscripcion.Get(auxCuenta.GetSus_Cu().CodSus_Sus1);
             tipoSuscripcion = nTipoSuscripcion.Get(suscripcion.CodTipo_Sus1.CodTipo_Ts1);
 
             int cantUsuariosMax = tipoSuscripcion.CantUsuarios_Ts1;
