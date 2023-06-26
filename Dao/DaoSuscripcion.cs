@@ -28,7 +28,7 @@ namespace Dao
             tipoSus.Estado_Ts1 = Convert.ToBoolean(tabla.Rows[0]["Estado_Ts"].ToString());
             
 
-            sus.CodSus_Sus1 = (Convert.ToInt32(tabla.Rows[0][0].ToString()));
+            sus.CodSus_Sus1 = (Convert.ToInt32(tabla.Rows[0]["CodSus_Sus"].ToString()));
             sus.CodTipo_Sus1 = tipoSus;
             sus.Total_Sus = (Convert.ToDecimal(tabla.Rows[0][2].ToString()));
             sus.FechaCompra_Sus = (Convert.ToDateTime(tabla.Rows[0][3].ToString()));
