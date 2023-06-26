@@ -139,9 +139,9 @@
                             <td runat="server" style="padding: 20px; text-align: center; ">
                                 <asp:DataPager ID="DataPager1" runat="server" PageSize="5">
                                     <Fields>
-                                        <asp:NextPreviousPagerField ButtonCssClass="botoncito-page" ButtonType="Button" ShowFirstPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" />
+                                        <asp:NextPreviousPagerField ButtonCssClass="botoncito-page" ButtonType="Link" ShowFirstPageButton="false" ShowNextPageButton="false" ShowPreviousPageButton="false" />
                                         <asp:NumericPagerField NumericButtonCssClass="botoncito-page" />
-                                        <asp:NextPreviousPagerField ButtonCssClass="botoncito-page" ButtonType="Button" ShowLastPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" />
+                                        <asp:NextPreviousPagerField ButtonCssClass="botoncito-page" ButtonType="Link" ShowLastPageButton="false" ShowNextPageButton="false" ShowPreviousPageButton="false" />
                                     </Fields>
                                 </asp:DataPager>
                             </td>

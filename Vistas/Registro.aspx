@@ -34,7 +34,7 @@
             </p>
             <p>
                 Contraseña&nbsp;
-                <asp:TextBox ID="txtClave" runat="server" TextMode="Password" MaxLength="20"></asp:TextBox>
+                <asp:TextBox ID="txtClave" runat="server" TextMode="Password" MaxLength="20" OnTextChanged="txtClave_TextChanged"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtClave" Display="Dynamic" ErrorMessage="El campo no puede quedar vacio" ForeColor="Red"></asp:RequiredFieldValidator>
             </p>
             <p>

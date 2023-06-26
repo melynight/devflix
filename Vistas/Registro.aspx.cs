@@ -131,5 +131,10 @@ namespace Vistas
             Session["IDAdmin"] = cuenta.GetIDCuenta();
             Response.Redirect("SeleccionarUsuario.aspx");
         }
+
+        protected void txtClave_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
