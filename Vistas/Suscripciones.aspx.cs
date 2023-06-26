@@ -11,12 +11,12 @@ namespace Vistas
 {
     public partial class WebForm1 : System.Web.UI.Page
     {
-        TipoSuscripcion tip = new TipoSuscripcion();
-        Cuenta cuenta = new Cuenta();
-        NegocioCuenta negCue = new NegocioCuenta();
-        NegocioSuscripcion negSuscripcion = new NegocioSuscripcion();
-        NegocioTipoSuscripcion tipoSus = new NegocioTipoSuscripcion();
-        Suscripcion sus = new Suscripcion();
+        private TipoSuscripcion tip = new TipoSuscripcion();
+        private Cuenta cuenta = new Cuenta();
+        private NegocioCuenta negCue = new NegocioCuenta();
+        private NegocioSuscripcion negSuscripcion = new NegocioSuscripcion();
+        private NegocioTipoSuscripcion tipoSus = new NegocioTipoSuscripcion();
+        private Suscripcion sus = new Suscripcion();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -57,19 +57,16 @@ namespace Vistas
                 foreach (DataRow dr in ds2.Rows)
                 {
                     idS.Add(dr["CodSus_Sus"].ToString());
-
                 }
                 foreach (DataRow dr in ds3.Rows)
                 {
                     nombreS.Add(dr["Nombre_Ts"].ToString());
-
                 }
                 int i = 0;
-                foreach (DataRow dr in ds2.Rows)
+                for (i = 0; i < 3; i++)
                 {
                     ListItem item = new ListItem(nombreS[i], idS[i]);
                     ddlSuscripciones.Items.Add(item);
-                    i++;
                 }
                 ddlSuscripciones.DataBind();
                 nombreS.Clear();

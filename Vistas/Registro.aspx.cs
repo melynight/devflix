@@ -8,19 +8,18 @@ using System.Web.UI.WebControls;
 using Entidades;
 using Negocio;
 
-
 namespace Vistas
 {
     public partial class Registro : System.Web.UI.Page
     {
-        Cuenta cuenta = new Cuenta();
-        NegocioCuenta negCue = new NegocioCuenta();
-        NegocioPais negPais = new NegocioPais();
-        NegocioSuscripcion negSuscripcion = new NegocioSuscripcion();
-        NegocioTipoSuscripcion tipoSus = new NegocioTipoSuscripcion();
+        private Cuenta cuenta = new Cuenta();
+        private NegocioCuenta negCue = new NegocioCuenta();
+        private NegocioPais negPais = new NegocioPais();
+        private NegocioSuscripcion negSuscripcion = new NegocioSuscripcion();
+        private NegocioTipoSuscripcion tipoSus = new NegocioTipoSuscripcion();
+
         protected void Page_Load(object sender, EventArgs e)
         {
-          
             ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
             if (!IsPostBack)
             {
@@ -28,8 +27,8 @@ namespace Vistas
 
                 foreach (DataRow dr in ds.Rows)
                 {
-                    string idp = dr["IDPais_PA"].ToString(); 
-                    string nombrep = dr["Nombre_PA"].ToString(); 
+                    string idp = dr["IDPais_PA"].ToString();
+                    string nombrep = dr["Nombre_PA"].ToString();
                     ListItem item = new ListItem(nombrep, idp);
                     ddlPaises.Items.Add(item);
                 }
@@ -45,15 +44,22 @@ namespace Vistas
                 foreach (DataRow dr in ds2.Rows)
                 {
                     idS.Add(dr["CodSus_Sus"].ToString());
-                    
                 }
                 foreach (DataRow dr in ds3.Rows)
                 {
-                    nombreS.Add( dr["Nombre_Ts"].ToString());
-                    
+                    nombreS.Add(dr["Nombre_Ts"].ToString());
                 }
+
                 int i = 0;
-                foreach (DataRow dr in ds2.Rows)
+                for (i = 0; i < 3; i++)
+                {
+                    ListItem item = new ListItem(nombreS[i], idS[i]);
+                    ddlSuscripcion.Items.Add(item);
+                }
+                ddlSuscripcion.DataBind();
+                nombreS.Clear();
+                idS.Clear();
+                /*foreach (DataRow dr in ds2.Rows)
                 {
                     ListItem item = new ListItem(nombreS[i], idS[i]);
                     ddlSuscripcion.Items.Add(item);
@@ -63,11 +69,9 @@ namespace Vistas
                 ddlSuscripcion.DataBind();
                 nombreS.Clear();
                 idS.Clear();
+                 */
             }
         }
-
-
-
 
         protected void btnIniciarSesion_Click(object sender, EventArgs e)
         {
@@ -84,24 +88,20 @@ namespace Vistas
             int codigoSus = Convert.ToInt32(ddlSuscripcion.SelectedValue);
             sus = negSus.Get(codigoSus);
             tip = negTipo.GetxNombre(ddlSuscripcion.SelectedItem.Text);
-           // sus.CodTipo_Sus1 = tip;
-            
-      
+            // sus.CodTipo_Sus1 = tip;
 
             cuenta.SetEmail_Cu(txtConfirmarEmail.Text.Trim().ToLower());
             cuenta.SetClave_Cu(txtClave.Text);
             cuenta.SetEdad_Cu(Convert.ToInt32(txtEdad.Text));
             cuenta.SetEstado_Cu(true);
             cuenta.SetCodSus_Cu(sus);
-            cuenta.Set_Pais_Cu(pais); 
+            cuenta.Set_Pais_Cu(pais);
             cuenta.SetNombre_Cu(txtNombre.Text.Trim().ToLower());
             cuenta.SetNROTarjeta_Cu(txtNroTarjeta.Text.Trim().ToLower());
             cuenta.SetPIN_Cu(txtPIN.Text.Trim().ToLower());
             cuenta.URLImagenDefault1 = "Recursos/Imagenes/usuario.png";
-            Session["EdadUsuario"] =  cuenta.GetEdad_Cu();
+            Session["EdadUsuario"] = cuenta.GetEdad_Cu();
             //La fecha se setea automaticamente como el id
-
-
 
             AgregadoCorrectamente = negCue.AgregarCuenta(cuenta);
             if (!AgregadoCorrectamente)
@@ -109,7 +109,7 @@ namespace Vistas
                 lblError.Visible = true;
                 return;
             }
-            
+
             lblError.Visible = false;
 
             int ID = negCue.GetIDUltimaCuenta(cuenta);
