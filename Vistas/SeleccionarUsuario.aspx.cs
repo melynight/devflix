@@ -69,6 +69,7 @@ namespace Vistas
 
         public int validarCantUsuariosMax(Cuenta cuenta)  
         {
+            cuenta = (Cuenta)Session["Cuenta"];
             suscripcion = nSuscripcion.Get(cuenta.GetSus_Cu().CodSus_Sus1);
             tipoSuscripcion = nTipoSuscripcion.Get(suscripcion.CodTipo_Sus1.CodTipo_Ts1);
 
