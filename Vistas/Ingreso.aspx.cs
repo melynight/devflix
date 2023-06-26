@@ -44,15 +44,24 @@ namespace Vistas
                 cuenta.SetCodSus_Cu(sus);
                 cuenta.Set_Pais_Cu(pais);
 
+<<<<<<< HEAD
+=======
 
                 Session["Cuenta"] = cuenta;
                 Application["tipoSuscripcion"] = tip;
                 Session["NombreSus"] = tip.Nombre_Ts1;
 
+>>>>>>> origin/main
                 Session["EdadUsuario"] = cuenta.GetEdad_Cu();
                 Session["IDAdmin"] = cuenta.GetIDCuenta();
                 Session["EdadUsuario"] = cuenta.GetEdad_Cu();
 
+<<<<<<< HEAD
+                Session["Cuenta"] = cuenta;
+                Application["tipoSuscripcion"] = tip;
+                Session["NombreSus"] = tip.Nombre_Ts1;
+=======
+>>>>>>> origin/main
 
                 lblError.Visible = false;
                 txtClave.Text = "";
