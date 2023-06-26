@@ -14,7 +14,6 @@ namespace Vistas
             Cuenta cuenta = (Cuenta)Session["cuenta"];
             if (!IsPostBack)
                 lblUserName.Text =  cuenta.GetNombre_Cu();
-            
 
         }
 
@@ -30,6 +29,7 @@ namespace Vistas
                 lblConfirmDelete.Visible = true;
                 btnConfirmDelete.Visible = true;
                 btnCancelDelete.Visible = true;
+                btnAceptar.Enabled = false;
             }
         }
         protected void btnConfirmDelete_Click(object sender, EventArgs e)
@@ -55,6 +55,7 @@ namespace Vistas
             lblConfirmDelete.Visible = false;
             btnConfirmDelete.Visible = false;
             btnCancelDelete.Visible = false;
+            btnAceptar.Enabled = true;
         }
     }
 }
