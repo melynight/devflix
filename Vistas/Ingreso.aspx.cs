@@ -45,24 +45,24 @@ namespace Vistas
                 cuenta.Set_Pais_Cu(pais);
 
 <<<<<<< HEAD
-
-
 =======
->>>>>>> c7557b9e27a67a9f0e8b9935523cb2ecf4d0a040
+
                 Session["Cuenta"] = cuenta;
                 Application["tipoSuscripcion"] = tip;
                 Session["NombreSus"] = tip.Nombre_Ts1;
 
+>>>>>>> origin/main
                 Session["EdadUsuario"] = cuenta.GetEdad_Cu();
                 Session["IDAdmin"] = cuenta.GetIDCuenta();
-<<<<<<< HEAD
                 Session["EdadUsuario"] = cuenta.GetEdad_Cu();
 
-
-
+<<<<<<< HEAD
+                Session["Cuenta"] = cuenta;
+                Application["tipoSuscripcion"] = tip;
+                Session["NombreSus"] = tip.Nombre_Ts1;
 =======
+>>>>>>> origin/main
 
->>>>>>> c7557b9e27a67a9f0e8b9935523cb2ecf4d0a040
                 lblError.Visible = false;
                 txtClave.Text = "";
                 txtEmail.Text = "";

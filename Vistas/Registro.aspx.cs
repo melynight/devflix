@@ -115,6 +115,7 @@ namespace Vistas
 
             Application["tipoSuscripcion"] = tip;
             Session["NombreSus"] = tip.Nombre_Ts1;
+            Session["IDAdmin"] = cuenta.GetIDCuenta();
 
             txtEmail.Text = "";
             txtNombre.Text = "";
@@ -124,7 +125,7 @@ namespace Vistas
             txtEdad.Text = "";
             txtNroTarjeta.Text = "";
             txtPIN.Text = "";
-
+            Session["IDAdmin"] = cuenta.GetIDCuenta();
             Response.Redirect("SeleccionarUsuario.aspx");
         }
     }

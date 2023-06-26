@@ -33,22 +33,37 @@ GO
 
 INSERT INTO Cuentas(ID_Pais_Cu,CodSus_Cu,Email_Cu,Clave_Cu,FechaCreacion_Cu,
 Nombre_Cu,PIN_Cu,Edad_Cu,IDRef_Cu,NROTarjeta_Cu,Estado_Cu)
-SELECT 'ARG',1,'ejemplo1@gmail.com','dada123',GETDATE(),'Ejemplo1','2211',20,NULL,'2344322212349865',1
+SELECT 'ARG',1,'luciano@gmail.com','dada123',GETDATE(),'Luciano','2211',20,NULL,'2344322212349865',1
 INSERT INTO Cuentas(ID_Pais_Cu,CodSus_Cu,Email_Cu,Clave_Cu,FechaCreacion_Cu,
 Nombre_Cu,PIN_Cu,Edad_Cu,IDRef_Cu,NROTarjeta_Cu,Estado_Cu)
-SELECT NULL,NULL,NULL,NULL,GETDATE(),'USUARIO1',NULL,18,1,NULL,1 
+SELECT NULL,NULL,NULL,NULL,GETDATE(),'Pedro',NULL,18,1,NULL,1 
 INSERT INTO Cuentas(ID_Pais_Cu,CodSus_Cu,Email_Cu,Clave_Cu,FechaCreacion_Cu,
 Nombre_Cu,PIN_Cu,Edad_Cu,IDRef_Cu,NROTarjeta_Cu,Estado_Cu)
-SELECT NULL,NULL,NULL,NULL,GETDATE(),'USUARIO2',NULL,14,1,NULL,1 
+SELECT NULL,NULL,NULL,NULL,GETDATE(),'Maria',NULL,14,1,NULL,1 
 INSERT INTO Cuentas(ID_Pais_Cu,CodSus_Cu,Email_Cu,Clave_Cu,FechaCreacion_Cu,
 Nombre_Cu,PIN_Cu,Edad_Cu,IDRef_Cu,NROTarjeta_Cu,Estado_Cu)
-SELECT 'ARG',2,'ejemplo2@gmail.com','123456',GETDATE(),'Ejemplo2','2331',20,NULL,'2333332212332165',1 
+SELECT 'BRA',2,'melany@gmail.com','123456',GETDATE(),'Melany','2331',20,NULL,'2333332212332165',1 
 INSERT INTO Cuentas(ID_Pais_Cu,CodSus_Cu,Email_Cu,Clave_Cu,FechaCreacion_Cu,
 Nombre_Cu,PIN_Cu,Edad_Cu,IDRef_Cu,NROTarjeta_Cu,Estado_Cu)
-SELECT NULL,NULL,NULL,NULL,GETDATE(),'USUARIO1',NULL,22,4,NULL,1 
+SELECT NULL,NULL,NULL,NULL,GETDATE(),'Mario',NULL,22,2,NULL,1 
 INSERT INTO Cuentas(ID_Pais_Cu,CodSus_Cu,Email_Cu,Clave_Cu,FechaCreacion_Cu,
 Nombre_Cu,PIN_Cu,Edad_Cu,IDRef_Cu,NROTarjeta_Cu,Estado_Cu)
-SELECT NULL,NULL,NULL,NULL,GETDATE(),'USUARIO2',NULL,24,4,NULL,1
+SELECT NULL,NULL,NULL,NULL,GETDATE(),'Angel',NULL,24,2,NULL,1
+INSERT INTO Cuentas(ID_Pais_Cu,CodSus_Cu,Email_Cu,Clave_Cu,FechaCreacion_Cu,Nombre_Cu,PIN_Cu,Edad_Cu,IDRef_Cu,NROTarjeta_Cu,Estado_Cu)
+SELECT 'ARG',3,'profesor@gmail.com','123456',GETDATE(),'Claudio','2331',20,NULL,'2333332212332165',1 
+INSERT INTO Cuentas(ID_Pais_Cu,CodSus_Cu,Email_Cu,Clave_Cu,FechaCreacion_Cu,
+Nombre_Cu,PIN_Cu,Edad_Cu,IDRef_Cu,NROTarjeta_Cu,Estado_Cu)
+SELECT NULL,NULL,NULL,NULL,GETDATE(),'Macarena',NULL,22,3,NULL,1 
+INSERT INTO Cuentas(ID_Pais_Cu,CodSus_Cu,Email_Cu,Clave_Cu,FechaCreacion_Cu,
+Nombre_Cu,PIN_Cu,Edad_Cu,IDRef_Cu,NROTarjeta_Cu,Estado_Cu)
+SELECT NULL,NULL,NULL,NULL,GETDATE(),'Lito',NULL,24,3,NULL,1
+SELECT 'URU',3,'profesora@gmail.com','123456',GETDATE(),'Tamara','2331',20,NULL,'2333332212332165',1 
+INSERT INTO Cuentas(ID_Pais_Cu,CodSus_Cu,Email_Cu,Clave_Cu,FechaCreacion_Cu,
+Nombre_Cu,PIN_Cu,Edad_Cu,IDRef_Cu,NROTarjeta_Cu,Estado_Cu)
+SELECT NULL,NULL,NULL,NULL,GETDATE(),'Zoe',NULL,22,4,NULL,1 
+INSERT INTO Cuentas(ID_Pais_Cu,CodSus_Cu,Email_Cu,Clave_Cu,FechaCreacion_Cu,
+Nombre_Cu,PIN_Cu,Edad_Cu,IDRef_Cu,NROTarjeta_Cu,Estado_Cu)
+SELECT NULL,NULL,NULL,NULL,GETDATE(),'Guido',NULL,24,4,NULL,1
 GO
 
 --ULTIMOS INSERTS CATALOGOS--
