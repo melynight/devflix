@@ -62,18 +62,18 @@ namespace Vistas
 
             if (cantUsuariosMax == 1)
             {
-                ListView1.DataSourceID = "SqlDataSource1";
+                ListView1.DataSourceID = "SqlDataSource1"; //top 0
                 ListView1.DataBind();
 
             }
             else if (cantUsuariosMax == 2)
             {
-                ListView1.DataSourceID = "SqlDataSource2";
+                ListView1.DataSourceID = "SqlDataSource2"; //top 1
                 ListView1.DataBind();
             }
             else
             {
-                ListView1.DataSourceID = "SqlDataSource3";
+                ListView1.DataSourceID = "SqlDataSource3"; //top 3
                 ListView1.DataBind();
             }
 

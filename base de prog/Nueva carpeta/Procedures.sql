@@ -1,20 +1,13 @@
 use DevFlixDB
 go
 
-
-
-SELECT Nombre_Ts, CodSus_Sus FROM Suscripciones
-inner join TipoSuscripciones
-on CodTipo_Sus= CodTipo_Ts
-where estado_Sus =1
-go
-
 CREATE PROCEDURE spEliminarUsuarios
 (
 @IDref INT 
 )
 AS
-DELETE Cuentas
+UPDATE Cuentas
+SET Cuentas.Estado_Cu=0
 WHERE IDRef_Cu=@IDref
 RETURN
 GO
@@ -24,7 +17,8 @@ CREATE PROCEDURE spEliminarCuenta
 @IDCuenta INT
 )
 AS
- delete Cuentas
+ update Cuentas
+ set Cuentas.Estado_Cu=0
  WHERE IDCuenta = @IDCuenta exec spEliminarUsuarios @IDCuenta
 RETURN
 go
@@ -46,7 +40,8 @@ CREATE PROCEDURE EliminarCuentaStandard
 @IDcuenta int
 )
 AS
-delete Cuentas
+Update Cuentas
+set Estado_Cu=0
 where IDCuenta=@IDcuenta
 RETURN 
 GO
@@ -115,7 +110,9 @@ CREATE PROCEDURE spAgregarCuenta
 )
 AS
 
-INSERT INTO Cuentas(ID_Pais_Cu,CodSus_Cu,Email_Cu,Clave_Cu,FechaCreacion_Cu,
+INSERT INTO Cuentas
+(
+ID_Pais_Cu,CodSus_Cu,Email_Cu,Clave_Cu,FechaCreacion_Cu,
 Nombre_Cu,PIN_Cu,Edad_Cu,IDRef_Cu,NROTarjeta_Cu,Estado_Cu
 )
 SELECT @ID_Pais_Cu , @CodSus_Cu, @Email_Cu ,@Clave_Cu ,GETDATE() ,@Nombre_Cu ,
@@ -350,23 +347,3 @@ AS
 UPDATE Cuentas SET CodSus_Cu = @CodSus WHERE Email_Cu = @Email
 RETURN
 GO
-
-------------------------------------------------------------------------------------------
---REPORTES
-------------------------------------------------------------------------------------------
-
-/*ALTER PROC spCantUsuarioxFecha(
-@fechaInicio date,
-@fechaFin date
-)
-as
-
-	BEGIN
-	select * from Cuentas
-	where FechaCreacion_Cu >= @fechaInicio and FechaCreacion_Cu <= @fechaFin 
-	and Estado_Cu=1 and Email_Cu <> null 
-	END
-
-
-RETURN 
-GO*/
