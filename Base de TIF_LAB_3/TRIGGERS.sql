@@ -2,7 +2,7 @@ use TIF_LAB3
 go
 
 
-CREATE TRIGGER TR_CargarFacturacionUpdate
+CREATE TRIGGER TR_CargarFacturacionUpdateSuscripcion
 ON Cuentas
 after UPDATE 
 AS
@@ -17,6 +17,26 @@ IF UPDATE(CodSus_Cu)
 		inner join Suscripciones on
 		inserted.CodSus_Cu = Suscripciones.CodSus_Sus
 		where deleted.CodSus_Cu <> inserted.CodSus_Cu
+	end
+go
+
+
+
+CREATE TRIGGER TR_CargarFacturacionUpdateFecha
+ON Cuentas
+after UPDATE 
+AS
+IF UPDATE(Fecha_Sus)
+	begin
+	set nocount on
+	insert into Facturacion(IDCuenta_F,CodSus_F,Fecha_F,Importe_F)
+	select inserted.IDCuenta, inserted.CodSus_Cu, inserted.FechaSus_Cu,Suscripciones.total_Sus
+	from inserted 
+		inner join deleted on 
+		deleted.IDCuenta = inserted.IDCuenta 
+		inner join Suscripciones on
+		inserted.CodSus_Cu = Suscripciones.CodSus_Sus
+		where deleted.FechaSus_Cu <> inserted.FechaSus_Cu
 	end
 go
 
