@@ -1,4 +1,4 @@
-use DevFlixDB
+use TIF_LAB3
 go
 
 CREATE PROCEDURE spVerCuentas
@@ -302,7 +302,7 @@ EXECUTE spSuscripcionXMes
 GO
 
 SELECT * FROM Suscripciones
-GO/*
+GO*/
 
 CREATE PROCEDURE spEliminarFacturacion
 (

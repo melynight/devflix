@@ -1,4 +1,4 @@
-use DevFlixDB
+use TIF_LAB3
 go
 
 CREATE TRIGGER TR_CargarFacturacionUpdate
@@ -46,10 +46,10 @@ AS
 BEGIN
 SET NOCOUNT ON
 
-	UPDATE fv
-	set fv.estado_FA =0
-    FROM Favoritos as fv
-    INNER JOIN deleted as d ON fv.ID_cuenta = d.IDCuenta
+	UPDATE Favoritos
+	set Favoritos.estado_FA =0
+    FROM Favoritos
+    INNER JOIN deleted ON Favoritos.ID_cuenta = deleted.IDCuenta
 
     -- Eliminar las filas de Cuentas
     update Cuentas
