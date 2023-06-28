@@ -1,8 +1,6 @@
 
-USE DevFlixDB
+USE TIF_LAB3
 go
-
-delete Cuentas
 
 INSERT INTO Paises (IDPais_Pa,Nombre_PA)
 select 'ARG','Argentina' union

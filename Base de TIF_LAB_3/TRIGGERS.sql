@@ -22,6 +22,9 @@ IF UPDATE(fechaCompra_Sus)
 	end
 go
 
+select * from Facturacion
+
+
 CREATE TRIGGER TR_CargarFacturacionInsert
 ON Cuentas
 after INSERT 
