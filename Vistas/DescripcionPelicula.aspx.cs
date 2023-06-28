@@ -50,30 +50,28 @@ namespace Vistas
                 {
                     var tituloClean = catalogo.TituloContenido_Cat1.Replace(Environment.NewLine, "").Replace("\n", "").Replace("\r", "");
 
-                if (!string.IsNullOrWhiteSpace(tituloClean))
-                    titulo.Text = tituloClean + " | " + titulo.Text;
+                    if (!string.IsNullOrWhiteSpace(tituloClean))
+                        titulo.Text = tituloClean + " | " + titulo.Text;
 
-                lblTitulo.Text = tituloClean;
-                lblDuracion.Text = negCatalogo.getDescripcionDuracion(catalogo.Duracion_Cat1);
-                lblSinopsis.Text = catalogo.Sinopsis_Cat1;
+                    lblTitulo.Text = tituloClean;
+                    lblDuracion.Text = negCatalogo.getDescripcionDuracion(catalogo.Duracion_Cat1);
+                    lblSinopsis.Text = catalogo.Sinopsis_Cat1;
 
-                trailer.Attributes.Add("src", catalogo.URLVideo_Cat1.Replace("watch?v=", "embed/"));
+                    trailer.Attributes.Add("src", catalogo.URLVideo_Cat1.Replace("watch?v=", "embed/"));
 
-                Response.Redirect("/DescripcionPelicula.aspx?id=" + Session["idRand"]);
-                // rellena la estrellita si esta marcado como favorito
+                    Response.Redirect("/DescripcionPelicula.aspx?id=" + Session["idRand"]);
+                    // rellena la estrellita si esta marcado como favorito
 
-                if (new NegocioFavorito().ExisteFavorito(catalogo.IDContenido_Cat1, cuenta.GetIDCuenta()))
-                    BtnFavoritos.CssClass = "filled";
-               
+                    if (new NegocioFavorito().ExisteFavorito(catalogo.IDContenido_Cat1, cuenta.GetIDCuenta()))
+                        BtnFavoritos.CssClass = "filled";
                 }
                 else
                     BtnSorprendeme.Visible = false;
                 BtnFavoritos.Visible = false;
-                    lblDuracion.Visible = false;
-                    lblSinopsis.Visible = false;
-                    trailer.Visible = false;
-                    lblTitulo.Text = "El usuario debe ser mayor de edad para poder recomendarle contenido.";
-                
+                lblDuracion.Visible = false;
+                lblSinopsis.Visible = false;
+                trailer.Visible = false;
+                lblTitulo.Text = "El usuario debe ser mayor de edad para poder recomendarle contenido.";
             }
         }
 
@@ -82,9 +80,11 @@ namespace Vistas
             string id;
 
             if (Request["id"] != null)
+
                 id = Request["id"];
             else
-            {// (id==null)
+            {
+                // (id==null)
                 id = Session["idRand"].ToString();
             }
             NegocioFavorito negFavorito = new NegocioFavorito();

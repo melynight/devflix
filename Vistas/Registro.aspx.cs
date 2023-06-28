@@ -59,17 +59,6 @@ namespace Vistas
                 ddlSuscripcion.DataBind();
                 nombreS.Clear();
                 idS.Clear();
-                /*foreach (DataRow dr in ds2.Rows)
-                {
-                    ListItem item = new ListItem(nombreS[i], idS[i]);
-                    ddlSuscripcion.Items.Add(item);
-                    i++;
-                }
-
-                ddlSuscripcion.DataBind();
-                nombreS.Clear();
-                idS.Clear();
-                 */
             }
         }
 
@@ -88,7 +77,6 @@ namespace Vistas
             int codigoSus = Convert.ToInt32(ddlSuscripcion.SelectedValue);
             sus = negSus.Get(codigoSus);
             tip = negTipo.GetxNombre(ddlSuscripcion.SelectedItem.Text);
-            // sus.CodTipo_Sus1 = tip;
 
             cuenta.SetEmail_Cu(txtConfirmarEmail.Text.Trim().ToLower());
             cuenta.SetClave_Cu(txtClave.Text);
@@ -101,7 +89,6 @@ namespace Vistas
             cuenta.SetPIN_Cu(txtPIN.Text.Trim().ToLower());
             cuenta.URLImagenDefault1 = "Recursos/Imagenes/usuario.png";
             Session["EdadUsuario"] = cuenta.GetEdad_Cu();
-            //La fecha se setea automaticamente como el id
 
             AgregadoCorrectamente = negCue.AgregarCuenta(cuenta);
             if (!AgregadoCorrectamente)
