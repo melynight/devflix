@@ -1,28 +1,25 @@
 use TIF_LAB3
 go
 
+
 CREATE TRIGGER TR_CargarFacturacionUpdate
-ON Suscripciones
+ON Cuentas
 after UPDATE 
 AS
-DECLARE  @fechaCompra datetime
-SET @fechaCompra = DATEADD (month, 1, (select fechaCompra_Sus from inserted))
-
-IF UPDATE(fechaCompra_Sus)
+IF UPDATE(CodSus_Cu)
 	begin
 	set nocount on
-	IF (@fechaCompra <= GETDATE())
-	begin
 	insert into Facturacion(IDCuenta_F,CodSus_F,Fecha_F,Importe_F)
-	select Cuentas.IDCuenta, CodSus_Cu, GETDATE(),total_Sus
+	select inserted.IDCuenta, inserted.CodSus_Cu, GETDATE(),Suscripciones.total_Sus
 	from inserted 
-		inner join Cuentas on
-		CodSus_Cu = CodSus_Sus
-		end
+		inner join deleted on 
+		deleted.IDCuenta = inserted.IDCuenta 
+		inner join Suscripciones on
+		inserted.CodSus_Cu = Suscripciones.CodSus_Sus
+		where deleted.CodSus_Cu <> inserted.CodSus_Cu
 	end
 go
 
-select * from Facturacion
 
 
 CREATE TRIGGER TR_CargarFacturacionInsert
