@@ -1,7 +1,7 @@
 use TIF_LAB3
 go
 
-
+--------------------------------CUENTAS--------------------------------
 CREATE TRIGGER TR_CargarFacturacionUpdate
 ON Cuentas
 after UPDATE 
@@ -39,6 +39,7 @@ AS
 	end
 go
 
+
 CREATE TRIGGER TR_DeleteCuenta
 ON Cuentas
 INSTEAD OF DELETE
@@ -57,6 +58,7 @@ SET NOCOUNT ON
     WHERE IDCuenta IN (SELECT IDCuenta FROM deleted);
 END
 GO
+-----------------------------------------------------------------------
 
 
 

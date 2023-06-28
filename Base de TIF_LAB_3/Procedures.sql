@@ -1,6 +1,7 @@
 use TIF_LAB3
 go
 
+--------------------------------CUENTAS--------------------------------
 CREATE PROCEDURE spVerCuentas
 @estado bit
 as
@@ -186,7 +187,11 @@ SELECT @IDContenido_Cat, @IDGenero_Cat, @CodTipo_Cat, @Sinopsis_Cat,
 @Estado_Cat
 RETURN
 GO
------------------------Genero------------------------
+-----------------------------------------------------------------------
+
+
+
+--------------------------------GENERO---------------------------------
 Create procedure spAgregarGenero
 (
 @IDGenero_Ge CHAR(10),
@@ -209,10 +214,12 @@ AS
  WHERE NombreGenero_Ge = @NombreGenero_Ge
 RETURN
 go
----------------------------------------------------
+-----------------------------------------------------------------------
 
 
--------------Paises---------------------------------
+
+
+--------------------------------PAISES---------------------------------
 Create procedure spAgregarPais
 (
 @Nombre_Pa varchar(30)
@@ -234,9 +241,11 @@ AS
  WHERE Nombre_Pa = @Nombre_Pa
 RETURN
 go
-----------------------------------------------------
+-----------------------------------------------------------------------
 
--------------Favoritos------------------------------
+
+
+--------------------------------FAVORITOS------------------------------
 Create procedure spAgregarFavorito
 (
 @IDContenido_F char(10),
@@ -277,9 +286,51 @@ ON IDContenido_Cat = IDContenido_F
 WHERE TituloContenido_Cat LIKE '%' + @Titulo + '%' AND ID_cuenta = @IDCuenta
 RETURN
 GO
-----------------------------------------------------
---Facturacion
-----------------------------------------------------
+-----------------------------------------------------------------------
+
+
+----------------------------TIPOSUSCRIPCIONES---------------------------
+CREATE PROCEDURE spEliminarTipoSuscripcion
+@CodTipo int
+AS
+UPDATE TipoSuscripciones SET Estado_Ts= 0 WHERE CodTipo_Ts = @CodTipo
+RETURN
+GO
+
+CREATE PROCEDURE spAgregarTipoSuscripcion
+@CodTipo char(10), @nombre varchar(20), @precio decimal(18,2), @beneficios varchar(200), @cantu int, @estado bit
+AS
+INSERT INTO TipoSuscripciones(CodTipo_Ts, Nombre_Ts, Precio_Ts, Beneficios_Ts, CantUsuarios_Ts, Estado_Ts)
+SELECT @CodTipo, @nombre, @precio, @beneficios, @cantu, @estado
+RETURN
+GO
+
+--SUSCRIPCIONES:
+CREATE PROCEDURE spEliminarSuscripcion
+@CodSus int
+AS
+UPDATE Suscripciones SET estado_Sus = 0 WHERE CodSus_Sus = @CodSus
+RETURN
+GO
+
+CREATE PROCEDURE spAgregarSuscripcion
+@CodTipo char(10), @total decimal (18,2), @fechaCompra date, @estado bit
+AS
+INSERT INTO Suscripciones(CodTipo_Sus, total_Sus, fechaCompra_Sus, estado_Sus)
+SELECT @CodTipo, @total, @fechaCompra, @estado
+RETURN
+GO
+
+CREATE PROCEDURE spCambiarPlan
+(@CodSus int, @Email varchar(30))
+AS
+UPDATE Cuentas SET CodSus_Cu = @CodSus WHERE Email_Cu = @Email
+RETURN
+GO
+-----------------------------------------------------------------------
+
+
+------------------------------FACTURACION------------------------------
 
 CREATE PROCEDURE spSuscripcionXMes
 AS
@@ -338,42 +389,4 @@ GETDATE() ,
 @Importe_F 
 RETURN
 GO
-
---TIPOSUSCRIPCIONES:
-CREATE PROCEDURE spEliminarTipoSuscripcion
-@CodTipo int
-AS
-UPDATE TipoSuscripciones SET Estado_Ts= 0 WHERE CodTipo_Ts = @CodTipo
-RETURN
-GO
-
-CREATE PROCEDURE spAgregarTipoSuscripcion
-@CodTipo char(10), @nombre varchar(20), @precio decimal(18,2), @beneficios varchar(200), @cantu int, @estado bit
-AS
-INSERT INTO TipoSuscripciones(CodTipo_Ts, Nombre_Ts, Precio_Ts, Beneficios_Ts, CantUsuarios_Ts, Estado_Ts)
-SELECT @CodTipo, @nombre, @precio, @beneficios, @cantu, @estado
-RETURN
-GO
-
---SUSCRIPCIONES:
-CREATE PROCEDURE spEliminarSuscripcion
-@CodSus int
-AS
-UPDATE Suscripciones SET estado_Sus = 0 WHERE CodSus_Sus = @CodSus
-RETURN
-GO
-
-CREATE PROCEDURE spAgregarSuscripcion
-@CodTipo char(10), @total decimal (18,2), @fechaCompra date, @estado bit
-AS
-INSERT INTO Suscripciones(CodTipo_Sus, total_Sus, fechaCompra_Sus, estado_Sus)
-SELECT @CodTipo, @total, @fechaCompra, @estado
-RETURN
-GO
-
-CREATE PROCEDURE spCambiarPlan
-(@CodSus int, @Email varchar(30))
-AS
-UPDATE Cuentas SET CodSus_Cu = @CodSus WHERE Email_Cu = @Email
-RETURN
-GO
+-----------------------------------------------------------------------
