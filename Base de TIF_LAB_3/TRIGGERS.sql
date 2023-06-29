@@ -26,17 +26,17 @@ CREATE TRIGGER TR_CargarFacturacionUpdateFecha
 ON Cuentas
 after UPDATE 
 AS
-IF UPDATE(Fecha_Sus)
+IF UPDATE(Fecha_Suscripcion_Cu)
 	begin
 	set nocount on
 	insert into Facturacion(IDCuenta_F,CodSus_F,Fecha_F,Importe_F)
-	select inserted.IDCuenta, inserted.CodSus_Cu, inserted.FechaSus_Cu,Suscripciones.total_Sus
+	select inserted.IDCuenta, inserted.CodSus_Cu, inserted.Fecha_Suscripcion_Cu,Suscripciones.total_Sus
 	from inserted 
 		inner join deleted on 
 		deleted.IDCuenta = inserted.IDCuenta 
 		inner join Suscripciones on
 		inserted.CodSus_Cu = Suscripciones.CodSus_Sus
-		where deleted.FechaSus_Cu <> inserted.FechaSus_Cu
+		where deleted.Fecha_Suscripcion_Cu <> inserted.Fecha_Suscripcion_Cu
 	end
 go
 

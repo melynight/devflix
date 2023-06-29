@@ -79,7 +79,7 @@ ID_Pais_Cu char(10) null,
 CodSus_Cu int null,
 Email_Cu varchar(30) null,
 Clave_Cu varchar(20) null,
-FechaCreacion_Cu DATETIME not null,
+Fecha_Suscripcion_Cu DATETIME not null, --fecha en en que suscribe
 Nombre_Cu varchar (50) not null,
 PIN_Cu varchar(4) null,
 Edad_Cu int not null,

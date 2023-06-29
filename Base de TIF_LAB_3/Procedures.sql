@@ -121,7 +121,7 @@ AS
 
 INSERT INTO Cuentas
 (
-ID_Pais_Cu,CodSus_Cu,Email_Cu,Clave_Cu,FechaCreacion_Cu,
+ID_Pais_Cu,CodSus_Cu,Email_Cu,Clave_Cu,Fecha_Suscripcion_Cu,
 Nombre_Cu,PIN_Cu,Edad_Cu,IDRef_Cu,NROTarjeta_Cu,Estado_Cu
 )
 SELECT @ID_Pais_Cu , @CodSus_Cu, @Email_Cu ,@Clave_Cu ,GETDATE() ,@Nombre_Cu ,
@@ -137,7 +137,7 @@ CREATE PROCEDURE spAgregarUsuario
 @Estado_Cu bit
 )
 AS
-INSERT INTO Cuentas (FechaCreacion_Cu, Nombre_Cu,Edad_Cu,IDRef_Cu,Estado_Cu)
+INSERT INTO Cuentas (Fecha_Suscripcion_Cu, Nombre_Cu,Edad_Cu,IDRef_Cu,Estado_Cu)
 SELECT GETDATE(),@Nombre_Cu, @Edad_Cu, @IdRef_Cu,@Estado_Cu
 RETURN
 GO
@@ -382,7 +382,6 @@ UPDATE Cuentas SET CodSus_Cu = @CodSus WHERE Email_Cu = @Email
 RETURN
 GO
 
-SELECT * FROM Suscripciones
 
 CREATE PROCEDURE spMaxSuscripcion
 AS
