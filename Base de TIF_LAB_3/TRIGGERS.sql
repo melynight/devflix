@@ -80,5 +80,33 @@ END
 GO
 -----------------------------------------------------------------------
 
+CREATE TRIGGER TR_CuentasValidarMail
+ON Cuentas
+INSTEAD OF INSERT
+AS
+BEGIN
+    SET NOCOUNT ON
 
+    DECLARE @contarMails INT
+    SET @contarMails = (SELECT COUNT(Cuentas.IDCuenta) FROM Cuentas  WHERE Cuentas.Email_Cu = (SELECT Email_Cu FROM inserted))
+
+    IF (@contarMails > 0)
+    BEGIN
+        PRINT 'El correo electrónico ya existe en la tabla.'
+        RETURN
+    END
+    ELSE
+	BEGIN
+	INSERT INTO Cuentas(ID_Pais_Cu,CodSus_Cu,Email_Cu,Clave_Cu,Fecha_Suscripcion_Cu,Nombre_Cu,PIN_Cu,Edad_Cu,IDRef_Cu,NROTarjeta_Cu,Estado_Cu)
+	Select inserted.ID_Pais_Cu,inserted.CodSus_Cu,inserted.Email_Cu,inserted.Clave_Cu,inserted.Fecha_Suscripcion_Cu,inserted.Nombre_Cu,inserted.PIN_Cu,inserted.Edad_Cu,inserted.IDRef_Cu,inserted.NROTarjeta_Cu,inserted.Estado_Cu from inserted
+	END
+END
+
+--test oa
+
+INSERT INTO Cuentas(ID_Pais_Cu,CodSus_Cu,Email_Cu,Clave_Cu,Fecha_Suscripcion_Cu,
+Nombre_Cu,PIN_Cu,Edad_Cu,IDRef_Cu,NROTarjeta_Cu,Estado_Cu)
+SELECT 'BRA',2,'melany@gmail.com','123456',GETDATE(),'Melany','2331',20,NULL,'2333332212332165',1 
+
+select * from cuentas
 
