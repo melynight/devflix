@@ -214,6 +214,32 @@ AS
  WHERE NombreGenero_Ge = @NombreGenero_Ge
 RETURN
 go
+
+
+CREATE PROCEDURE spBusquedaPeliXGenero
+(
+@NombreGenero_Ge varchar(30)
+)
+AS
+	SELECT TituloContenido_Cat, NombreGenero_Ge
+	FROM Generos INNER JOIN Catalogos
+	ON IDGenero_Ge = IDGenero_Cat
+	WHERE NombreGenero_Ge = @NombreGenero_Ge
+RETURN
+GO
+
+CREATE PROCEDURE spCantPelisXGenero
+(
+@NombreGenero_Ge varchar(30)
+)
+AS
+	SELECT COUNT(IDContenido_Cat) AS [Cantidad Peliculas], NombreGenero_Ge
+	FROM Generos INNER JOIN Catalogos 
+	ON IDGenero_Cat = IDGenero_Ge
+	WHERE NombreGenero_Ge = @NombreGenero_Ge
+	GROUP BY NombreGenero_Ge
+RETURN
+GO
 -----------------------------------------------------------------------
 
 
@@ -241,6 +267,32 @@ AS
  WHERE Nombre_Pa = @Nombre_Pa
 RETURN
 go
+
+CREATE PROCEDURE spBusquedaCuentaXPais
+(
+@Nombre_Pa varchar(30)
+)
+AS
+	SELECT Email_Cu, Nombre_Pa
+	FROM Paises INNER JOIN Cuentas
+	ON IDPais_Pa = ID_Pais_Cu
+	WHERE Nombre_Pa = @Nombre_Pa
+RETURN
+GO
+
+
+CREATE PROCEDURE spCantPaisesXCuentas
+(
+@Nombre_Pa varchar(30)
+)
+AS
+	SELECT COUNT(IDCuenta) AS [Cantidad Cuentas], Nombre_Pa
+	FROM Paises INNER JOIN Cuentas 
+	ON IDPais_Pa = ID_Pais_Cu
+	WHERE Nombre_Pa = @Nombre_Pa
+	GROUP BY Nombre_Pa
+RETURN
+GO
 -----------------------------------------------------------------------
 
 
@@ -278,7 +330,7 @@ WHERE ID_cuenta = @IDcuenta
 RETURN
 GO
 
-CREATE PROCEDURE SP_CargarListViewFiltro
+CREATE PROCEDURE spCargarListViewFiltro
 @Titulo varchar(50), @IDCuenta int
 AS
 SELECT * FROM Favoritos INNER JOIN Catalogos 
@@ -304,8 +356,10 @@ INSERT INTO TipoSuscripciones(CodTipo_Ts, Nombre_Ts, Precio_Ts, Beneficios_Ts, C
 SELECT @CodTipo, @nombre, @precio, @beneficios, @cantu, @estado
 RETURN
 GO
+------------------------------------------------------------------------
 
---SUSCRIPCIONES:
+
+------------------------------SUSCRIPCIONES------------------------------
 CREATE PROCEDURE spEliminarSuscripcion
 @CodSus int
 AS
@@ -327,6 +381,17 @@ AS
 UPDATE Cuentas SET CodSus_Cu = @CodSus WHERE Email_Cu = @Email
 RETURN
 GO
+
+SELECT * FROM Suscripciones
+
+CREATE PROCEDURE spMaxSuscripcion
+AS
+	SELECT Nombre_Ts, COUNT(CodTipo_Sus) AS [Cantidad de compras]
+	FROM Suscripciones INNER JOIN TipoSuscripciones
+	ON CodTipo_Sus = CodTipo_Ts
+	GROUP BY Nombre_Ts
+RETURN
+GO
 -----------------------------------------------------------------------
 
 
@@ -343,17 +408,7 @@ BEGIN
 	END
 END
 GO
-/*
---PARA PROBAR EL PROCEDURE:
-UPDATE Suscripciones SET fechaCompra_Sus = '2023-05-01'
 
-SELECT * FROM Suscripciones
-
-EXECUTE spSuscripcionXMes 
-GO
-
-SELECT * FROM Suscripciones
-GO*/
 
 CREATE PROCEDURE spEliminarFacturacion
 (
@@ -387,6 +442,19 @@ SELECT @IDFacturacion ,
 @CodSus_F ,
 GETDATE() ,
 @Importe_F 
+RETURN
+GO
+
+CREATE PROCEDURE spBusquedaGastoXCuenta
+(
+@Email varchar(30)
+)
+AS
+	SELECT Email_Cu, SUM(Importe_F) AS [Gasto Total]
+	FROM Cuentas INNER JOIN  Facturacion
+	ON IDCuenta = IDCuenta_F
+	WHERE Email_Cu = @Email
+	GROUP BY Email_Cu
 RETURN
 GO
 -----------------------------------------------------------------------

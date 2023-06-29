@@ -8,7 +8,7 @@ select 'URU','Uruguay'
 go
 
 INSERT INTO Generos (IDGenero_Ge, NombreGenero_GE)
-select 'G001','Acción'  union
+select 'G001','Accion'  union
 select 'G002','Romance' union
 select 'G003','Infantil'union
 select 'G004','Terror'  
@@ -147,4 +147,3 @@ SELECT 'P018', 'G003', 'PUNIVERSAL','Vinland Saga es una serie anime que gira en
 3, 'Recursos/Imagenes/Portadas/Serie2Accion_VINLANDSAGA.JPG', 
 'Vinland Saga', 0, 'https://www.youtube.com/watch?v=n2VuKI0yT8w', 16, 1 
 GO
-
