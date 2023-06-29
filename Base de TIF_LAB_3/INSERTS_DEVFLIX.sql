@@ -4,8 +4,20 @@ go
 INSERT INTO Paises (IDPais_Pa,Nombre_PA)
 select 'ARG','Argentina' union
 select 'BRA','Brasil' union
-select 'URU','Uruguay'
+select 'URU','Uruguay' union
+select 'PAR','Paraguay' union
+select 'VEN','Venezuela'union
+select 'BOL','Bolivia' union
+select 'CHI','Chile' union
+select 'COL','Colombia' union
+select 'ECU','Ecuador' union
+select 'BOL','Bolivia' union
+select 'CHI','Chile' union
+select 'PER','Peru' union
+select 'GUY','Guyana' union
+select 'SUR','Surinam' 
 go
+
 
 INSERT INTO Generos (IDGenero_Ge, NombreGenero_GE)
 select 'G001','Accion'  union
