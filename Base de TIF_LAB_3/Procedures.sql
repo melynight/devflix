@@ -32,18 +32,6 @@ AS
 RETURN
 go
 
-/*alter PROCEDURE spModificarUser
-(
-@Nombre_Cu varchar(50)
-)
-AS
-update Cuentas
-set Nombre_Cu=@Nombre_Cu
-RETURN
-GO
-
-exec spModificarUser dada123*/
-
 CREATE PROCEDURE EliminarCuentaStandard
 (
 @IDcuenta int
@@ -141,6 +129,12 @@ INSERT INTO Cuentas (Fecha_Suscripcion_Cu, Nombre_Cu,Edad_Cu,IDRef_Cu,Estado_Cu)
 SELECT GETDATE(),@Nombre_Cu, @Edad_Cu, @IdRef_Cu,@Estado_Cu
 RETURN
 GO
+
+-----------------------------------------------------------------------
+
+
+
+--------------------------------Catalogo---------------------------------
 
 create procedure spEliminarCatalogo
 (
